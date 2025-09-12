@@ -33,43 +33,27 @@
         </div>
     </header>
     <section class="section">
-        <div id="research" class="container is-max-desktop">
-            <!-- Abstract. -->
+        <div id="projects" class="container is-max-desktop">
+            <!-- Projects Title -->
             <div class="columns is-centered" style="margin-top: 3em; margin-bottom: 5em;">
                 <h2 class="title is-1">Projects</h2>
             </div>
+
+            <!-- MEAM 5100 - Autonomous Competition Robot -->
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <img src="images/amr_platform.jpg" style="height: 15em; width: auto; max-width: 100%;"
-                            alt="AMR Platform" />
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Autonomous Mobile Robot (AMR) Platform for Industrial Applications
-                        </h3>
-                        <p>
-                            <strong>Senior Capstone Project - Project Manager (Jan 2024 – Apr 2024)</strong><br>
-                            Led a team of 5 graduating engineers in designing an AMR platform supporting a 6-DOF Yaskawa
-                            GP-50 robotic arm for industrial metal additive manufacturing and welding.
-                            Designed tracked mobility system capable of 2-ton payload, 15% grade traversal, and extreme
-                            temperature operation (-40°C to 30°C) with 6-hour runtime.
-                            Conducted comprehensive FEA analysis using SolidWorks to validate structural integrity with
-                            ≤160-microns end-tool deflection and maximum stress of 62 MPa (safety factor of 5.7).
-                            Delivered functional design proposal within $90,000 budget, featuring 24 LG Lithium-Ion
-                            batteries (62.4 kWh) and custom fabricated components.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
-                            <source src="images/mechatronics_robot.mp4" type="video/mp4">
-                        </video>
+                        <div style="position: relative;">
+                            <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
+                                <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
+                            </video>
+                            <!-- Mobile robot image thumbnail -->
+                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em; justify-content: center;">
+                                <img src="images/MEAM_5100_mobile_robot.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/MEAM_5100_mobile_robot.jpg')" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -92,41 +76,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MEAM 5200 - Pick and Place Robot -->
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
-                            <source src="images/transmission.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            5-Speed + Reverse Sequential Dog-Clutch Transmission Design
-                        </h3>
-                        <p>
-                            <strong>Junior Capstone Project - Mechanical Team Member (May 2021 – Aug 2021)</strong><br>
-                            Designed complete transmission system for Mario Kart-inspired high-speed racing application,
-                            focusing on rapid gear changes and optimal power transfer.
-                            Performed detailed gear train analysis including gear ratio optimization, bearing load
-                            ratings, and spline/keyway stress calculations to ensure reliable performance.
-                            Created non-synchronous dog clutch mechanism with precision tolerance specifications and
-                            strategic material selection for racing conditions.
-                            Engineered power transmission paths through input shaft, layshaft, and output shaft
-                            configurations to optimize efficiency and minimize power loss.
-                            Incorporated idler gear system for reverse function, enabling direction reversal without
-                            compromising overall transmission size.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
-                            <source src="images/pick_place.mp4" type="video/mp4">
-                        </video>
+                        <div style="position: relative;">
+                            <!-- Competition video thumbnail -->
+                            <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
+                                <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -151,102 +111,93 @@
                 </div>
             </div>
 
-            <!-- Show More Button -->
-            <div class="columns is-centered" style="margin-top: 2em;">
-                <div class="column has-text-centered">
-                    <button class="button is-small is-link is-light" onclick="toggleOldProjects()">Show Earlier
-                        Projects</button>
+            <!-- Senior Capstone - AMR Platform -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <div style="position: relative;">
+                            <a href="files/Senior_capstone_AMR_platform.pdf" target="_blank"
+                                style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #363636; border: 2px dashed #dbdbdb; padding: 2em; border-radius: 8px; transition: all 0.3s ease; height: 15em; justify-content: center;">
+                                <i class="fa fa-file-pdf"
+                                    style="font-size: 4em; color: #e74c3c; margin-bottom: 0.5em;"></i>
+                                <span style="font-weight: 600; text-align: center;">AMR Platform<br>Design
+                                    Document</span>
+                                <span style="font-size: 0.8em; margin-top: 0.5em; color: #7a7a7a;">Click to view
+                                    PDF</span>
+                            </a>
+                            <!-- PDF link thumbnail -->
+                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em; justify-content: center;">
+                                <a href="files/Senior_capstone_AMR_platform.pdf" target="_blank"
+                                    style="height: 3em; width: 3em; display: flex; align-items: center; justify-content: center; border: 1px solid #dbdbdb; border-radius: 4px; text-decoration: none; color: #e74c3c;">
+                                    <i class="fa fa-file-pdf" style="font-size: 1.5em;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            Autonomous Mobile Robot (AMR) Platform for Industrial Applications
+                        </h3>
+                        <p>
+                            <strong>Senior Capstone Project - Project Manager (Jan 2024 – Apr 2024)</strong><br>
+                            Led a team of 5 graduating engineers in designing an AMR platform supporting a 6-DOF Yaskawa
+                            GP-50 robotic arm for industrial metal additive manufacturing and welding.
+                            Designed tracked mobility system capable of 2-ton payload, 15% grade traversal, and extreme
+                            temperature operation (-40°C to 30°C) with 6-hour runtime.
+                            Conducted comprehensive FEA analysis using SolidWorks to validate structural integrity with
+                            ≤160-microns end-tool deflection and maximum stress of 62 MPa (safety factor of 5.7).
+                            Delivered functional design proposal within $90,000 budget, featuring 24 LG Lithium-Ion
+                            batteries (62.4 kWh) and custom fabricated components.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div id="old-projects" style="display: none;">
-
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                            <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
-                                <source src="images/4dof_robot.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content is-small" style="margin-top: 0em;">
-                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                                4-DOF Hydraulic Robotic Manipulator Design and Fabrication
-                            </h3>
-                            <p>
-                                <strong>Personal Project</strong><br>
-                                Designed and fabricated a 4-degree-of-freedom robotic manipulator using Fusion 360 and
-                                3D printing technology.
-                                Developed fluid-actuated control system for smoother motion control compared to
-                                traditional servo systems.
-                                Implemented modified unipolar stepper motor system for higher torque output and
-                                precision control.
-                                Integrated heat transfer fins for effective motor cooling and prevention of overheating
-                                during extended operation.
-                                Demonstrated complete design-to-manufacturing workflow including CAD modeling, 3D
-                                printing, and system integration.
-                            </p>
-                        </div>
+            <!-- Junior Capstone - Transmission Design -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
+                            <source src="images/Junior_capstone_transmission.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                            <img src="images/wall-e.jpg" style="height: 15em; width: auto; max-width: 100%;" />
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content is-small" style="margin-top: 0em;">
-                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                                WALL-E Inspired Educational Robotics Project
-                            </h3>
-                            <p>
-                                <strong>Personal Project</strong><br>
-                                Created interactive WALL-E inspired robot for educational demonstrations and outreach
-                                activities.
-                                Integrated Arduino-based control system with servo motors for realistic movement and
-                                articulation.
-                                Designed custom 3D-printed chassis and components to replicate iconic WALL-E appearance
-                                and functionality.
-                                Programmed autonomous behaviors including object tracking, sound response, and
-                                environmental interaction.
-                                Used for engineering education and demonstration at Future Creators club events for
-                                Grade 7-12 students.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                            <img src="images/pottery.jpg" style="height: 15em; width: auto; max-width: 100%;" />
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content is-small" style="margin-top: 0em;">
-                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                                Creative Manufacturing and Design Exploration
-                            </h3>
-                            <p>
-                                <strong>Personal Projects</strong><br>
-                                Explored various manufacturing techniques including pottery, laser cutting, and 3D
-                                printing for both functional and artistic applications.
-                                Developed hands-on experience with different materials and fabrication processes,
-                                enhancing understanding of design for manufacturing principles.
-                                Created custom tools, fixtures, and decorative objects to explore the intersection of
-                                engineering design and creative expression.
-                                Applied engineering design thinking to traditional crafts, optimizing form and function
-                                in handmade ceramic works.
-                                Demonstrated versatility in working across diverse manufacturing processes from digital
-                                fabrication to traditional hand crafting.
-                            </p>
-                        </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            5-Speed + Reverse Sequential Dog-Clutch Transmission Design
+                        </h3>
+                        <p>
+                            <strong>Junior Capstone Project - Mechanical Team Member (May 2021 – Aug 2021)</strong><br>
+                            Designed complete transmission system for Mario Kart-inspired high-speed racing application,
+                            focusing on rapid gear changes and optimal power transfer.
+                            Performed detailed gear train analysis including gear ratio optimization, bearing load
+                            ratings, and spline/keyway stress calculations to ensure reliable performance.
+                            Created non-synchronous dog clutch mechanism with precision tolerance specifications and
+                            strategic material selection for racing conditions.
+                            Engineered power transmission paths through input shaft, layshaft, and output shaft
+                            configurations to optimize efficiency and minimize power loss.
+                            Incorporated idler gear system for reverse function, enabling direction reversal without
+                            compromising overall transmission size.
+                        </p>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
 
     <footer class="footer">
         <div class="container is-max-desktop">
@@ -264,16 +215,23 @@
     </footer>
 </body>
 <script>
-    function toggleOldProjects() {
-        const section = document.getElementById("old-projects");
-        const button = event.target;
-        if (section.style.display === "none") {
-            section.style.display = "block";
-            button.textContent = "Hide Earlier Projects";
-        } else {
-            section.style.display = "none";
-            button.textContent = "Show Earlier Projects";
-        }
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
     }
 </script>
 

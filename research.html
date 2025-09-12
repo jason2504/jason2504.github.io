@@ -34,16 +34,31 @@
     </header>
     <section class="section">
         <div id="research" class="container is-max-desktop">
-            <!-- Abstract. -->
+            <!-- Research Title -->
             <div class="columns is-centered" style="margin-top: 3em; margin-bottom: 5em;">
                 <h2 class="title is-1">Research</h2>
             </div>
+
+            <!-- Dual-Mode Robotic Systems -->
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: 100%;" controls autoplay loop muted>
-                            <source src="images/robot_arms.mp4" type="video/mp4">
-                        </video>
+                        <div style="position: relative;">
+                            <video style="height: 15em; width: 100%;" controls autoplay loop muted>
+                                <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
+                            </video>
+                            <!-- Robot arm iteration images -->
+                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em; justify-content: center;">
+                                <img src="images/Cute_Octopus_1st_iteration.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/Cute_Octopus_1st_iteration.jpg')"
+                                    title="First Iteration" />
+                                <img src="images/Cute_Octopus_2nd_iteration.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/Cute_Octopus_2nd_iteration.jpg')"
+                                    title="Second Iteration" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -68,12 +83,62 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Tubular Braided Composites -->
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: 100%;" controls autoplay loop muted>
-                            <source src="images/vaccine_coldbox.mp4" type="video/mp4">
-                        </video>
+                        <a href="files/DRA poster W2024 - Jason Chen.pdf" target="_blank"
+                            style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #363636; border: 2px dashed #dbdbdb; padding: 2em; border-radius: 8px; transition: all 0.3s ease; height: 15em; justify-content: center;">
+                            <i class="fa fa-file-pdf" style="font-size: 4em; color: #e74c3c; margin-bottom: 0.5em;"></i>
+                            <span style="font-weight: 600; text-align: center;">Dean Research Award<br>Poster</span>
+                            <span style="font-size: 0.8em; margin-top: 0.5em; color: #7a7a7a;">Click to view PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            Tubular Braided Composites with Near-Zero Thermal Expansion
+                        </h3>
+                        <p>
+                            <strong>University of Alberta Dean Research Award (Final Year Undergraduate)</strong><br>
+                            Characterized compressive properties of epoxy resin and investigated failure modes under
+                            various loading conditions using digital image correlation (DIC) analysis.
+                            Manufactured tubular braided composites with Kevlar prepregs using maypole braiding machine,
+                            systematically optimizing braid angles (35°-55°) and epoxy-hardener ratios.
+                            Successfully achieved near-zero coefficient of thermal expansion composites for aerospace
+                            applications through iterative design optimization.
+                            Utilized DaVis software and 2D stereo camera systems for precise strain analysis and thermal
+                            deformation tracking.
+                            Validated epoxy isotropy and homogeneity, demonstrating different failure modes under
+                            tension (brittle) versus compression (ductile).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COVID-19 Vaccine Cold Box -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <div style="position: relative;">
+                            <video style="height: 15em; width: 100%;" controls autoplay loop muted>
+                                <source src="images/vaccine_coldbox.mp4" type="video/mp4">
+                            </video>
+                            <!-- Additional images as overlays or gallery -->
+                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em;">
+                                <img src="images/Cold_box_1st_iteration.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/Cold_box_1st_iteration.jpg')" />
+                                <img src="images/Cold_box_in_Mozambique.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/Cold_box_in_Mozambique.jpg')" />
+                                <img src="images/Cold_box_locking_mechanism.jpg"
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showImage('images/Cold_box_locking_mechanism.jpg')" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -99,74 +164,16 @@
                     </div>
                 </div>
             </div>
-            <!-- Show More Button -->
-            <div class="columns is-centered" style="margin-top: 2em;">
-                <div class="column has-text-centered">
-                    <button class="button is-small is-link is-light" onclick="toggleOldProjects()">Show More
-                        Research</button>
-                </div>
-            </div>
 
-            <!-- Wrap older research in this container -->
-            <div id="old-research" style="display: none;">
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                            <img src="images/tbc_composite.jpg" style="height: 15em; width: 100%;" />
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content is-small" style="margin-top: 0em;">
-                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                                Tubular Braided Composites with Near-Zero Thermal Expansion
-                            </h3>
-                            <p>
-                                <strong>University of Alberta, Dean Research Award (Final Year
-                                    Undergraduate)</strong><br>
-                                Characterized compressive properties of epoxy resin and investigated failure modes under
-                                various loading conditions using digital image correlation.
-                                Validated that epoxy behaves homogeneously and isotropically, displaying different
-                                failure modes under tension (brittle) versus compression (ductile).
-                                Manufactured tubular braided composites with Kevlar prepregs using maypole braiding
-                                machine, optimizing braid angles (35°-55°) and epoxy-hardener ratios.
-                                Successfully achieved near-zero coefficient of thermal expansion for aerospace
-                                applications through systematic optimization of manufacturing parameters.
-                                Utilized DaVis software for strain analysis and 2D stereo camera systems for thermal
-                                deformation tracking.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                            <img src="images/power_platform.png" style="height: 15em; width: 100%;" />
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content is-small" style="margin-top: 0em;">
-                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                                Automated Workflow Solutions for Engineering Project Management
-                            </h3>
-                            <p>
-                                <strong>ATCO Ltd., Natural Gas Division (Sep 2022 – Sep 2023)</strong><br>
-                                Developed Professional Work Products (PWP) Authentication Tool using Microsoft Power
-                                Platform, creating standardized solution for document storage and workflow automation.
-                                Engineered automated workflow solutions using Power Apps, Power Automate, and
-                                SharePoint, achieving 85% reduction in processing time for project documentation.
-                                Created interactive dashboards and reporting systems with Power BI, transforming manual
-                                data entry processes and reducing errors.
-                                Designed metadata-driven SharePoint system that reduced document retrieval time by 70%
-                                for 20+ project teams.
-                                Supervised and mentored 4 engineering interns while implementing standardized
-                                documentation protocols across multiple $15M+ capital projects.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+    </div>
 
     <footer class="footer">
         <div class="container is-max-desktop">
@@ -184,16 +191,13 @@
     </footer>
 </body>
 <script>
-    function toggleOldProjects() {
-        const section = document.getElementById("old-research");
-        const button = event.target;
-        if (section.style.display === "none") {
-            section.style.display = "block";
-            button.textContent = "Hide More Research";
-        } else {
-            section.style.display = "none";
-            button.textContent = "Show More Research";
-        }
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('imageModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('imageModal').style.display = 'none';
     }
 </script>
 
