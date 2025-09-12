@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Jason Chen" />
+    <meta name="keywords" content="Mechanical Engineering Design Robotics Manufacturing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research Projects</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8"></div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div id="research" class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered" style="margin-top: 3em; margin-bottom: 5em;">
+                <h2 class="title is-1">Research</h2>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <video style="height: 15em; width: 100%;" controls autoplay loop muted>
+                            <source src="images/robot_arms.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            Dual-Mode Robotic Systems for Manipulation and Locomotion
+                        </h3>
+                        <p>
+                            <strong>University of Pennsylvania, GRASP Laboratory, Figueroa Robotics Lab (April
+                                2025-Present)</strong><br>
+                            Currently designing and prototyping innovative dual-mode robotic systems with 4-DOF per arm
+                            capable of both precision manipulation and dynamic locomotion.
+                            Developing two distinct approaches: a rigid joint-based system with custom universal joints
+                            and servo mechanisms, and a cable-actuated continuum arm with distributed motor control and
+                            flexible vertebrae.
+                            Engineering novel actuation systems including timing belt transmission with bevel gear
+                            coupling and cooperative cable control for enhanced system redundancy.
+                            Designed compliant 3-finger gripper with worm gear reduction and spring-based adaptive
+                            control for seamless transitions between delicate manipulation and robust ground contact
+                            support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <video style="height: 15em; width: 100%;" controls autoplay loop muted>
+                            <source src="images/vaccine_coldbox.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            COVID-19 Vaccine Cold Box Design and Deployment
+                        </h3>
+                        <p>
+                            <strong>University of Alberta, Advanced Composite Material Engineering Group (Jan 2022 – Sep
+                                2022)</strong><br>
+                            Engineered a prototype long-range vaccine cold box achieving -78.5°C to 8°C temperature
+                            maintenance for COVID-19 vaccine transportation in Mozambique.
+                            Designed innovative X-pattern rotary locking mechanism with 2-bar linkages to prevent
+                            unauthorized disassembly while maintaining user-friendly operation.
+                            Performed comprehensive finite element analysis (FEA) and thermal simulations in SolidWorks,
+                            achieving 168-hour cold life performance—significantly exceeding the 96-hour WHO
+                            requirement.
+                            Selected optimal materials including polyurethane with glass bead reinforcement for housing
+                            and glass-filled nylon for mechanical components.
+                            Successfully field-tested prototype in Mozambique in 2023, directly contributing to COVID-19
+                            vaccine distribution infrastructure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Show More Button -->
+            <div class="columns is-centered" style="margin-top: 2em;">
+                <div class="column has-text-centered">
+                    <button class="button is-small is-link is-light" onclick="toggleOldProjects()">Show More
+                        Research</button>
+                </div>
+            </div>
+
+            <!-- Wrap older research in this container -->
+            <div id="old-research" style="display: none;">
+                <div class="columns is-centered">
+                    <div class="column is-4">
+                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                            <img src="images/tbc_composite.jpg" style="height: 15em; width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content is-small" style="margin-top: 0em;">
+                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                                Tubular Braided Composites with Near-Zero Thermal Expansion
+                            </h3>
+                            <p>
+                                <strong>University of Alberta, Dean Research Award (Final Year
+                                    Undergraduate)</strong><br>
+                                Characterized compressive properties of epoxy resin and investigated failure modes under
+                                various loading conditions using digital image correlation.
+                                Validated that epoxy behaves homogeneously and isotropically, displaying different
+                                failure modes under tension (brittle) versus compression (ductile).
+                                Manufactured tubular braided composites with Kevlar prepregs using maypole braiding
+                                machine, optimizing braid angles (35°-55°) and epoxy-hardener ratios.
+                                Successfully achieved near-zero coefficient of thermal expansion for aerospace
+                                applications through systematic optimization of manufacturing parameters.
+                                Utilized DaVis software for strain analysis and 2D stereo camera systems for thermal
+                                deformation tracking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column is-4">
+                        <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                            <img src="images/power_platform.png" style="height: 15em; width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content is-small" style="margin-top: 0em;">
+                            <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                                Automated Workflow Solutions for Engineering Project Management
+                            </h3>
+                            <p>
+                                <strong>ATCO Ltd., Natural Gas Division (Sep 2022 – Sep 2023)</strong><br>
+                                Developed Professional Work Products (PWP) Authentication Tool using Microsoft Power
+                                Platform, creating standardized solution for document storage and workflow automation.
+                                Engineered automated workflow solutions using Power Apps, Power Automate, and
+                                SharePoint, achieving 85% reduction in processing time for project documentation.
+                                Created interactive dashboards and reporting systems with Power BI, transforming manual
+                                data entry processes and reducing errors.
+                                Designed metadata-driven SharePoint system that reduced document retrieval time by 70%
+                                for 20+ project teams.
+                                Supervised and mentored 4 engineering interns while implementing standardized
+                                documentation protocols across multiple $15M+ capital projects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    function toggleOldProjects() {
+        const section = document.getElementById("old-research");
+        const button = event.target;
+        if (section.style.display === "none") {
+            section.style.display = "block";
+            button.textContent = "Hide More Research";
+        } else {
+            section.style.display = "none";
+            button.textContent = "Show More Research";
+        }
+    }
+</script>
+
+</html>

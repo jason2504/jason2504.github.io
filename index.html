@@ -1,177 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Chen - Mechanical Engineer & Roboticist</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="description" content="Jason Chen" />
+    <meta name="keywords" content="Mechanical Engineering Design Robotics Manufacturing" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">Jason Chen</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <header class="header">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8"></div>
             </div>
         </div>
-    </nav>
+    </header>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">
+                        Jason Chen
+                    </h1>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="profile-container">
-                    <img src="assets/images/profile.jpg" alt="Jason Chen" class="profile-image">
-                </div>
-                <h1>Jason Chen</h1>
-                <p class="subtitle">Mechanical Engineer & Roboticist</p>
-                <p class="description">Passionate about creating innovative solutions that blend mechanical systems with
-                    cutting-edge technology</p>
-                <div class="social-links">
-                    <a href="mailto:jwtchen@seas.upenn.edu" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/jason-chen-2580621b7/" title="LinkedIn"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/jasonchen" title="GitHub"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>I'm currently pursuing my Master's in Mechanical Engineering with a focus on Mechatronics and
-                            Robotic Systems at the University of Pennsylvania. My research focuses on dual-mode robotic
-                            systems capable of both precision manipulation and dynamic locomotion.</p>
-                        <p>I'm particularly interested in continuum robotics, bio-inspired design, and the intersection
-                            of mechanical engineering with advanced control systems.</p>
-                    </div>
-                    <div class="education">
-                        <h3>Education</h3>
-                        <div class="edu-item">
-                            <h4>M.S. Mechanical Engineering</h4>
-                            <p>University of Pennsylvania (2024-2026)</p>
-                            <p>GPA: 4.0/4.0</p>
-                        </div>
-                        <div class="edu-item">
-                            <h4>B.Sc. Mechanical Engineering</h4>
-                            <p>University of Alberta (2019-2024)</p>
-                            <p>GPA: 3.9/4.0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/images/projects/dual-mode-robot.jpg" alt="Dual-Mode Robotic System">
-                        </div>
-                        <div class="project-content">
-                            <h3>Dual-Mode Robotic System</h3>
-                            <p>Developed two robotic architectures capable of both manipulation and locomotion: rigid
-                                joint-based system and cable-actuated continuum arm.</p>
-                            <div class="project-tags">
-                                <span class="tag">Robotics</span>
-                                <span class="tag">Control Systems</span>
-                                <span class="tag">SolidWorks</span>
-                            </div>
-                            <a href="projects/dual-mode-robotics.html" class="project-link">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/images/projects/amr-platform.jpg" alt="AMR Platform">
-                        </div>
-                        <div class="project-content">
-                            <h3>Autonomous Mobile Robot Platform</h3>
-                            <p>Led team designing AMR platform supporting 6-DOF robotic arm for industrial manufacturing
-                                with 2-ton payload capacity.</p>
-                            <div class="project-tags">
-                                <span class="tag">Leadership</span>
-                                <span class="tag">FEA</span>
-                                <span class="tag">Industrial Design</span>
-                            </div>
-                            <a href="projects/amr-platform.html" class="project-link">Learn More</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/images/projects/vaccine-coldbox.jpg" alt="Vaccine Cold Box">
-                        </div>
-                        <div class="project-content">
-                            <h3>COVID-19 Vaccine Cold Box</h3>
-                            <p>Engineered vaccine transport system for Mozambique achieving 168-hour cold life and
-                                successfully field-tested in 2023.</p>
-                            <div class="project-tags">
-                                <span class="tag">Thermal Analysis</span>
-                                <span class="tag">Global Health</span>
-                                <span class="tag">Manufacturing</span>
-                            </div>
-                            <a href="projects/vaccine-coldbox.html" class="project-link">Learn More</a>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="research.html" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-flask"></i>
+                                    </span>
+                                    <span>Research</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-cogs"></i>
+                                    </span>
+                                    <span>Projects</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-scroll"></i>
+                                    </span>
+                                    <span>Misc</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="files/JasonChen_Resume.pdf" target="_blank"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <span>Resume</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://www.linkedin.com/in/jason-chen-2580621b7/"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-linkedin"></i>
+                                    </span>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="mailto:jwtchen@seas.upenn.edu"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <span>Email</span>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>I'm always interested in discussing robotics, engineering challenges, and potential collaborations.
-                </p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:jwtchen@seas.upenn.edu">jwtchen@seas.upenn.edu</a>
+        </div>
+        <div class="container is-max-desktop" id="bio">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-4">
+                    <div class="content">
+                        <img src="images/jason.jpg" />
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://www.linkedin.com/in/jason-chen-2580621b7/">LinkedIn</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:267-721-5370">267-721-5370</a>
+                </div>
+                <div class="column">
+                    <div class="content has-text-justified">
+                        <p>
+                            Hi, I'm Jason Chen. I am pursuing my Master of Science in Mechanical Engineering with a
+                            concentration in
+                            <b><i>Mechatronics and Robotic Systems</i></b> at the <b><i>University of
+                                    Pennsylvania</i></b>.
+                            Currently, I'm a Graduate Research Assistant at the
+                            <a href="https://www.grasp.upenn.edu">GRASP Laboratory</a> in the Figueroa Robotics Lab.
+                            My research interests focus on the intersection of <i>mechanical design</i>,
+                            <i>robotics</i>, and <i>automation</i>.
+                            I am passionate about <b>creating innovative robotic systems that seamlessly integrate
+                                mechanical design with intelligent control for real-world applications.</b>
+                        </p>
+                        <p>
+                            I earned my Bachelor of Science in Mechanical Engineering Co-op from the <b><i>University of
+                                    Alberta</i></b>,
+                            where I gained extensive hands-on experience through internships and research projects. My
+                            work has ranged from
+                            designing COVID-19 vaccine transport systems deployed in Mozambique to developing autonomous
+                            mobile robot platforms
+                            for industrial applications. I have experience in advanced manufacturing, FEA simulation,
+                            project management, and
+                            developing automated workflow solutions that have improved efficiency across multiple
+                            engineering teams.
+                        </p>
+                        <p>
+                            As a <b><i>Certified SOLIDWORKS Professional (CSWP)</i></b> and with a background spanning
+                            composite materials research,
+                            precision mechanical design, and robotics system integration, I bring a multidisciplinary
+                            approach to solving complex
+                            engineering challenges. I'm particularly excited about projects that bridge the gap between
+                            innovative design and
+                            practical implementation.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Jason Chen. All rights reserved.</p>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website borrowed template code from
+                            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
