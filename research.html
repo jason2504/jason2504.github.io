@@ -99,7 +99,8 @@
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
                         <div style="position: relative;">
-                            <video style="height: 15em; width: 100%;" controls autoplay loop muted>
+                            <video style="height: 15em; width: 100%; cursor: pointer;" controls autoplay loop muted
+                                onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
                                 <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
                             </video>
                             <!-- Robot arm iteration images -->
@@ -144,7 +145,8 @@
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
                         <img src="images/DRA_manufacturing_process.jpg"
-                            style="height: 15em; width: 80%; object-fit: contain; border-radius: 8px;" />
+                            style="height: 15em; width: 80%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                            onclick="showImage('images/DRA_manufacturing_process.jpg')" />
                     </div>
                 </div>
                 <div class="column">
@@ -177,7 +179,8 @@
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
                         <div style="position: relative;">
                             <img src="images/Cold_box_in_Mozambique.jpg"
-                                style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px;" />
+                                style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                                onclick="showImage('images/Cold_box_in_Mozambique.jpg')" />
                             <!-- Additional images as thumbnails -->
                             <div style="display: flex; gap: 0.5em; margin-top: 0.5em;">
                                 <img src="images/Cold_box_1st_iteration.jpg"
@@ -217,11 +220,14 @@
         </div>
     </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal"
+    <!-- Media Modal -->
+    <div id="mediaModal"
         style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
         onclick="closeModal()">
         <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
     </div>
 
     <footer class="footer">
@@ -242,11 +248,21 @@
 <script>
     function showImage(src) {
         document.getElementById('modalImage').src = src;
-        document.getElementById('imageModal').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
     }
 
     function closeModal() {
-        document.getElementById('imageModal').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
     }
 </script>
 
