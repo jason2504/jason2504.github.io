@@ -28,7 +28,62 @@
     <header class="header">
         <div class="container">
             <div class="columns is-centered">
-                <div class="column is-8"></div>
+                <div class="column is-8">
+                    <!-- Navigation Bar -->
+                    <div class="has-text-centered" style="margin: 1em 0;">
+                        <span class="link-block">
+                            <a href="research.html" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-flask"></i>
+                                </span>
+                                <span>Research</span>
+                            </a>
+                        </span>
+                        <span class="link-block">
+                            <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-cogs"></i>
+                                </span>
+                                <span>Projects</span>
+                            </a>
+                        </span>
+                        <span class="link-block">
+                            <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-scroll"></i>
+                                </span>
+                                <span>Misc</span>
+                            </a>
+                        </span>
+                        <span class="link-block">
+                            <a href="files/JasonChen_Resume.pdf" target="_blank"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <span>Resume</span>
+                            </a>
+                        </span>
+                        <span class="link-block">
+                            <a href="https://www.linkedin.com/in/jason-chen-2580621b7/"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </span>
+                                <span>LinkedIn</span>
+                            </a>
+                        </span>
+                        <span class="link-block">
+                            <a href="mailto:jwtchen@seas.upenn.edu"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                <span>Email</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -82,10 +137,17 @@
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
                         <div style="position: relative;">
-                            <!-- Competition video thumbnail -->
                             <video style="height: 15em; width: auto; max-width: 100%;" controls autoplay loop muted>
-                                <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
+                                <source src="images/pick_place.mp4" type="video/mp4">
                             </video>
+                            <!-- Competition video thumbnail -->
+                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em; justify-content: center;">
+                                <video
+                                    style="height: 3em; width: 3em; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                                    onclick="showVideo('images/MEAM_5200_pick_place_competition.mp4')">
+                                    <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,48 +168,6 @@
                             throughout manipulation tasks.
                             Achieved 4th place in class competition, demonstrating effective integration of computer
                             vision, robotics control, and mechanical precision.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MEAM 6240 - Distributed Robotics Boids Project -->
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <div style="position: relative;">
-                            <a href="files/Performance Analysis of the Boids Algorithm in Coverage Scenarios.pdf"
-                                target="_blank"
-                                style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #363636; border: 2px dashed #dbdbdb; padding: 2em; border-radius: 8px; transition: all 0.3s ease; height: 15em; justify-content: center;">
-                                <i class="fa fa-file-pdf"
-                                    style="font-size: 4em; color: #3273dc; margin-bottom: 0.5em;"></i>
-                                <span style="font-weight: 600; text-align: center;">Boids Algorithm<br>Research
-                                    Paper</span>
-                                <span style="font-size: 0.8em; margin-top: 0.5em; color: #7a7a7a;">Click to view
-                                    PDF</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Performance Analysis of Boids Algorithm in Coverage Scenarios
-                        </h3>
-                        <p>
-                            <strong>MEAM 6240: Distributed Robotics (University of Pennsylvania) - Co-Author with
-                                Benjamin Aziel</strong><br>
-                            Implemented and analyzed the boids model for flocking behavior, optimizing effectiveness for
-                            distributed robotic coverage tasks through systematic parameter tuning.
-                            Developed custom PyGame-based simulator supporting both interactive visualization and
-                            headless batch optimization modes with real-time parameter adjustment capabilities.
-                            Conducted comprehensive analysis across 48,000 simulations, evaluating 2000 gain vectors
-                            across multiple environments (cafeteria, corridor, empty space) and swarm sizes (50-100
-                            agents).
-                            Discovered that minimal alignment gain coupled with moderate cohesion and separation yields
-                            optimal coverage performance, achieving up to 85.76% area coverage in complex environments.
-                            Demonstrated scalability benefits of larger swarms and quantified coverage uniformity using
-                            coefficient of variation metrics for spatial distribution analysis.
                         </p>
                     </div>
                 </div>
@@ -222,6 +242,41 @@
                             configurations to optimize efficiency and minimize power loss.
                             Incorporated idler gear system for reverse function, enabling direction reversal without
                             compromising overall transmission size.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEAM 6240 - Distributed Robotics Boids Project -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <img src="images/boids_environment.jpg"
+                            style="height: 15em; width: 100%; object-fit: cover; border-radius: 8px;" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            Performance Analysis of Boids Algorithm in Coverage Scenarios
+                        </h3>
+                        <p>
+                            <strong>MEAM 6240: Distributed Robotics (University of Pennsylvania) - Co-Author with
+                                Benjamin Aziel</strong><br>
+                            Implemented and analyzed the boids model for flocking behavior, optimizing effectiveness for
+                            distributed robotic coverage tasks through systematic parameter tuning.
+                            Developed custom PyGame-based simulator supporting both interactive visualization and
+                            headless batch optimization modes with real-time parameter adjustment capabilities.
+                            Conducted comprehensive analysis across 48,000 simulations, evaluating 2000 gain vectors
+                            across multiple environments (cafeteria, corridor, empty space) and swarm sizes (50-100
+                            agents).
+                            Discovered that minimal alignment gain coupled with moderate cohesion and separation yields
+                            optimal coverage performance, achieving up to 85.76% area coverage in complex environments.
+                            Demonstrated scalability benefits of larger swarms and quantified coverage uniformity using
+                            coefficient of variation metrics for spatial distribution analysis.
+                            <a href="files/Performance Analysis of the Boids Algorithm in Coverage Scenarios.pdf"
+                                target="_blank" style="color: #3273dc; text-decoration: underline;">Read the full
+                                research paper here</a>.
                         </p>
                     </div>
                 </div>
