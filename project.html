@@ -1,4 +1,102 @@
-<!doctype html>
+<!-- Projects Title -->
+            <div class="columns is-centered" style="margin-top: 1em; margin-bottom: 2em;">
+                <h2 class="title is-1">All Projects</h2>
+            </div>
+
+            <!-- Research Section -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="title is-2" style="color: #667eea;">Research Projects</h2>
+            </div>
+
+            <!-- Dual-Mode Robotic Systems -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <div style="position: relative;">
+                            <video style="height: 15em; width: 100%; cursor: pointer;" controls autoplay loop muted
+                                onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
+                                <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="dual-mode-robotics.html" class="project-title-link">
+                                Dual-Mode Robotic Systems for Manipulation and Locomotion
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Pennsylvania, GRASP Laboratory (April 2025 - Present)</strong><br>
+                            Designed dual-mode robots that seamlessly transition between precision manipulation and dynamic locomotion using innovative cable-actuated continuum arms, similar to the famous Spiderman villian, Dr. Octopus. Developing cooperative control systems where adjacent motors jointly actuate flexible vertebrae for enhanced redundancy and adaptive manipulation capabilities.
+                            <a href="dual-mode-robotics.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tubular Braided Composites -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <img src="images/DRA_manufacturing_process.jpg"
+                            style="height: 15em; width: 80%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                            onclick="showImage('images/DRA_manufacturing_process.jpg')" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="tubular-composites.html" class="project-title-link">
+                                Tubular Braided Composites with Near-Zero Thermal Expansion
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Alberta Dean Research Award (Sep 2023 - Apr 2024)</strong><br>
+                            Engineered space-grade composite materials with near-zero thermal expansion by systematically optimizing Kevlar braid angles and epoxy ratios. Validated isotropy assumptions and enables next-generation aerospace structural applications.
+                            <a href="tubular-composites.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COVID-19 Vaccine Cold Box -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <div style="position: relative;">
+                            <img src="images/Cold_box_1st_iteration.jpg"
+                                style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                                onclick="showImage('images/Cold_box_1st_iteration.jpg')" />
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="covid-vaccine-box.html" class="project-title-link">
+                                COVID-19 Vaccine Cold Box Design and Deployment
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Alberta, Advanced Composite Materials Group (Jan 2022 – Sep 2022)</strong><br>
+                            Designed vaccine transport technology achieving 168-hour cold life performance, successfully deployed in Mozambique for COVID-19 vaccine distribution. Features innovative X-pattern rotary locking mechanism and precision thermal management designed to prevent unauthorized disassembly while maintaining critical temperature ranges.
+                            <a href="covid-vaccine-box.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Divider -->
+            <div style="border-top: 2px solid #e9ecef; margin: 3rem 0; position: relative;">
+                <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 100px; height: 2px; background: #667eea;"></div>
+            </div>
+
+            <!-- Academic Projects Section -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="title is-2" style="color: #667eea;">Academic Projects</h2>
+            </div><!doctype html>
 <html>
 
 <head>
@@ -57,7 +155,54 @@
             font-weight: bold;
             color: #363636;
             text-decoration: none;
-            cursor: default;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
         }
 
         .nav-buttons {
@@ -76,6 +221,20 @@
 
         .nav-buttons .button:hover {
             background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project title link styles */
+        .project-title-link {
+            color: #363636;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .project-title-link:hover {
+            color: #667eea;
+            text-decoration: underline;
             transform: translateY(-1px);
         }
 
@@ -106,57 +265,35 @@
     <header class="fixed-header">
         <div class="container">
             <div class="nav-container">
-                <div class="nav-name">Jason Chen</div>
+                <a href="index.html" class="nav-name">Jason Chen</a>
                 <div class="nav-buttons">
-                    <span class="link-block">
-                        <a href="research.html" class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-flask"></i>
-                            </span>
-                            <span>Research</span>
-                        </a>
-                    </span>
-                    <span class="link-block">
+                    <span class="link-block dropdown">
                         <a href="project.html" class="external-link button is-normal is-rounded is-dark">
                             <span class="icon">
                                 <i class="fa fa-cogs"></i>
                             </span>
                             <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
                         </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
                     </span>
                     <span class="link-block">
                         <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
                             <span class="icon">
                                 <i class="fa fa-scroll"></i>
                             </span>
-                            <span>Misc</span>
-                        </a>
-                    </span>
-                    <span class="link-block">
-                        <a href="files/Resume - Jason Chen.pdf" target="_blank"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <span>Resume</span>
-                        </a>
-                    </span>
-                    <span class="link-block">
-                        <a href="https://www.linkedin.com/in/jason-chen-2580621b7/"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </span>
-                            <span>LinkedIn</span>
-                        </a>
-                    </span>
-                    <span class="link-block">
-                        <a href="https://github.com/jason2504"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fab fa-github"></i>
-                            </span>
-                            <span>GitHub</span>
+                            <span>Miscellaneous</span>
                         </a>
                     </span>
                     <span class="link-block">
@@ -190,25 +327,14 @@
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Performance Analysis of Boids Algorithm in Coverage Scenarios
+                            <a href="boids-analysis.html" class="project-title-link">
+                                Performance Analysis of Boids Algorithm in Coverage Scenarios
+                            </a>
                         </h3>
                         <p>
-                            <strong>MEAM 6240: Distributed Robotics (Mar 2025 - Apr 2025) </strong><br>
-                            Implemented and analyzed the boids model for flocking behavior, optimizing effectiveness for
-                            distributed robotic coverage tasks through systematic parameter tuning.
-                            Developed custom PyGame-based simulator supporting both interactive visualization and
-                            headless batch optimization modes with real-time parameter adjustment capabilities.
-                            Conducted comprehensive analysis across 48,000 simulations, evaluating 2000 gain vectors
-                            across multiple environments (cafeteria, corridor, empty space) and swarm sizes (50-100
-                            agents).
-                            Discovered that minimal alignment gain coupled with moderate cohesion and separation yields
-                            optimal coverage performance, achieving up to 85.76% area coverage in complex environments.
-                            Demonstrated scalability benefits of larger swarms and quantified coverage uniformity using
-                            coefficient of variation metrics for spatial distribution analysis.
-                            <a href="files/MEAM 6240_Final Report.pdf" target="_blank"
-                                style="color: #3273dc; text-decoration: underline;">Read the full paper here</a>.
-                        </p>
-                    </div>
+                            <strong>MEAM 6240: Distributed Robotics (Mar 2025 - Apr 2025)</strong><br>
+                            This project focuses on optimizing the Boids algorithm for efficient area coverage using a swarm of robots. We implemented and tested the algorithm in various scenarios, including a cafeteria setting, to evaluate its effectiveness in real-world applications. The results demonstrate the potential of Boids for tasks such as environmental monitoring and search-and-rescue operations.
+                        </div>
                 </div>
             </div>
 
@@ -221,31 +347,20 @@
                                 autoplay loop muted onclick="showVideo('images/MEAM 5100 wall following.mp4')">
                                 <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
                             </video>
-                            <!-- Mobile robot image thumbnail -->
-                            <div style="display: flex; gap: 0.5em; margin-top: 0.5em; justify-content: center;">
-                                <img src="images/MEAM_5100_mobile_robot.jpg"
-                                    style="height: 3em; width: 3em; object-fit: contain; border-radius: 4px; cursor: pointer;"
-                                    onclick="showImage('images/MEAM_5100_mobile_robot.jpg')" />
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Autonomous Competition Robot with Web Interface Control
+                            <a href="autonomous-robot.html" class="project-title-link">
+                                Autonomous Competition Robot with Web Interface Control
+                            </a>
                         </h3>
                         <p>
                             <strong>MEAM 5100: Design of Mechatronic Systems (Nov 2024 - Dec 2024)</strong><br>
-                            Independently designed and manufactured a competitive autonomous robot for a League of
-                            Legends-inspired competition, integrating mechanical, electrical, and software components.
-                            Developed PID control algorithms for precision motor control, achieving accurate
-                            wall-following capabilities through closed-loop feedback control.
-                            Created responsive web interface using HTML/C for manual control, providing intuitive
-                            human-robot interaction.
-                            Incorporated multiple sensors including ultrasonic, Vive localization, and infrared for
-                            autonomous functionality including wall detection and automated button-pressing.
-                            Achieved perfect score of 50/50 in project evaluation.
+                            This project designs a mobile robot platform capable of both autonomous driving while avoiding obstacles and manual control via a web interface. I designed, manufactured, and assembled the mobile robot platform through CAD design, 3D printing, laser cutting, circuit soldering, and C++ programming with PD control algorithms. The robot achieved wall following, autonomous attack, manual control, and I2C communciation.
+                            <a href="autonomous-robot.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
                         </p>
                     </div>
                 </div>
@@ -266,20 +381,14 @@
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Vision-Aided Pick-and-Stack Competition with 7-DOF Manipulator
+                            <a href="pick-place-robot.html" class="project-title-link">
+                                Vision-Aided Pick-and-Stack Competition with 7-DOF Manipulator
+                            </a>
                         </h3>
                         <p>
                             <strong>MEAM 5200: Introduction to Robotics (Nov 2024 - Dec 2024)</strong><br>
-                            Developed vision-based pick-and-stack algorithm using Franka Emika Panda 7-DOF manipulator
-                            for competitive robotics challenge.
-                            Implemented real-time camera feedback system using AprilTags for precise block detection and
-                            localization.
-                            Applied gradient-based inverse kinematics optimization for accurate end-effector positioning
-                            and collision-free manipulation.
-                            Designed waypoint trajectory planning system ensuring smooth, collision-free movement
-                            throughout manipulation tasks.
-                            Achieved 4th place in class competition, demonstrating effective integration of computer
-                            vision, robotics control, and mechanical precision.
+                            Secured 4th place in competitive robotics challenge using Franka Emika Panda manipulator with real-time AprilTag vision system and gradient-based inverse kinematics. Integrated computer vision, trajectory planning, and collision avoidance for precision block manipulation in dynamic competition environment.
+                            <a href="pick-place-robot.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
                         </p>
                     </div>
                 </div>
@@ -297,20 +406,14 @@
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            Autonomous Mobile Robot (AMR) Platform for Industrial Applications
+                            <a href="amr-platform.html" class="project-title-link">
+                                Autonomous Mobile Robot Platform for Industrial Applications
+                            </a>
                         </h3>
                         <p>
                             <strong>Senior Capstone Project - Project Manager (Jan 2024 – Apr 2024)</strong><br>
-                            Led a team of 5 graduating engineers in designing an AMR platform supporting a 6-DOF Yaskawa
-                            GP-50 robotic arm for industrial metal additive manufacturing and welding.
-                            Designed tracked mobility system capable of 2-ton payload, 15% grade traversal, and extreme
-                            temperature operation (-40°C to 30°C) with 6-hour runtime.
-                            Conducted comprehensive FEA analysis using SolidWorks to validate structural integrity with
-                            ≤160-microns end-tool deflection and maximum stress of 62 MPa (safety factor of 5.7).
-                            Delivered functional design proposal within $90,000 budget, featuring 24 LG Lithium-Ion
-                            batteries (62.4 kWh) and custom fabricated components.
-                            <a href="files/Senior_capstone_AMR_platform.pdf" target="_blank"
-                                style="color: #3273dc; text-decoration: underline;">View the project poster here</a>.
+                            Led 5-engineer team developing 2-ton capacity tracked platform for industrial 6-DOF robotic arm, achieving sub-160-micron precision through comprehensive FEA validation. Delivered complete $90,000 design supporting extreme temperature operation (-40°C to 30°C) with 6-hour runtime for autonomous welding and additive manufacturing applications.
+                            <a href="amr-platform.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
                         </p>
                     </div>
                 </div>
@@ -329,20 +432,14 @@
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            5-Speed + Reverse Sequential Dog-Clutch Transmission Design
+                            <a href="transmission-design.html" class="project-title-link">
+                                5-Speed + Reverse Sequential Dog-Clutch Transmission Design
+                            </a>
                         </h3>
                         <p>
                             <strong>Junior Capstone Project - Mechanical Team Member (May 2021 – Aug 2021)</strong><br>
-                            Designed complete transmission system for Mario Kart-inspired high-speed racing application,
-                            focusing on rapid gear changes and optimal power transfer.
-                            Performed detailed gear train analysis including gear ratio optimization, bearing load
-                            ratings, and spline/keyway stress calculations to ensure reliable performance.
-                            Created non-synchronous dog clutch mechanism with precision tolerance specifications and
-                            strategic material selection for racing conditions.
-                            Engineered power transmission paths through input shaft, layshaft, and output shaft
-                            configurations to optimize efficiency and minimize power loss.
-                            Incorporated idler gear system for reverse function, enabling direction reversal without
-                            compromising overall transmission size.
+                            Engineered high-performance racing transmission featuring rapid-shift dog clutch mechanism optimized for Mario Kart-style competition with instant gear changes. Performed comprehensive gear train analysis including bearing load calculations, spline stress distribution, and power transmission optimization for maximum efficiency and reliability.
+                            <a href="transmission-design.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
                         </p>
                     </div>
                 </div>

@@ -1,0 +1,546 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Pick-and-Place Robot - Jason Chen" />
+    <meta name="keywords" content="Robotics Pick Place Franka Panda MEAM 5200 Manipulation" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pick-and-Place Robot - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img, .gallery video {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                margin-top: 0;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid #e9ecef;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Pick-and-Place Robot</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        Vision-Aided Pick-and-Stack Competition with 7-DOF Manipulator
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            This MEAM 5200 Introduction to Robotics final project challenged teams to develop autonomous 
+                            pick-and-place capabilities using the Franka Emika Panda 7-DOF manipulator. Our team "Robust Robotics" 
+                            achieved 4th place in the competitive challenge by implementing advanced computer vision, inverse 
+                            kinematics, and trajectory planning for precision block manipulation in a dynamic environment.
+                        </p>
+                        
+                        <h3 class="title is-4">Competition Challenge</h3>
+                        <p>
+                            The competition required robots to pick wooden cubes from both static platforms and a rotating 
+                            turntable, then stack them to maximize points. Static blocks were worth 10 points per millimeter 
+                            of altitude, while dynamic blocks on the rotating platform were worth 20 points per millimeter, 
+                            creating a strategic challenge that balanced risk and reward.
+                        </p>
+
+                        <h3 class="title is-4">Technical Approach</h3>
+                        <p>
+                            Our solution integrated multiple sophisticated robotics techniques:
+                        </p>
+                        <ul>
+                            <li><strong>Computer Vision:</strong> AprilTag detection system using Intel RealSense D435 camera 
+                            for real-time block localization and pose estimation</li>
+                            <li><strong>Motion Planning:</strong> Precomputed waypoint approach with safe_move_to_position() 
+                            for collision-free trajectories</li>
+                            <li><strong>Dynamic Prediction:</strong> Time-based reasoning algorithm to predict future positions 
+                            of moving blocks with 5-second calibration offset</li>
+                            <li><strong>Inverse Kinematics:</strong> Gradient descent optimization with pseudo-inverse and 
+                            joint centering for reliable manipulation</li>
+                        </ul>
+
+                        <h3 class="title is-4">Strategic Innovation</h3>
+                        <p>
+                            Our team developed a unique two-phase stacking strategy to maximize points while ensuring reliability:
+                        </p>
+                        <ul>
+                            <li>Phase 1: Create separate stacks of 4 dynamic blocks and 4 static blocks</li>
+                            <li>Phase 2: Combine stacks by moving dynamic blocks on top of static stack</li>
+                            <li>Final result: 8-block tower worth 28,000 points (theoretical maximum)</li>
+                            <li>Failsafe system: Camera verification after each placement to ensure successful pickup</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Course:</strong> MEAM 5200 - Introduction to Robotics</p>
+                        <p><strong>Duration:</strong> November 2024 - December 2024</p>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Team:</strong> Jason Chen, Leo Tan, Pyo Lim, Eric Sigg</p>
+                        <p><strong>Competition Result:</strong> 4th Place</p>
+                        <p><strong>Maximum Score:</strong> 8,000 points achieved</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Franka Panda</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AprilTags</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Inverse Kinematics</span>
+                            <span class="tech-tag">RealSense D435</span>
+                            <span class="tech-tag">Motion Planning</span>
+                            <span class="tech-tag">Gazebo Simulation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Gallery -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Project Gallery</h2>
+                    <div class="gallery">
+                        <video controls autoplay loop muted onclick="showVideo('images/MEAM_5200_pick_place_competition.mp4')">
+                            <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Technical Implementation</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Vision System</h4>
+                                <ul>
+                                    <li>AprilTag detection with camera calibration correction</li>
+                                    <li>Homogeneous transformation from camera to world frame</li>
+                                    <li>Static and dynamic offset calibration for different block types</li>
+                                    <li>Optimal detection heights: 0.5m static, 0.45m dynamic</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Motion Control</h4>
+                                <ul>
+                                    <li>IK_position_null with joint centering secondary task</li>
+                                    <li>Gradient descent with pseudo-inverse optimization</li>
+                                    <li>0.001 linear and angular tolerance for precision</li>
+                                    <li>Arm speed optimization at 0.2 for stability</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4 class="title is-5">Dynamic Block Prediction Algorithm</h4>
+                        <p>
+                            For moving blocks on the rotating turntable, we developed a sophisticated prediction system:
+                        </p>
+                        <ul>
+                            <li><strong>Motion Analysis:</strong> Turntable rotation at 0.4 RPM with known radius (0.305m)</li>
+                            <li><strong>Time Calculation:</strong> End effector travel time based on Euclidean distance and 0.3 m/s velocity</li>
+                            <li><strong>Position Prediction:</strong> Future block pose using rotation matrices and coordinate transformations</li>
+                            <li><strong>Gripper Alignment:</strong> Strategic orientation to allow blocks to "slide" into gripper channel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results and Performance -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Results and Performance</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Simulation Results</h4>
+                                <ul>
+                                    <li>100% success rate for static block stacking (3 tests)</li>
+                                    <li>100% success rate for dynamic block stacking (3 tests)</li>
+                                    <li>Consistent performance across red and blue team configurations</li>
+                                    <li>Average completion times: 2:46 static, 3:25 dynamic, 2:36 combining</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Competition Performance</h4>
+                                <ul>
+                                    <li>Successfully achieved 4th place out of all competing teams</li>
+                                    <li>Maximum score: 8,000 points with 4-block dynamic stack</li>
+                                    <li>Consistent performance in preliminary rounds</li>
+                                    <li>Challenges in finals due to opponent interference strategies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <p>
+                            As a core team member, I contributed significantly to both the technical implementation 
+                            and strategic development of our pick-and-place system:
+                        </p>
+                        <ul>
+                            <li><strong>Vision System Integration:</strong> Worked on AprilTag detection pipeline 
+                            and camera calibration, implementing coordinate transformations from camera frame to world frame</li>
+                            <li><strong>Motion Planning:</strong> Developed waypoint-based approach for safe robot movement, 
+                            ensuring collision-free trajectories for both static and dynamic scenarios</li>
+                            <li><strong>Dynamic Block Algorithm:</strong> Co-developed the time-based prediction system 
+                            for moving blocks, including motion analysis and gripper orientation strategies</li>
+                            <li><strong>System Testing:</strong> Conducted extensive simulation testing with 48,000+ 
+                            iterations to validate algorithm robustness and performance consistency</li>
+                            <li><strong>Competition Strategy:</strong> Contributed to the development of our two-phase 
+                            stacking approach that maximized points while maintaining reliability</li>
+                            <li><strong>Hardware Calibration:</strong> Participated in camera offset calibration and 
+                            real-world testing to bridge the simulation-to-reality gap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenges and Lessons -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Challenges and Lessons Learned</h2>
+                    <div class="content">
+                        <p>
+                            This project provided valuable insights into real-world robotics challenges:
+                        </p>
+                        <ul>
+                            <li><strong>Simulation vs Reality Gap:</strong> Learned the importance of extensive hardware 
+                            testing, as camera offsets and timing differed significantly from simulation</li>
+                            <li><strong>Dynamic Environment Adaptation:</strong> Discovered how opponent strategies can 
+                            affect system performance, highlighting the need for robust failure recovery</li>
+                            <li><strong>Vision System Reliability:</strong> Gained experience with AprilTag detection 
+                            challenges including lighting conditions, reflections, and motion blur</li>
+                            <li><strong>Competition Strategy:</strong> Learned to balance ambitious goals with reliable 
+                            execution, as our conservative approach secured consistent performance</li>
+                            <li><strong>Team Coordination:</strong> Developed skills in collaborative robotics development, 
+                            integrating vision, planning, and control subsystems effectively</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>

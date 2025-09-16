@@ -1,0 +1,481 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Dual-Mode Robotic Systems - Jason Chen" />
+    <meta name="keywords" content="Robotics Manipulation Locomotion Dual-Mode GRASP Laboratory" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dual-Mode Robotic Systems - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img, .gallery video {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                margin-top: 0;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid #e9ecef;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Dual-Mode Robotic Systems</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        For Manipulation and Locomotion
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            This ongoing research project at the University of Pennsylvania's GRASP Laboratory focuses on developing 
+                            innovative dual-mode robotic systems capable of both precision manipulation and dynamic locomotion. 
+                            Under the supervision of Dr. Nadia Figueroa in the Figueroa Robotics Lab, I am designing and prototyping 
+                            robotic arms that can seamlessly transition between delicate object manipulation and robust locomotion support.
+                        </p>
+                        
+                        <h3 class="title is-4">Technical Approach</h3>
+                        <p>
+                            The project explores two distinct design paradigms:
+                        </p>
+                        <ul>
+                            <li><strong>Rigid Joint-Based System:</strong> Features custom universal joints and precision servo mechanisms 
+                            with timing belt transmission and bevel gear coupling for high-precision control</li>
+                            <li><strong>Cable-Actuated Continuum System:</strong> Utilizes distributed motor control with flexible 
+                            vertebrae structures, providing enhanced adaptability and compliance</li>
+                        </ul>
+
+                        <h3 class="title is-4">Key Innovations</h3>
+                        <p>
+                            The core innovation lies in the compliant 3-finger gripper design, which incorporates worm gear reduction 
+                            and spring-based adaptive control. This allows for seamless transitions between:
+                        </p>
+                        <ul>
+                            <li>Delicate manipulation tasks requiring precise force control</li>
+                            <li>Robust ground contact support for locomotion</li>
+                            <li>Cooperative manipulation between multiple arms</li>
+                        </ul>
+
+                        <h3 class="title is-4">Current Progress</h3>
+                        <p>
+                            As of April 2025, I have completed the initial mechanical design and fabrication of the first prototype. 
+                            The system successfully demonstrates basic dual-mode functionality, with ongoing work focused on:
+                        </p>
+                        <ul>
+                            <li>Control algorithm development for smooth mode transitions</li>
+                            <li>Integration of tactile feedback systems</li>
+                            <li>Performance optimization for both manipulation and locomotion tasks</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Duration:</strong> April 2025 - Present</p>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Laboratory:</strong> GRASP Laboratory, Figueroa Robotics Lab</p>
+                        <p><strong>Supervisor:</strong> Dr. Nadia Figueroa</p>
+                        <p><strong>Role:</strong> Graduate Research Assistant</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">SolidWorks</span>
+                            <span class="tech-tag">3D Printing</span>
+                            <span class="tech-tag">Servo Control</span>
+                            <span class="tech-tag">Embedded Systems</span>
+                            <span class="tech-tag">Cable Actuation</span>
+                            <span class="tech-tag">Mechatronics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Gallery -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Project Gallery</h2>
+                    <div class="gallery">
+                        <video controls autoplay loop muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
+                            <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
+                        </video>
+                        <img src="images/Cute_Octopus_1st_iteration.jpg" 
+                             onclick="showImage('images/Cute_Octopus_1st_iteration.jpg')"
+                             alt="First Iteration Design" />
+                        <img src="images/Cute_Octopus_2nd_iteration.png" 
+                             onclick="showImage('images/Cute_Octopus_2nd_iteration.png')"
+                             alt="Second Iteration Design" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Technical Specifications</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">System Architecture</h4>
+                                <ul>
+                                    <li>4 degrees of freedom per arm</li>
+                                    <li>Dual actuation modes (rigid/continuum)</li>
+                                    <li>Distributed motor control system</li>
+                                    <li>Cooperative cable control for redundancy</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Gripper Design</h4>
+                                <ul>
+                                    <li>3-finger compliant gripper</li>
+                                    <li>Worm gear reduction mechanism</li>
+                                    <li>Spring-based adaptive force control</li>
+                                    <li>Transition capability between modes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <p>
+                            As the lead graduate researcher on this project, my contributions span mechanical design, 
+                            fabrication, and system integration:
+                        </p>
+                        <ul>
+                            <li><strong>Mechanical Design:</strong> Developed the complete CAD models for both rigid and continuum 
+                            arm variants, including custom joint designs and actuation mechanisms</li>
+                            <li><strong>Fabrication:</strong> Managed the manufacturing process using 3D printing, CNC machining, 
+                            and assembly of precision mechanical components</li>
+                            <li><strong>Control Integration:</strong> Designed the servo control architecture and implemented 
+                            basic motion control algorithms</li>
+                            <li><strong>Testing & Validation:</strong> Conducted experimental validation of dual-mode functionality 
+                            and documented performance characteristics</li>
+                            <li><strong>Research Documentation:</strong> Maintaining detailed design documentation and preparing 
+                            materials for future publication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>

@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Mobile Robot Platform - Jason Chen" />
+    <meta name="keywords" content="Robotics Mobile Platform MEAM 5100 Autonomous Robot" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mobile Robot Platform - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img, .gallery video {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                margin-top: 0;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid #e9ecef;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Mobile Robot Platform</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        Autonomous Competition Robot with Web Interface Control
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            This MEAM 5100 Design of Mechatronic Systems project involved designing, building, and programming 
+                            a complete autonomous mobile robot platform for a League of Legends-inspired competition. The robot 
+                            successfully demonstrated wall-following capabilities, autonomous attack functionality, manual control 
+                            via web interface, and robust mechatronic integration.
+                        </p>
+                        
+                        <h3 class="title is-4">Competition Strategy</h3>
+                        <p>
+                            Our team developed a comprehensive strategy utilizing both autonomous and manual control modes. 
+                            During autonomous periods, the robot followed walls using ultrasonic sensors and PD control, 
+                            automatically attacking the nexus and ramp tower when reaching calibrated Vive coordinates. 
+                            The manual control phase employed a custom web interface with WASD keyboard controls for precise 
+                            human-operated movement and strategic gameplay.
+                        </p>
+
+                        <h3 class="title is-4">Technical Implementation</h3>
+                        <p>
+                            The robot featured a 3-layer mechanical design housing all necessary components:
+                        </p>
+                        <ul>
+                            <li><strong>Autonomous Navigation:</strong> HC-SR04 ultrasonic sensors with PD control for wall following</li>
+                            <li><strong>Positioning System:</strong> Vive sensors for precise localization and autonomous attack coordination</li>
+                            <li><strong>Attack Mechanism:</strong> MG995 servo-driven attack arm with continuous 90-degree sweep motion</li>
+                            <li><strong>Communication:</strong> I2C communication with TopHat for health monitoring and game state management</li>
+                            <li><strong>Manual Control:</strong> Real-time web interface with WASD controls and visual feedback</li>
+                        </ul>
+
+                        <h3 class="title is-4">Performance Results</h3>
+                        <p>
+                            The robot achieved a perfect evaluation score of 50/50 points, successfully completing:
+                        </p>
+                        <ul>
+                            <li>Full wall-following circuit with robust PD control</li>
+                            <li>Autonomous attack on nexus target</li>
+                            <li>Manual vehicle control with responsive web interface</li>
+                            <li>Reliable I2C communication and health monitoring</li>
+                            <li>Successful ramp navigation and stationary target engagement</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Course:</strong> MEAM 5100 - Design of Mechatronic Systems</p>
+                        <p><strong>Duration:</strong> November 2024 - December 2024</p>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Team:</strong> Jason Chen, Leo Tan, Tenzi Zhuoga</p>
+                        <p><strong>Role:</strong> Mechanical Design Lead</p>
+                        <p><strong>Result:</strong> Perfect 50/50 Evaluation Score</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">ESP32-S2</span>
+                            <span class="tech-tag">C/C++</span>
+                            <span class="tech-tag">PD Control</span>
+                            <span class="tech-tag">Web Interface</span>
+                            <span class="tech-tag">Ultrasonic Sensors</span>
+                            <span class="tech-tag">Vive Tracking</span>
+                            <span class="tech-tag">I2C Communication</span>
+                            <span class="tech-tag">3D Printing</span>
+                            <span class="tech-tag">Laser Cutting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Gallery -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Project Gallery</h2>
+                    <div class="gallery">
+                        <video controls autoplay loop muted onclick="showVideo('images/MEAM 5100 wall following.mp4')">
+                            <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <img src="images/MEAM_5100_mobile_robot.jpg" 
+                             onclick="showImage('images/MEAM_5100_mobile_robot.jpg')"
+                             alt="Mobile Robot Platform" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">System Architecture</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Mechanical Design</h4>
+                                <ul>
+                                    <li>3-layer acrylic platform design</li>
+                                    <li>Parallax Feedback 360° servo motors</li>
+                                    <li>Custom laser-cut drive wheels with rubber bands</li>
+                                    <li>Attack arm with MG995 servo motor</li>
+                                    <li>Protective bumper system</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Control Systems</h4>
+                                <ul>
+                                    <li>PD controller for wall following (Kp=0.4, Kd=0.02)</li>
+                                    <li>Real-time web interface with JavaScript</li>
+                                    <li>Autonomous mode switching via push buttons</li>
+                                    <li>Health monitoring and game state management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <p>
+                            As the mechanical design lead, I was responsible for the complete physical design and assembly 
+                            of the robot platform:
+                        </p>
+                        <ul>
+                            <li><strong>Mechanical Design:</strong> Designed the entire 3-layer robot chassis using SolidWorks, 
+                            including motor mounts, sensor housings, and attack arm mechanism</li>
+                            <li><strong>Manufacturing:</strong> Managed laser cutting, 3D printing, and assembly processes, 
+                            creating custom drive wheels and protective bumper systems</li>
+                            <li><strong>Motor Control:</strong> Implemented manual motor control code and attack arm servo logic 
+                            for competition gameplay</li>
+                            <li><strong>I2C Communication:</strong> Developed communication protocols with TopHat for health 
+                            monitoring and game state management</li>
+                            <li><strong>System Integration:</strong> Led final assembly and testing, ensuring reliable performance 
+                            across all mechanical and electrical subsystems</li>
+                            <li><strong>Competition Preparation:</strong> Conducted extensive testing and calibration, achieving 
+                            the perfect evaluation score through systematic debugging and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lessons Learned -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Key Learnings</h2>
+                    <div class="content">
+                        <p>
+                            This project provided valuable insights into mechatronic system design and real-world robotics challenges:
+                        </p>
+                        <ul>
+                            <li><strong>Robust Design:</strong> Learned the importance of mechanical redundancy and protective features 
+                            for competition environments where robot-to-robot contact is expected</li>
+                            <li><strong>System Integration:</strong> Gained experience in coordinating mechanical, electrical, and 
+                            software subsystems for reliable autonomous operation</li>
+                            <li><strong>PD Control:</strong> Developed practical understanding of control theory implementation, 
+                            particularly for sensor-based navigation systems</li>
+                            <li><strong>Debugging Methodology:</strong> Established systematic approaches to hardware debugging, 
+                            especially for sensitive components like ultrasonic sensors</li>
+                            <li><strong>Competition Strategy:</strong> Learned to balance autonomous reliability with manual control 
+                            flexibility for optimal performance in dynamic competition scenarios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>
