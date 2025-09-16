@@ -1,102 +1,4 @@
-<!-- Projects Title -->
-            <div class="columns is-centered" style="margin-top: 1em; margin-bottom: 2em;">
-                <h2 class="title is-1">All Projects</h2>
-            </div>
-
-            <!-- Research Section -->
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 class="title is-2" style="color: #667eea;">Research Projects</h2>
-            </div>
-
-            <!-- Dual-Mode Robotic Systems -->
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <div style="position: relative;">
-                            <video style="height: 15em; width: 100%; cursor: pointer;" controls autoplay loop muted
-                                onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
-                                <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            <a href="dual-mode-robotics.html" class="project-title-link">
-                                Dual-Mode Robotic Systems for Manipulation and Locomotion
-                            </a>
-                        </h3>
-                        <p>
-                            <strong>University of Pennsylvania, GRASP Laboratory (April 2025 - Present)</strong><br>
-                            Designed dual-mode robots that seamlessly transition between precision manipulation and dynamic locomotion using innovative cable-actuated continuum arms, similar to the famous Spiderman villian, Dr. Octopus. Developing cooperative control systems where adjacent motors jointly actuate flexible vertebrae for enhanced redundancy and adaptive manipulation capabilities.
-                            <a href="dual-mode-robotics.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tubular Braided Composites -->
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <img src="images/DRA_manufacturing_process.jpg"
-                            style="height: 15em; width: 80%; object-fit: contain; border-radius: 8px; cursor: pointer;"
-                            onclick="showImage('images/DRA_manufacturing_process.jpg')" />
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            <a href="tubular-composites.html" class="project-title-link">
-                                Tubular Braided Composites with Near-Zero Thermal Expansion
-                            </a>
-                        </h3>
-                        <p>
-                            <strong>University of Alberta Dean Research Award (Sep 2023 - Apr 2024)</strong><br>
-                            Engineered space-grade composite materials with near-zero thermal expansion by systematically optimizing Kevlar braid angles and epoxy ratios. Validated isotropy assumptions and enables next-generation aerospace structural applications.
-                            <a href="tubular-composites.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COVID-19 Vaccine Cold Box -->
-            <div class="columns is-centered">
-                <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <div style="position: relative;">
-                            <img src="images/Cold_box_1st_iteration.jpg"
-                                style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px; cursor: pointer;"
-                                onclick="showImage('images/Cold_box_1st_iteration.jpg')" />
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="content is-small" style="margin-top: 0em;">
-                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            <a href="covid-vaccine-box.html" class="project-title-link">
-                                COVID-19 Vaccine Cold Box Design and Deployment
-                            </a>
-                        </h3>
-                        <p>
-                            <strong>University of Alberta, Advanced Composite Materials Group (Jan 2022 – Sep 2022)</strong><br>
-                            Designed vaccine transport technology achieving 168-hour cold life performance, successfully deployed in Mozambique for COVID-19 vaccine distribution. Features innovative X-pattern rotary locking mechanism and precision thermal management designed to prevent unauthorized disassembly while maintaining critical temperature ranges.
-                            <a href="covid-vaccine-box.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Divider -->
-            <div style="border-top: 2px solid #e9ecef; margin: 3rem 0; position: relative;">
-                <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 100px; height: 2px; background: #667eea;"></div>
-            </div>
-
-            <!-- Academic Projects Section -->
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 class="title is-2" style="color: #667eea;">Academic Projects</h2>
-            </div><!doctype html>
+<!doctype html>
 <html>
 
 <head>
@@ -173,12 +75,12 @@
             position: absolute;
             background-color: white;
             min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             z-index: 1001;
             top: 100%;
             left: 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -236,6 +138,54 @@
             color: #667eea;
             text-decoration: underline;
             transform: translateY(-1px);
+        }
+
+        /* Clickable media styles */
+        .clickable-media {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .clickable-media:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .modal-close:hover {
+            color: #ccc;
         }
 
         /* Responsive design */
@@ -308,19 +258,135 @@
             </div>
         </div>
     </header>
+
     <section class="section">
         <div id="projects" class="container is-max-desktop">
             <!-- Projects Title -->
             <div class="columns is-centered" style="margin-top: 1em; margin-bottom: 2em;">
-                <h2 class="title is-1">Projects</h2>
+                <h2 class="title is-1">All Projects</h2>
+            </div>
+
+            <!-- Research Section -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="title is-2" style="color: #667eea;">Research Projects</h2>
+            </div>
+
+            <!-- Dual-Mode Robotic Systems -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <div style="position: relative;">
+                            <video class="clickable-media" style="height: 15em; width: 100%;" controls autoplay loop
+                                muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
+                                <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="dual-mode-robotics.html" class="project-title-link">
+                                Dual-Mode Robotic Systems for Manipulation and Locomotion
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Pennsylvania, GRASP Laboratory (April 2025 - Present)</strong><br>
+                            Designed dual-mode robots that seamlessly transition between precision manipulation and
+                            dynamic
+                            locomotion using innovative cable-actuated continuum arms, similar to the famous Spiderman
+                            villain, Dr.
+                            Octopus. Developing cooperative control systems where adjacent motors jointly actuate
+                            flexible vertebrae
+                            for enhanced redundancy and adaptive manipulation capabilities.
+                            <a href="dual-mode-robotics.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tubular Braided Composites -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <img src="images/DRA_compression_manufacturing_process.jpg" class="clickable-media"
+                            style="height: 15em; width: 80%; object-fit: contain;"
+                            onclick="showImage('images/DRA_compression_manufacturing_process.jpg')" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="tubular-composites.html" class="project-title-link">
+                                Tubular Braided Composites with Near-Zero Thermal Expansion
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Alberta Dean Research Award (Sep 2023 - Apr 2024)</strong><br>
+                            Engineered space-grade composite materials with near-zero thermal expansion by
+                            systematically optimizing
+                            Kevlar braid angles and epoxy ratios. Validated isotropy assumptions and enables
+                            next-generation
+                            aerospace structural applications.
+                            <a href="tubular-composites.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COVID-19 Vaccine Cold Box -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                        <img src="images/Cold_box_1st_iteration.jpg" class="clickable-media"
+                            style="height: 15em; width: 100%; object-fit: contain;"
+                            onclick="showImage('images/Cold_box_1st_iteration.jpg')" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="covid-vaccine-box.html" class="project-title-link">
+                                COVID-19 Vaccine Cold Box Design and Deployment
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Alberta, Advanced Composite Materials Group (Jan 2022 – Sep
+                                2022)</strong><br>
+                            Designed vaccine transport technology achieving 168-hour cold life performance, successfully
+                            deployed in
+                            Mozambique for COVID-19 vaccine distribution. Features innovative X-pattern rotary locking
+                            mechanism and
+                            precision thermal management designed to prevent unauthorized disassembly while maintaining
+                            critical
+                            temperature ranges.
+                            <a href="covid-vaccine-box.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Divider -->
+            <div style="border-top: 2px solid #e9ecef; margin: 3rem 0; position: relative;">
+                <div
+                    style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 100px; height: 2px; background: #667eea;">
+                </div>
+            </div>
+
+            <!-- Academic Projects Section -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="title is-2" style="color: #667eea;">Academic Projects</h2>
             </div>
 
             <!-- MEAM 6240 - Distributed Robotics Boids Project -->
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <img src="images/boids_cafeteria.png"
-                            style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                        <img src="images/boids_cafeteria.png" class="clickable-media"
+                            style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/boids_cafeteria.png')" />
                     </div>
                 </div>
@@ -333,8 +399,15 @@
                         </h3>
                         <p>
                             <strong>MEAM 6240: Distributed Robotics (Mar 2025 - Apr 2025)</strong><br>
-                            This project focuses on optimizing the Boids algorithm for efficient area coverage using a swarm of robots. We implemented and tested the algorithm in various scenarios, including a cafeteria setting, to evaluate its effectiveness in real-world applications. The results demonstrate the potential of Boids for tasks such as environmental monitoring and search-and-rescue operations.
-                        </div>
+                            This project focuses on optimizing the Boids algorithm for efficient area coverage using a
+                            swarm of robots. We implemented and tested the algorithm in various scenarios, including a
+                            cafeteria setting, to evaluate its effectiveness in real-world applications. The results
+                            demonstrate the potential of Boids for tasks such as environmental monitoring and
+                            search-and-rescue operations.
+                            <a href="boids-analysis.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -342,12 +415,10 @@
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <div style="position: relative;">
-                            <video style="height: 15em; width: 100%; object-fit: contain; cursor: pointer;" controls
-                                autoplay loop muted onclick="showVideo('images/MEAM 5100 wall following.mp4')">
-                                <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
-                            </video>
-                        </div>
+                        <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
+                            autoplay loop muted onclick="showVideo('images/MEAM 5100 wall following.mp4')">
+                            <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
                 <div class="column">
@@ -359,8 +430,13 @@
                         </h3>
                         <p>
                             <strong>MEAM 5100: Design of Mechatronic Systems (Nov 2024 - Dec 2024)</strong><br>
-                            This project designs a mobile robot platform capable of both autonomous driving while avoiding obstacles and manual control via a web interface. I designed, manufactured, and assembled the mobile robot platform through CAD design, 3D printing, laser cutting, circuit soldering, and C++ programming with PD control algorithms. The robot achieved wall following, autonomous attack, manual control, and I2C communciation.
-                            <a href="autonomous-robot.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                            This project designs a mobile robot platform capable of both autonomous driving while
+                            avoiding obstacles and manual control via a web interface. I designed, manufactured, and
+                            assembled the mobile robot platform through CAD design, 3D printing, laser cutting, circuit
+                            soldering, and C++ programming with PD control algorithms. The robot achieved wall
+                            following, autonomous attack, manual control, and I2C communication.
+                            <a href="autonomous-robot.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
                         </p>
                     </div>
                 </div>
@@ -370,12 +446,10 @@
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <div style="position: relative;">
-                            <video style="height: 15em; width: 100%; object-fit: contain; cursor: pointer;" controls
-                                autoplay loop muted onclick="showVideo('images/MEAM_5200_pick_place_competition.mp4')">
-                                <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
-                            </video>
-                        </div>
+                        <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
+                            autoplay loop muted onclick="showVideo('images/MEAM_5200_pick_place_competition.mp4')">
+                            <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
                 <div class="column">
@@ -387,8 +461,12 @@
                         </h3>
                         <p>
                             <strong>MEAM 5200: Introduction to Robotics (Nov 2024 - Dec 2024)</strong><br>
-                            Secured 4th place in competitive robotics challenge using Franka Emika Panda manipulator with real-time AprilTag vision system and gradient-based inverse kinematics. Integrated computer vision, trajectory planning, and collision avoidance for precision block manipulation in dynamic competition environment.
-                            <a href="pick-place-robot.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                            Secured 4th place in competitive robotics challenge using Franka Emika Panda manipulator
+                            with real-time AprilTag vision system and gradient-based inverse kinematics. Integrated
+                            computer vision, trajectory planning, and collision avoidance for precision block
+                            manipulation in dynamic competition environment.
+                            <a href="pick-place-robot.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
                         </p>
                     </div>
                 </div>
@@ -398,8 +476,8 @@
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <img src="images/AMR.png"
-                            style="height: 15em; width: 100%; object-fit: contain; border-radius: 8px; cursor: pointer;"
+                        <img src="images/AMR.png" class="clickable-media"
+                            style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/AMR.png')" />
                     </div>
                 </div>
@@ -412,8 +490,12 @@
                         </h3>
                         <p>
                             <strong>Senior Capstone Project - Project Manager (Jan 2024 – Apr 2024)</strong><br>
-                            Led 5-engineer team developing 2-ton capacity tracked platform for industrial 6-DOF robotic arm, achieving sub-160-micron precision through comprehensive FEA validation. Delivered complete $90,000 design supporting extreme temperature operation (-40°C to 30°C) with 6-hour runtime for autonomous welding and additive manufacturing applications.
-                            <a href="amr-platform.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                            Led 5-engineer team developing 2-ton capacity tracked platform for industrial 6-DOF robotic
+                            arm, achieving sub-160-micron precision through comprehensive FEA validation. Delivered
+                            complete $90,000 design supporting extreme temperature operation (-40°C to 30°C) with 6-hour
+                            runtime for autonomous welding and additive manufacturing applications.
+                            <a href="amr-platform.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
                         </p>
                     </div>
                 </div>
@@ -423,7 +505,7 @@
             <div class="columns is-centered">
                 <div class="column is-4">
                     <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <video style="height: 15em; width: 100%; object-fit: contain; cursor: pointer;" controls
+                        <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
                             autoplay loop muted onclick="showVideo('images/Junior_capstone_transmission.mp4')">
                             <source src="images/Junior_capstone_transmission.mp4" type="video/mp4">
                         </video>
@@ -438,8 +520,12 @@
                         </h3>
                         <p>
                             <strong>Junior Capstone Project - Mechanical Team Member (May 2021 – Aug 2021)</strong><br>
-                            Engineered high-performance racing transmission featuring rapid-shift dog clutch mechanism optimized for Mario Kart-style competition with instant gear changes. Performed comprehensive gear train analysis including bearing load calculations, spline stress distribution, and power transmission optimization for maximum efficiency and reliability.
-                            <a href="transmission-design.html" style="color: #3273dc; text-decoration: underline;">Learn more...</a>
+                            Engineered high-performance racing transmission featuring rapid-shift dog clutch mechanism
+                            optimized for Mario Kart-style competition with instant gear changes. Performed
+                            comprehensive gear train analysis including bearing load calculations, spline stress
+                            distribution, and power transmission optimization for maximum efficiency and reliability.
+                            <a href="transmission-design.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
                         </p>
                     </div>
                 </div>
@@ -448,12 +534,10 @@
     </section>
 
     <!-- Media Modal -->
-    <div id="mediaModal"
-        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
-        onclick="closeModal()">
-        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
-        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
-            controls>
+    <div id="mediaModal" class="modal-overlay" style="display: none;" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content" style="display: none;" />
+        <video id="modalVideo" class="modal-content" style="display: none;" controls>
         </video>
     </div>
 
@@ -471,23 +555,46 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function showImage(src) {
+            const modal = document.getElementById('mediaModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalImage.src = src;
+            modalImage.style.display = 'block';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modal.style.display = 'flex';
+        }
+
+        function showVideo(src) {
+            const modal = document.getElementById('mediaModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalVideo.src = src;
+            modalVideo.style.display = 'block';
+            modalImage.style.display = 'none';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modal.style.display = 'none';
+            modalVideo.pause();
+        }
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
-<script>
-    function showImage(src) {
-        document.getElementById('modalImage').src = src;
-        document.getElementById('modalImage').style.display = 'block';
-        document.getElementById('modalVideo').style.display = 'none';
-        document.getElementById('mediaModal').style.display = 'block';
-    }
 
-    function showVideo(src) {
-        document.getElementById('modalVideo').src = src;
-        document.getElementById('modalVideo').style.display = 'block';
-        document.getElementById('modalImage').style.display = 'none';
-        document.getElementById('mediaModal').style.display = 'block';
-    }
-
-    function closeModal() {
-        document.getElementById('mediaModal').style.display = 'none';
-        document.getElementById('modalVideo').pause();
-    }
+</html>

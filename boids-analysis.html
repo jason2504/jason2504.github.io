@@ -94,12 +94,12 @@
             position: absolute;
             background-color: white;
             min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             z-index: 1001;
             top: 100%;
             left: 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -164,14 +164,16 @@
             margin: 2rem 0;
         }
 
-        .gallery img, .gallery video {
+        .gallery img,
+        .gallery video {
             width: 100%;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        .gallery img:hover, .gallery video:hover {
+        .gallery img:hover,
+        .gallery video:hover {
             transform: scale(1.05);
         }
 
@@ -290,13 +292,14 @@
             <div class="results-highlight">
                 <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
                 <p style="font-size: 1.1rem; color: #064e3b;">
-                    <strong>Conducted 48,000 systematic simulations across 2,000 gain vectors, achieving 
-                    85.76% area coverage</strong> in complex cafeteria environments. Research revealed that 
-                    minimal alignment forces (k_ali = 0.003) with moderate cohesion (k_coh = 0.213) yield 
+                    <strong>Conducted 48,000 systematic simulations across 2,000 gain vectors, achieving
+                        85.76% area coverage</strong> in complex cafeteria environments. Research revealed that
+                    minimal alignment forces (k_ali = 0.003) with moderate cohesion (k_coh = 0.213) yield
                     optimal coverage performance, challenging conventional flocking wisdom.
                 </p>
                 <p style="margin-top: 0.5rem;">
-                    <a href="files/MEAM_6240_Final_Report.pdf" target="_blank" style="color: #065f46; text-decoration: underline;">
+                    <a href="files/MEAM_6240_Final_Report.pdf" target="_blank"
+                        style="color: #065f46; text-decoration: underline;">
                         📄 View Full Technical Report (PDF)
                     </a>
                 </p>
@@ -308,36 +311,45 @@
                     <div class="content">
                         <h2 class="title is-3">Project Overview</h2>
                         <p>
-                            This MEAM 6240 Distributed Robotics project investigated the effectiveness of the classical 
-                            boids flocking algorithm for area coverage tasks. Through comprehensive simulation analysis, 
-                            we systematically explored how different parameter combinations affect swarm coverage performance 
-                            in complex environments, providing insights crucial for real-world distributed robotics applications.
+                            This MEAM 6240 Distributed Robotics project investigated the effectiveness of the classical
+                            boids flocking algorithm for area coverage tasks. Through comprehensive simulation analysis,
+                            we systematically explored how different parameter combinations affect swarm coverage
+                            performance
+                            in complex environments, providing insights crucial for real-world distributed robotics
+                            applications.
                         </p>
-                        
+
                         <h3 class="title is-4">Research Methodology</h3>
                         <p>
-                            This work systematically analyzed the boids model for distributed coverage tasks through 
-                            extensive parameter optimization. We implemented a custom PyGame-based simulator supporting 
-                            both interactive and headless modes, enabling systematic exploration of the relationship 
+                            This work systematically analyzed the boids model for distributed coverage tasks through
+                            extensive parameter optimization. We implemented a custom PyGame-based simulator supporting
+                            both interactive and headless modes, enabling systematic exploration of the relationship
                             between flocking parameters and coverage performance across diverse environments.
                         </p>
 
                         <h3 class="title is-4">Boids Algorithm Fundamentals</h3>
                         <p>
-                            The boids algorithm simulates the flocking behavior of birds through three simple rules that create emergent complexity from individual interactions. Each boid follows local rules of separation, alignment, and cohesion to produce realistic group behavior without centralized control.
+                            The boids algorithm simulates the flocking behavior of birds through three simple rules that
+                            create emergent complexity from individual interactions. Each boid follows local rules of
+                            separation, alignment, and cohesion to produce realistic group behavior without centralized
+                            control.
                         </p>
 
                         <!-- Boids Concept Explanation -->
                         <div class="columns" style="margin-top: 2rem;">
                             <div class="column">
                                 <div class="content">
-                                    <img src="images/boids_visualization.png" 
+                                    <img src="images/boids_visualization.png"
                                         onclick="showImage('images/boids_visualization.png')"
                                         alt="Boids Separation, Alignment, and Cohesion Concepts"
-                                        style="width: 100%; max-width: 600px; margin: 0 auto; display: block;" />
+                                        style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                                        onmouseover="this.style.transform='scale(1.05)'"
+                                        onmouseout="this.style.transform='scale(1)'" />
                                     <p style="margin-top: 1rem; text-align: center; font-style: italic;">
-                                        The three fundamental boids behaviors: <strong>Separation</strong> (avoid crowding), 
-                                        <strong>Alignment</strong> (steer toward average heading), and <strong>Cohesion</strong> 
+                                        The three fundamental boids behaviors: <strong>Separation</strong> (avoid
+                                        crowding),
+                                        <strong>Alignment</strong> (steer toward average heading), and
+                                        <strong>Cohesion</strong>
                                         (move toward average position of neighbors).
                                     </p>
                                 </div>
@@ -346,83 +358,112 @@
 
                         <h3 class="title is-4">Simulation Framework</h3>
                         <p>
-                            Agents are modeled as kinematic point masses with bounded acceleration, executing a prioritized 
-                            behavior stack: obstacle avoidance → separation → alignment → cohesion → target seeking. 
-                            This prioritization ensures collision-avoidance consumes control authority before lower-priority 
-                            objectives, preventing pathological force superposition found in naive vector summation approaches.
+                            Agents are modeled as kinematic point masses with bounded acceleration, executing a
+                            prioritized
+                            behavior stack: obstacle avoidance → separation → alignment → cohesion → target seeking.
+                            This prioritization ensures collision-avoidance consumes control authority before
+                            lower-priority
+                            objectives, preventing pathological force superposition found in naive vector summation
+                            approaches.
                         </p>
-                        
+
                         <p>The core behavioral forces are mathematically formulated as:</p>
                         <ul>
-                            <li><strong>Separation:</strong> f<sub>col</sub> = k<sub>col</sub> Σ(x<sub>i</sub> - x<sub>j</sub>) for j ∈ N<sub>i</sub></li>
-                            <li><strong>Alignment:</strong> f<sub>ali</sub> = k<sub>ali</sub> (⟨ẋ<sub>j</sub>⟩ - ẋ<sub>i</sub>)</li>
-                            <li><strong>Cohesion:</strong> f<sub>coh</sub> = k<sub>coh</sub> (⟨x<sub>j</sub>⟩ - x<sub>i</sub>)</li>
+                            <li><strong>Separation:</strong> f<sub>col</sub> = k<sub>col</sub> Σ(x<sub>i</sub> -
+                                x<sub>j</sub>) for j ∈ N<sub>i</sub></li>
+                            <li><strong>Alignment:</strong> f<sub>ali</sub> = k<sub>ali</sub> (⟨ẋ<sub>j</sub>⟩ -
+                                ẋ<sub>i</sub>)</li>
+                            <li><strong>Cohesion:</strong> f<sub>coh</sub> = k<sub>coh</sub> (⟨x<sub>j</sub>⟩ -
+                                x<sub>i</sub>)</li>
                         </ul>
-                        
+
                         <p>
-                            Each simulation ran for 60 seconds at 60 Hz (3,600 timesteps) in an 800×600 pixel domain. 
-                            The headless optimization mode supported parallel evaluation using Python's multiprocessing 
+                            Each simulation ran for 60 seconds at 60 Hz (3,600 timesteps) in an 800×600 pixel domain.
+                            The headless optimization mode supported parallel evaluation using Python's multiprocessing
                             module, enabling efficient parameter space exploration across multiple random seeds.
                         </p>
-                        
+
                         <!-- Test Environments - moved here from separate section -->
                         <div style="margin: 1.5rem 0;">
-                            <img src="images/boids_environment.png" 
-                                 onclick="showImage('images/boids_environment.png')"
-                                 alt="Four Test Environments: Dense Cafeteria, Standard Cafeteria, Narrow Corridor, Empty Arena"
-                                 style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;" />
+                            <img src="images/boids_environment.png" onclick="showImage('images/boids_environment.png')"
+                                alt="Four Test Environments: Dense Cafeteria, Standard Cafeteria, Narrow Corridor, Empty Arena"
+                                style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                                onmouseover="this.style.transform='scale(1.05)'"
+                                onmouseout="this.style.transform='scale(1)'" />
                             <p style="margin-top: 1rem; font-style: italic; text-align: center;">
-                                <strong>Evaluation environments used for testing:</strong> Dense cafeteria map, cafeteria map, narrow corridor, and empty map, from left to right. 
-                                Each layout presents different navigational challenges and constraints. Red obstacles represent 
-                                tables and walls, while blue trajectories show agent paths with white arrows indicating velocity vectors.
+                                <strong>Evaluation environments used for testing:</strong> Dense cafeteria map,
+                                cafeteria map, narrow corridor, and empty map, from left to right.
+                                Each layout presents different navigational challenges and constraints. Red obstacles
+                                represent
+                                tables and walls, while blue trajectories show agent paths with white arrows indicating
+                                velocity vectors.
                             </p>
                         </div>
 
                         <h3 class="title is-4">Coverage Task and Metrics</h3>
                         <p>
-                            The primary objective is spatial coverage: maximizing the fraction of free workspace area visited 
-                            at least once by any agent. A binary coverage mask is updated each frame by inflating agent positions 
-                            by a small footprint radius. To measure efficiency of exploration, we compute the coefficient of 
-                            variation (CV) of visit counts per pixel. High coverage with low CV corresponds to rapid and uniform 
+                            The primary objective is spatial coverage: maximizing the fraction of free workspace area
+                            visited
+                            at least once by any agent. A binary coverage mask is updated each frame by inflating agent
+                            positions
+                            by a small footprint radius. To measure efficiency of exploration, we compute the
+                            coefficient of
+                            variation (CV) of visit counts per pixel. High coverage with low CV corresponds to rapid and
+                            uniform
                             exploration; high coverage with high CV indicates redundant retracing.
                         </p>
-                        
+
                         <p>
-                            The benchmark set contains four environments with different constraints: a dense cafeteria layout, 
-                            a standard cafeteria, a narrow corridor with a bottleneck, and an empty arena. These span heavy 
-                            clutter to free space and expose different failure modes such as congestion at chokepoints or 
+                            The benchmark set contains four environments with different constraints: a dense cafeteria
+                            layout,
+                            a standard cafeteria, a narrow corridor with a bottleneck, and an empty arena. These span
+                            heavy
+                            clutter to free space and expose different failure modes such as congestion at chokepoints
+                            or
                             poor utilization of occluded regions.
                         </p>
 
                         <h3 class="title is-4">Parameter Optimization</h3>
                         <p>
-                            We conducted a random search across 2,000 gain vectors (k<sub>sep</sub>, k<sub>ali</sub>, k<sub>coh</sub>), 
-                            repeated under multiple random seeds, yielding 48,000 simulations in total when scaled across environments 
-                            and swarm sizes. Early sweeps indicated that large alignment weights consistently degraded coverage, 
-                            motivating subsequent sweeps with restricted alignment ranges. All other simulation parameters were 
+                            We conducted a random search across 2,000 gain vectors (k<sub>sep</sub>, k<sub>ali</sub>,
+                            k<sub>coh</sub>),
+                            repeated under multiple random seeds, yielding 48,000 simulations in total when scaled
+                            across environments
+                            and swarm sizes. Early sweeps indicated that large alignment weights consistently degraded
+                            coverage,
+                            motivating subsequent sweeps with restricted alignment ranges. All other simulation
+                            parameters were
                             fixed to isolate the effect of relative gain weighting.
                         </p>
 
                         <h3 class="title is-4">Key Findings</h3>
                         <p>
-                            For N=50 and N=100 agents, coverage increased monotonically with swarm size across all environments. 
-                            In cluttered maps, larger swarms also reduced variance in visitation, overcoming bottlenecks more 
+                            For N=50 and N=100 agents, coverage increased monotonically with swarm size across all
+                            environments.
+                            In cluttered maps, larger swarms also reduced variance in visitation, overcoming bottlenecks
+                            more
                             effectively. Our results reveal several critical insights:
                         </p>
                         <ul>
-                            <li><strong>Alignment Paradox:</strong> Alignment displayed a strong negative correlation with coverage 
-                            beyond k<sub>ali</sub> ≈ 0.03, as high-alignment swarms collapse into rigid flocks that underutilize free space</li>
-                            <li><strong>Optimal Configuration:</strong> In the cafeteria environment with 100 agents, the optimal 
-                            configuration (k<sub>coh</sub>, k<sub>ali</sub>, k<sub>sep</sub>) = (0.213, 0.003, 0.003) achieved 
-                            mean coverage of 85.8% across seeds with low CV</li>
-                            <li><strong>Spatial Dispersion:</strong> Moderate cohesion and separation improved spatial dispersion 
-                            without overconstraining motion</li>
-                            <li><strong>Bottleneck Sensitivity:</strong> Corridor scenarios highlight sensitivity to bottlenecks - 
-                            insufficient separation prevents agents from diffusing into downstream regions</li>
+                            <li><strong>Alignment Paradox:</strong> Alignment displayed a strong negative correlation
+                                with coverage
+                                beyond k<sub>ali</sub> ≈ 0.03, as high-alignment swarms collapse into rigid flocks that
+                                underutilize free space</li>
+                            <li><strong>Optimal Configuration:</strong> In the cafeteria environment with 100 agents,
+                                the optimal
+                                configuration (k<sub>coh</sub>, k<sub>ali</sub>, k<sub>sep</sub>) = (0.213, 0.003,
+                                0.003) achieved
+                                mean coverage of 85.8% across seeds with low CV</li>
+                            <li><strong>Spatial Dispersion:</strong> Moderate cohesion and separation improved spatial
+                                dispersion
+                                without overconstraining motion</li>
+                            <li><strong>Bottleneck Sensitivity:</strong> Corridor scenarios highlight sensitivity to
+                                bottlenecks -
+                                insufficient separation prevents agents from diffusing into downstream regions</li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="column is-4">
                     <div class="project-details">
                         <h3 class="title is-5">Project Details</h3>
@@ -434,7 +475,7 @@
                         <p><strong>Simulations Run:</strong> 48,000 total evaluations</p>
                         <p><strong>Peak Coverage:</strong> 85.76% (Cafeteria, N=100)</p>
                         <p><strong>Optimal Gains:</strong> (k_coh=0.213, k_ali=0.003, k_col=0.003)</p>
-                        
+
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">PyGame</span>
@@ -476,13 +517,17 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <h4 class="title is-5">Coverage Metrics and Analysis</h4>
                         <p>
-                            Coverage percentage was defined as the ratio of unique visited pixels to total traversable pixels. 
-                            We also computed the coefficient of variation (CV) from heatmap visitation frequencies to measure 
-                            exploration uniformity: CV = σ/μ, where lower values indicate more uniform spatial distribution. 
-                            This dual-metric approach ensured evaluation of both coverage extent and exploration efficiency.
+                            Coverage percentage was defined as the ratio of unique visited pixels to total traversable
+                            pixels.
+                            We also computed the coefficient of variation (CV) from heatmap visitation frequencies to
+                            measure
+                            exploration uniformity: CV = σ/μ, where lower values indicate more uniform spatial
+                            distribution.
+                            This dual-metric approach ensured evaluation of both coverage extent and exploration
+                            efficiency.
                         </p>
                     </div>
                 </div>
@@ -495,25 +540,32 @@
                     <div class="content">
                         <!-- Parameter Sweep Results -->
                         <div style="margin-bottom: 2rem;">
-                            <img src="images/boids_results.png" 
-                                 onclick="showImage('images/boids_results.png')"
-                                 alt="Parameter Sweep Results: Coverage vs Cohesion, Alignment, and Separation"
-                                 style="width: 100%; margin: 0 auto; display: block;" />
+                            <img src="images/boids_results.png" onclick="showImage('images/boids_results.png')"
+                                alt="Parameter Sweep Results: Coverage vs Cohesion, Alignment, and Separation"
+                                style="width: 100%; margin: 0 auto; display: block; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                                onmouseover="this.style.transform='scale(1.05)'"
+                                onmouseout="this.style.transform='scale(1)'" />
                             <p style="margin-top: 1rem; text-align: center; font-style: italic;">
-                                <strong>Parameter sweep results across 48,000 simulations.</strong> Left: Coverage vs Cohesion shows 
-                                broad tolerance. Center: Coverage vs Alignment reveals strong negative correlation beyond k_ali ≈ 0.03. 
-                                Right: Coverage vs Separation demonstrates relatively flat response across parameter range.
+                                <strong>Parameter sweep results across 48,000 simulations.</strong> Left: Coverage vs
+                                Cohesion shows
+                                broad tolerance. Center: Coverage vs Alignment reveals strong negative correlation
+                                beyond k_ali ≈ 0.03.
+                                Right: Coverage vs Separation demonstrates relatively flat response across parameter
+                                range.
                             </p>
                         </div>
-                        
+
                         <div class="columns">
                             <div class="column">
                                 <h4 class="title is-5">Optimal Configurations by Environment</h4>
                                 <ul>
                                     <li><strong>Cafeteria (N=100):</strong> (0.213, 0.003, 0.003) → 85.76% coverage</li>
-                                    <li><strong>Dense Cafeteria (N=100):</strong> (0.477, 0.017, 0.001) → 51.95% coverage</li>
-                                    <li><strong>Narrow Corridor (N=100):</strong> (0.070, 0.010, 0.001) → 76.36% coverage</li>
-                                    <li><strong>Empty Arena (N=100):</strong> (0.223, 0.001, 0.004) → 96.81% coverage</li>
+                                    <li><strong>Dense Cafeteria (N=100):</strong> (0.477, 0.017, 0.001) → 51.95%
+                                        coverage</li>
+                                    <li><strong>Narrow Corridor (N=100):</strong> (0.070, 0.010, 0.001) → 76.36%
+                                        coverage</li>
+                                    <li><strong>Empty Arena (N=100):</strong> (0.223, 0.001, 0.004) → 96.81% coverage
+                                    </li>
                                 </ul>
                             </div>
                             <div class="column">
@@ -522,26 +574,32 @@
                                     <li>Coverage increased monotonically with swarm size (N=50 → N=100)</li>
                                     <li>Alignment exhibited strong negative correlation beyond k_ali > 0.03</li>
                                     <li>Larger swarms reduced variance in cluttered environments</li>
-                                    <li>CV uniformity: Empty (0.44) > Cafeteria (0.56) > Corridor (0.82) > Dense (0.98)</li>
+                                    <li>CV uniformity: Empty (0.44) > Cafeteria (0.56) > Corridor (0.82) > Dense (0.98)
+                                    </li>
                                     <li>Bottleneck sensitivity required sufficient separation for agent diffusion</li>
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <h4 class="title is-5">Technical Discussion and Implications</h4>
                         <p>
-                            Our results demonstrate that local boid rules, when tuned for task performance rather than 
-                            biological fidelity, provide a lightweight distributed controller for coverage tasks. The 
-                            prioritized-acceleration formulation prevents pathological force superposition while yielding 
-                            interpretable behavior. Optimal coverage emerges with negligible alignment, moderate cohesion, 
+                            Our results demonstrate that local boid rules, when tuned for task performance rather than
+                            biological fidelity, provide a lightweight distributed controller for coverage tasks. The
+                            prioritized-acceleration formulation prevents pathological force superposition while
+                            yielding
+                            interpretable behavior. Optimal coverage emerges with negligible alignment, moderate
+                            cohesion,
                             and minimal separation—effectively encouraging dispersion while preserving group coherency.
                         </p>
-                        
+
                         <p>
-                            Heatmap analysis confirms that low-alignment swarms spread broadly and exploit occluded regions, 
-                            while high-alignment swarms collapse into rigid flocks that underutilize free space. The framework's 
-                            limitation lies in idealized sensing assumptions and simplified dynamics, though large-scale 
-                            randomized sweeps enabled principled characterization of performance landscapes infeasible in hardware.
+                            Heatmap analysis confirms that low-alignment swarms spread broadly and exploit occluded
+                            regions,
+                            while high-alignment swarms collapse into rigid flocks that underutilize free space. The
+                            framework's
+                            limitation lies in idealized sensing assumptions and simplified dynamics, though large-scale
+                            randomized sweeps enabled principled characterization of performance landscapes infeasible
+                            in hardware.
                         </p>
                     </div>
                 </div>
@@ -553,24 +611,26 @@
                     <h2 class="title is-3">My Contributions</h2>
                     <div class="content">
                         <p>
-                            Working collaboratively with Benjamin Aziel, I contributed significantly to both the 
+                            Working collaboratively with Benjamin Aziel, I contributed significantly to both the
                             technical implementation and research methodology:
                         </p>
                         <ul>
-                            <li><strong>Simulation Development:</strong> Co-developed the PyGame-based simulation framework 
-                            with real-time visualization and performance tracking capabilities</li>
-                            <li><strong>Algorithm Implementation:</strong> Implemented the core boids algorithm with 
-                            configurable parameters for alignment, cohesion, separation, and obstacle avoidance</li>
-                            <li><strong>Parameter Space Design:</strong> Designed the systematic parameter exploration 
-                            methodology, ensuring comprehensive coverage of the parameter space</li>
-                            <li><strong>Environment Creation:</strong> Developed multiple test environments including 
-                            the complex cafeteria layout that yielded our best results</li>
-                            <li><strong>Data Analysis:</strong> Conducted statistical analysis of the 48,000 simulation 
-                            results to identify optimal parameter combinations</li>
-                            <li><strong>Performance Optimization:</strong> Optimized simulation performance to enable 
-                            large-scale parameter sweeps within project timeframe</li>
-                            <li><strong>Results Interpretation:</strong> Analyzed counterintuitive findings and developed 
-                            explanations for why minimal alignment improved coverage performance</li>
+                            <li><strong>Simulation Development:</strong> Co-developed the PyGame-based simulation
+                                framework
+                                with real-time visualization and performance tracking capabilities</li>
+                            <li><strong>Algorithm Implementation:</strong> Implemented the core boids algorithm with
+                                configurable parameters for alignment, cohesion, separation, and obstacle avoidance</li>
+                            <li><strong>Parameter Space Design:</strong> Designed the systematic parameter exploration
+                                methodology, ensuring comprehensive coverage of the parameter space</li>
+                            <li><strong>Environment Creation:</strong> Developed multiple test environments including
+                                the complex cafeteria layout that yielded our best results</li>
+                            <li><strong>Data Analysis:</strong> Conducted statistical analysis of the 48,000 simulation
+                                results to identify optimal parameter combinations</li>
+                            <li><strong>Performance Optimization:</strong> Optimized simulation performance to enable
+                                large-scale parameter sweeps within project timeframe</li>
+                            <li><strong>Results Interpretation:</strong> Analyzed counterintuitive findings and
+                                developed
+                                explanations for why minimal alignment improved coverage performance</li>
                         </ul>
                     </div>
                 </div>
@@ -585,16 +645,18 @@
                             This research opens several avenues for future investigation and practical applications:
                         </p>
                         <ul>
-                            <li><strong>Hardware Validation:</strong> Testing optimized parameters on real robotic swarms 
-                            to validate simulation findings</li>
-                            <li><strong>Dynamic Adaptation:</strong> Developing algorithms that can adapt parameters 
-                            in real-time based on environment characteristics</li>
-                            <li><strong>Multi-Objective Optimization:</strong> Extending the analysis to consider multiple 
-                            objectives like energy efficiency and communication overhead</li>
-                            <li><strong>Heterogeneous Swarms:</strong> Investigating how different robot capabilities 
-                            affect optimal flocking parameters</li>
-                            <li><strong>Real-World Deployment:</strong> Implementing findings in practical applications 
-                            like environmental monitoring or search and rescue operations</li>
+                            <li><strong>Hardware Validation:</strong> Testing optimized parameters on real robotic
+                                swarms
+                                to validate simulation findings</li>
+                            <li><strong>Dynamic Adaptation:</strong> Developing algorithms that can adapt parameters
+                                in real-time based on environment characteristics</li>
+                            <li><strong>Multi-Objective Optimization:</strong> Extending the analysis to consider
+                                multiple
+                                objectives like energy efficiency and communication overhead</li>
+                            <li><strong>Heterogeneous Swarms:</strong> Investigating how different robot capabilities
+                                affect optimal flocking parameters</li>
+                            <li><strong>Real-World Deployment:</strong> Implementing findings in practical applications
+                                like environmental monitoring or search and rescue operations</li>
                         </ul>
                     </div>
                 </div>
@@ -609,80 +671,8 @@
                             This project provided valuable insights into distributed robotics research methodology:
                         </p>
                         <ul>
-                            <li><strong>Systematic Exploration:</strong> Learned the importance of comprehensive parameter 
-                            space exploration rather than intuitive parameter selection</li>
-                            <li><strong>Counter-Intuitive Results:</strong> Discovered that biological inspiration doesn't 
-                            always translate directly to optimal robotics performance</li>
-                            <li><strong>Simulation Scale:</strong> Gained experience in designing and executing large-scale 
-                            simulation studies for robust statistical analysis</li>
-                            <li><strong>Performance Metrics:</strong> Developed understanding of how to design meaningful 
-                            metrics for evaluating swarm behavior</li>
-                            <li><strong>Collaborative Research:</strong> Enhanced skills in collaborative algorithm development 
-                            and research methodology design</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation -->
-            <div class="columns" style="margin-top: 3rem;">
-                <div class="column has-text-centered">
-                    <a href="project.html" class="button is-primary is-medium">
-                        <span class="icon">
-                            <i class="fa fa-arrow-left"></i>
-                        </span>
-                        <span>Back to All Projects</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Media Modal -->
-    <div id="mediaModal"
-        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
-        onclick="closeModal()">
-        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
-        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
-            controls>
-        </video>
-    </div>
-
-    <footer class="footer">
-        <div class="container is-max-desktop">
-            <div class="column is-centered">
-                <span class="link-block">
-                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
-                        <span class="icon">
-                            <i class="fa fa-home"></i>
-                        </span>
-                        <span>Back to Home</span>
-                    </a>
-                </span>
-            </div>
-        </div>
-    </footer>
-</body>
-
-<script>
-    function showImage(src) {
-        document.getElementById('modalImage').src = src;
-        document.getElementById('modalImage').style.display = 'block';
-        document.getElementById('modalVideo').style.display = 'none';
-        document.getElementById('mediaModal').style.display = 'block';
-    }
-
-    function showVideo(src) {
-        document.getElementById('modalVideo').src = src;
-        document.getElementById('modalVideo').style.display = 'block';
-        document.getElementById('modalImage').style.display = 'none';
-        document.getElementById('mediaModal').style.display = 'block';
-    }
-
-    function closeModal() {
-        document.getElementById('mediaModal').style.display = 'none';
-        document.getElementById('modalVideo').pause();
-    }
-</script>
-
-</html>
+                            <li><strong>Systematic Exploration:</strong> Learned the importance of comprehensive
+                                parameter
+                                space exploration rather than intuitive parameter selection</li>
+                            <li><strong>Counter-Intuitive Results:</strong> Discovered that biological inspiration
+                                doesn't

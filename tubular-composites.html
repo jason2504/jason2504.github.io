@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="Tubular Braided Composites - Jason Chen" />
-    <meta name="keywords" content="Composites Materials Research Thermal Expansion Kevlar" />
+    <meta name="keywords" content="Composites Materials EPON Epoxy Compression Torsion TBC Research" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tubular Braided Composites - Jason Chen</title>
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
@@ -91,12 +91,12 @@
             position: absolute;
             background-color: white;
             min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             z-index: 1001;
             top: 100%;
             left: 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -169,6 +169,15 @@
 
         .gallery img:hover {
             transform: scale(1.05);
+        }
+
+        /* Results highlight box */
+        .results-highlight {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
 
         @media (max-width: 768px) {
@@ -259,7 +268,7 @@
                 <div class="column is-8 has-text-centered">
                     <h1 class="title is-1" style="color: white;">Tubular Braided Composites</h1>
                     <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
-                        With Near-Zero Thermal Expansion
+                        Mechanical Characterization of EPON 826/LS-81K Epoxy Matrix
                     </h2>
                 </div>
             </div>
@@ -268,69 +277,140 @@
 
     <section class="section">
         <div class="container is-max-desktop">
+            <!-- Results Highlight -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Successfully characterized the complete mechanical property suite of EPON 826/LS-81K epoxy
+                        matrix through comprehensive three-phase testing.</strong>
+                    Determined compressive Young's modulus (E = 2640 ± 270 MPa), validated material isotropy, explored
+                    shear properties via torsional testing with Digital Image Correlation,
+                    and achieved near-zero coefficient of thermal expansion for aerospace applications.
+                </p>
+                <p style="margin-top: 0.5rem; color: #064e3b;">
+                    📄 Research conducted at University of Alberta with Dr. Ahmed Samir Ead using advanced stereo
+                    measurement techniques.
+                </p>
+            </div>
+
             <!-- Project Overview -->
             <div class="columns">
                 <div class="column is-8">
                     <div class="content">
                         <h2 class="title is-3">Project Overview</h2>
                         <p>
-                            This research project, conducted under the University of Alberta Dean Research Award, focused on 
-                            developing tubular braided composites with near-zero coefficient of thermal expansion for aerospace 
-                            applications. The work involved comprehensive characterization of epoxy resin properties and optimization 
-                            of manufacturing parameters to achieve dimensional stability across temperature ranges.
+                            Tubular braided composites (TBCs) represent a critical class of advanced materials with
+                            widespread applications
+                            in aerospace and automotive industries due to their exceptional strength-to-weight ratio and
+                            complex loading
+                            capabilities. This comprehensive research project, conducted under the University of Alberta
+                            Dean Research Award
+                            with Dr. Ahmed Samir Ead, focused on the mechanical characterization of EPON 826/LS-81K
+                            epoxy matrix systems
+                            that serve as the binding agent distributing loads and providing cohesion to the overall
+                            composite structure.
                         </p>
-                        
-                        <h3 class="title is-4">Research Objectives</h3>
-                        <ul>
-                            <li>Characterize compressive properties of epoxy resin under various loading conditions</li>
-                            <li>Investigate failure modes using digital image correlation (DIC) analysis</li>
-                            <li>Optimize braid angles and epoxy-hardener ratios for thermal stability</li>
-                            <li>Validate manufacturing process for consistent material properties</li>
-                        </ul>
 
-                        <h3 class="title is-4">Technical Approach</h3>
+                        <h3 class="title is-4">Three-Phase Research Methodology</h3>
                         <p>
-                            The research employed a systematic approach to composite manufacturing and characterization:
+                            The investigation was systematically structured into three primary research phases, each
+                            targeting specific
+                            mechanical properties essential for understanding TBC failure mechanisms and achieving
+                            optimal performance
+                            characteristics. This methodical approach enabled comprehensive material characterization
+                            from fundamental
+                            properties to advanced thermal behavior.
                         </p>
-                        <ul>
-                            <li><strong>Manufacturing:</strong> Utilized maypole braiding machine with Kevlar prepregs, 
-                            systematically varying braid angles from 35° to 55°</li>
-                            <li><strong>Material Optimization:</strong> Investigated various epoxy-hardener ratios to 
-                            achieve optimal thermal and mechanical properties</li>
-                            <li><strong>Characterization:</strong> Employed DaVis software and 2D stereo camera systems 
-                            for precise strain analysis and thermal deformation tracking</li>
-                            <li><strong>Validation:</strong> Conducted extensive testing to validate epoxy isotropy 
-                            and homogeneity</li>
-                        </ul>
 
-                        <h3 class="title is-4">Key Findings</h3>
+                        <h3 class="title is-4">Phase 1: Torsional Properties Investigation</h3>
                         <p>
-                            The research successfully achieved near-zero coefficient of thermal expansion composites through 
-                            iterative design optimization. Key discoveries included:
+                            The initial research focus centered on determining the shear strength and shear modulus of
+                            EPON 826/LS-81K
+                            through controlled torsional testing. This work was motivated by literature findings
+                            suggesting that epoxy
+                            resins may exhibit ductile failure modes under torsional loads, contrasting with their
+                            typically brittle
+                            tensile behavior. Understanding these properties was crucial for predicting TBC failure
+                            modes under compression,
+                            where shear strength often becomes the limiting factor determining overall composite
+                            performance.
                         </p>
-                        <ul>
-                            <li>Demonstration of different failure modes under tension (brittle) versus compression (ductile)</li>
-                            <li>Optimal braid angle ranges for thermal stability</li>
-                            <li>Validation of manufacturing consistency across multiple samples</li>
-                            <li>Correlation between microstructure and thermal expansion properties</li>
-                        </ul>
+
+                        <p>
+                            The testing protocol involved systematic sample preparation with 50/50 epoxy-to-hardener
+                            mixing ratios,
+                            controlled curing in steel molds, and application of speckle patterns for Digital Image
+                            Correlation analysis.
+                            Using the Torsion Master testing system combined with advanced DIC stereo camera systems, we
+                            captured
+                            real-time shear strain data (γ_xy) during torsional loading, enabling direct measurement of
+                            shear modulus
+                            and identification of failure mechanisms.
+                        </p>
+
+                        <h3 class="title is-4">Phase 2: Compressive Properties Characterization</h3>
+                        <p>
+                            The second phase involved comprehensive compression testing to determine the compressive
+                            Young's modulus
+                            and validate material isotropy. Using the Instron TTKH testing machine with integrated DIC
+                            analysis,
+                            results demonstrated that the compressive Young's modulus (E = 2640 ± 270 MPa) closely
+                            matched the
+                            literature tensile modulus (E = 2730 MPa), providing strong evidence for material isotropy -
+                            a fundamental
+                            assumption critical for composite analysis models.
+                        </p>
+
+                        <p>
+                            The testing revealed that epoxy exhibits ductile yielding under compression while
+                            maintaining brittle
+                            fracture characteristics, providing crucial insights for composite failure prediction.
+                            Stress-strain
+                            analysis showed a clear linear elastic region followed by ductile yielding, contrasting with
+                            the brittle
+                            tensile failure mode documented in literature.
+                        </p>
+
+                        <h3 class="title is-4">Phase 3: Thermal Expansion Analysis</h3>
+                        <p>
+                            The final phase investigated the thermal expansion behavior of optimized composite systems,
+                            ultimately
+                            achieving near-zero coefficient of thermal expansion - a remarkable property for aerospace
+                            applications
+                            where dimensional stability across temperature ranges is critical. This achievement
+                            demonstrates the
+                            potential for thermally stable composite structures that maintain geometric integrity under
+                            varying
+                            environmental conditions encountered in aerospace and high-performance applications.
+                        </p>
+
+                        <p>
+                            The thermal expansion research involved systematic optimization of braid angles (35° to
+                            55°), fiber
+                            selection (Kevlar prepregs), and manufacturing parameters using a maypole braiding machine.
+                            Through
+                            iterative design and testing, optimal configurations were identified that balanced
+                            mechanical performance
+                            with thermal stability requirements.
+                        </p>
                     </div>
                 </div>
-                
+
                 <div class="column is-4">
                     <div class="project-details">
                         <h3 class="title is-5">Project Details</h3>
-                        <p><strong>Duration:</strong> September 2023 - April 2024</p>
                         <p><strong>Institution:</strong> University of Alberta</p>
                         <p><strong>Award:</strong> Dean Research Award</p>
-                        <p><strong>Application:</strong> Aerospace Materials</p>
-                        <p><strong>Role:</strong> Lead Researcher</p>
-                        
+                        <p><strong>Supervisor:</strong> Dr. Ahmed Samir Ead</p>
+                        <p><strong>Materials System:</strong> EPON 826/LS-81K Epoxy</p>
+                        <p><strong>Application:</strong> Aerospace Composites</p>
+
                         <div class="tech-stack">
-                            <span class="tech-tag">Composite Manufacturing</span>
                             <span class="tech-tag">Digital Image Correlation</span>
-                            <span class="tech-tag">DaVis Software</span>
-                            <span class="tech-tag">Materials Testing</span>
+                            <span class="tech-tag">EPON 826 Epoxy</span>
+                            <span class="tech-tag">Compression Testing</span>
+                            <span class="tech-tag">Torsional Testing</span>
+                            <span class="tech-tag">Materials Science</span>
                             <span class="tech-tag">Thermal Analysis</span>
                             <span class="tech-tag">Kevlar Prepregs</span>
                         </div>
@@ -338,52 +418,147 @@
                 </div>
             </div>
 
-            <!-- Media Gallery -->
+            <!-- Research Documentation and Results -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Research Documentation</h2>
+                    <h2 class="title is-3">Research Documentation and Results</h2>
+
+                    <h4 class="title is-5">Sample Preparation and Testing Process</h4>
                     <div class="gallery">
-                        <img src="images/DRA_manufacturing_process.jpg" 
-                             onclick="showImage('images/DRA_manufacturing_process.jpg')"
-                             alt="Manufacturing Process Documentation" />
+                        <img src="images/DRA_painted and spekcled samples.jpg"
+                            onclick="showImage('images/DRA_painted and spekcled samples.jpg')"
+                            alt="Painted and Speckled Sample Preparation" />
+                        <img src="images/DRA_cured samples.jpg" onclick="showImage('images/DRA_cured samples.jpg')"
+                            alt="Cured EPON 826 Sample" />
+                        <img src="images/DRA_compression_manufacturing_process.jpg"
+                            onclick="showImage('images/DRA_compression_manufacturing_process.jpg')"
+                            alt="Comprehensive Research Process Documentation" />
                     </div>
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <a href="files/DRA poster W2024 - Jason Chen.pdf" target="_blank" 
-                           class="button is-primary">
-                            <span class="icon">
-                                <i class="fa fa-file-pdf"></i>
-                            </span>
-                            <span>View Research Poster</span>
-                        </a>
+
+                    <div class="content">
+                        <p style="margin-top: 1rem; font-style: italic;">
+                            <strong>Complete sample preparation and testing workflow:</strong>
+                        </p>
+                        <ul style="font-style: italic; margin-top: 0.5rem;">
+                            <li><strong>Left:</strong> Painted and speckled compression samples in steel mold showing
+                                systematic preparation
+                                for Digital Image Correlation analysis with precise speckle pattern application for
+                                strain tracking.</li>
+                            <li><strong>Center:</strong> Cured EPON 826/LS-81K sample demonstrating the final material
+                                quality and
+                                homogeneous structure achieved through controlled curing process.</li>
+                            <li><strong>Right:</strong> Compression test procedure, including sample creation, curing,
+                                testing, and post processing.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="files/DRA poster W2024 - Jason Chen.pdf" target="_blank"
+                                class="button is-primary is-medium">
+                                <span class="icon">
+                                    <i class="fa fa-file-pdf"></i>
+                                </span>
+                                <span>Compression Properties Poster</span>
+                            </a>
+                            <a href="files/DRA poster F2023 - Jason Chen.pdf" target="_blank"
+                                class="button is-primary is-medium">
+                                <span class="icon">
+                                    <i class="fa fa-file-pdf"></i>
+                                </span>
+                                <span>Torsional Properties Poster</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Specifications -->
+            <!-- Technical Innovation and Advanced Methods -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Technical Specifications</h2>
+                    <h2 class="title is-3">Technical Innovation and Advanced Methods</h2>
                     <div class="content">
+                        <h4 class="title is-5">Digital Image Correlation (DIC) Implementation</h4>
+                        <p>
+                            Advanced stereo camera systems with DaVis software enabled real-time full-field strain
+                            measurement during
+                            both torsional and compression testing. The DIC methodology involved systematic speckle
+                            pattern application,
+                            precise camera calibration, and synchronized data acquisition with mechanical testing
+                            machines. This approach
+                            provided unprecedented insight into material deformation behavior and failure mechanisms.
+                        </p>
+
                         <div class="columns">
                             <div class="column">
-                                <h4 class="title is-5">Manufacturing Parameters</h4>
+                                <h4 class="title is-5">Compression Testing Protocol</h4>
                                 <ul>
-                                    <li>Braid angles: 35° - 55° optimization range</li>
-                                    <li>Material: Kevlar prepregs</li>
-                                    <li>Process: Maypole braiding machine</li>
-                                    <li>Various epoxy-hardener ratios tested</li>
+                                    <li>Sample preparation: 1-inch cylindrical specimens</li>
+                                    <li>Controlled curing process in steel molds</li>
+                                    <li>Speckle pattern application for strain tracking</li>
+                                    <li>Instron TTKH testing with integrated DIC</li>
+                                    <li>Multiple samples for statistical validation</li>
                                 </ul>
                             </div>
                             <div class="column">
-                                <h4 class="title is-5">Characterization Methods</h4>
+                                <h4 class="title is-5">Torsional Testing Innovation</h4>
                                 <ul>
-                                    <li>Digital Image Correlation (DIC) analysis</li>
-                                    <li>2D stereo camera systems</li>
-                                    <li>DaVis software for strain analysis</li>
-                                    <li>Thermal deformation tracking</li>
+                                    <li>Torsion Master testing system implementation</li>
+                                    <li>Shear strain measurement via DIC (γ_xy)</li>
+                                    <li>Real-time torque and deformation correlation</li>
+                                    <li>Failure mode identification and analysis</li>
+                                    <li>Shear modulus determination from slope analysis</li>
                                 </ul>
                             </div>
                         </div>
+
+                        <h4 class="title is-5">Composite Manufacturing and Optimization</h4>
+                        <p>
+                            The thermal expansion phase utilized systematic manufacturing optimization through maypole
+                            braiding machine
+                            operation with Kevlar prepregs. Braid angle optimization (35° to 55°) was conducted through
+                            iterative
+                            testing and characterization, enabling identification of configurations that achieved
+                            near-zero thermal
+                            expansion while maintaining mechanical performance requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Analysis and Impact -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Results Analysis and Impact</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Material Property Validation</h4>
+                        <p>
+                            The research successfully validated EPON 826/LS-81K as an isotropic, homogeneous material
+                            through direct
+                            comparison of tensile and compressive moduli. The close agreement between compressive
+                            modulus (2640 ± 270 MPa)
+                            and literature tensile values (2730 MPa) confirms fundamental assumptions used in composite
+                            analysis models.
+                        </p>
+
+                        <h4 class="title is-5">Failure Mode Characterization</h4>
+                        <p>
+                            The discovery of different failure modes under tension (brittle) versus compression (ductile
+                            yielding with
+                            brittle fracture) provides critical insights for composite design. This understanding
+                            enables more accurate
+                            failure prediction and optimization of composite structures for specific loading conditions.
+                        </p>
+
+                        <h4 class="title is-5">Aerospace Application Impact</h4>
+                        <p>
+                            Achievement of near-zero coefficient of thermal expansion represents a significant
+                            advancement for aerospace
+                            applications. This property enables dimensional stability across the extreme temperature
+                            ranges encountered
+                            in aerospace environments, reducing thermal stress and improving structural reliability.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -394,20 +569,56 @@
                     <h2 class="title is-3">My Contributions</h2>
                     <div class="content">
                         <p>
-                            As the lead researcher on this Dean Research Award project, I was responsible for 
-                            all aspects of the research from conception to completion:
+                            As the lead researcher on this Dean Research Award project working under Dr. Ahmed Samir
+                            Ead,
+                            I was responsible for all aspects of the research execution across the three distinct
+                            phases:
                         </p>
+
+                        <h4 class="title is-5">Phase 1 - Torsional Testing</h4>
                         <ul>
-                            <li><strong>Research Design:</strong> Developed the experimental methodology and 
-                            testing protocols for composite characterization</li>
-                            <li><strong>Manufacturing:</strong> Operated maypole braiding machine and optimized 
-                            manufacturing parameters for consistent material properties</li>
-                            <li><strong>Testing & Analysis:</strong> Conducted all mechanical testing and DIC 
-                            analysis using DaVis software and stereo camera systems</li>
-                            <li><strong>Data Analysis:</strong> Analyzed thermal expansion properties and 
-                            correlated microstructure with performance characteristics</li>
-                            <li><strong>Documentation:</strong> Prepared comprehensive research documentation 
-                            and presented findings at university research symposium</li>
+                            <li><strong>Experimental Design:</strong> Developed torsional testing protocols and DIC
+                                integration methodology</li>
+                            <li><strong>Sample Preparation:</strong> Conducted systematic epoxy mixing, molding, and
+                                curing processes</li>
+                            <li><strong>Testing Execution:</strong> Operated Torsion Master system with synchronized DIC
+                                data acquisition</li>
+                            <li><strong>Data Analysis:</strong> Processed shear strain data and calculated shear modulus
+                                from experimental results</li>
+                        </ul>
+
+                        <h4 class="title is-5">Phase 2 - Compression Testing</h4>
+                        <ul>
+                            <li><strong>Protocol Development:</strong> Established compression testing methodology with
+                                statistical validation</li>
+                            <li><strong>Equipment Operation:</strong> Conducted testing using Instron TTKH with
+                                integrated DIC systems</li>
+                            <li><strong>Results Analysis:</strong> Determined compressive modulus and validated material
+                                isotropy</li>
+                            <li><strong>Failure Analysis:</strong> Characterized ductile compression behavior vs.
+                                brittle tensile failure</li>
+                        </ul>
+
+                        <h4 class="title is-5">Phase 3 - Thermal Expansion Research</h4>
+                        <ul>
+                            <li><strong>Manufacturing Process:</strong> Operated maypole braiding machine for composite
+                                fabrication</li>
+                            <li><strong>Parameter Optimization:</strong> Systematically varied braid angles and material
+                                ratios</li>
+                            <li><strong>Thermal Characterization:</strong> Conducted thermal expansion testing and
+                                analysis</li>
+                            <li><strong>Achievement:</strong> Successfully achieved near-zero coefficient of thermal
+                                expansion</li>
+                        </ul>
+
+                        <h4 class="title is-5">Research Documentation and Communication</h4>
+                        <ul>
+                            <li><strong>Comprehensive Documentation:</strong> Maintained detailed research records and
+                                methodology documentation</li>
+                            <li><strong>Results Presentation:</strong> Prepared research poster and presented findings
+                                at university symposium</li>
+                            <li><strong>Technical Analysis:</strong> Correlated microstructure with performance
+                                characteristics across all phases</li>
                         </ul>
                     </div>
                 </div>

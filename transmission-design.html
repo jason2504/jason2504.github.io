@@ -1,0 +1,713 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Transmission Design - Jason Chen" />
+    <meta name="keywords" content="Transmission Design Mechanical Engineering Gears Dog Clutch Sequential" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>5-Speed + Reverse Sequential Transmission Design - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover,
+        .gallery video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Results highlight box */
+        .results-highlight {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        /* Clickable media styles */
+        .clickable-media {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .clickable-media:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                margin-top: 0;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid #e9ecef;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Sequential Transmission Design</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        5-Speed + Reverse Sequential Dog-Clutch Transmission for Racing Applications
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Results Highlight -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Engineered high-performance racing transmission featuring rapid-shift dog clutch mechanism
+                        optimized for Mario Kart-style competition</strong> with instant gear changes. Performed
+                    comprehensive gear train analysis including bearing load calculations, spline stress distribution,
+                    and power transmission optimization for maximum efficiency and reliability.
+                </p>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            This junior capstone project challenged us to design a fully functional 5-speed + reverse
+                            transmission system for a simulated Mario Kart-style racing scenario on Rainbow Road. The
+                            system needed to be lightweight, mechanically robust, and capable of rapid gear changes to
+                            match high-speed racing dynamics, adapting concepts from motorcycle and sports car racing to
+                            an imaginative, competitive environment.
+                        </p>
+
+                        <h3 class="title is-4">Design Philosophy</h3>
+                        <p>
+                            Our team collectively decided on a spur gear-based sequential dog clutch system to meet the
+                            performance and design goals. The dog clutch mechanism enables rapid, mechanically locked
+                            gear shifts without needing synchronizers—perfect for our competitive racing concept where
+                            every millisecond matters in gear transitions.
+                        </p>
+
+                        <h3 class="title is-4">Sequential Dog Clutch Technology</h3>
+                        <p>
+                            The dog clutch system represents the heart of our transmission design, allowing the driver
+                            to engage only the selected gear speed while other gears rotate freely. This mechanism is
+                            controlled by a selector rod and prevents gear skipping while enabling lightning-fast
+                            shifts—crucial for competitive racing scenarios where speed changes can determine race
+                            outcomes.
+                        </p>
+
+                        <!-- Transmission Visualization -->
+                        <div class="columns" style="margin-top: 2rem;">
+                            <div class="column">
+                                <div class="content">
+                                    <video class="clickable-media"
+                                        style="width: 100%; max-width: 600px; margin: 0 auto; display: block;" controls
+                                        autoplay loop muted
+                                        onclick="showVideo('images/Junior_capstone_transmission.mp4')">
+                                        <source src="images/Junior_capstone_transmission.mp4" type="video/mp4">
+                                    </video>
+                                    <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                                        <strong>Sequential dog clutch transmission in action:</strong> Demonstrating
+                                        rapid gear engagement mechanism with instantaneous power transfer. The animation
+                                        shows the selector rod movement and dog clutch engagement across different gear
+                                        ratios.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="title is-4">Mechanical Architecture</h3>
+                        <p>
+                            The transmission features three primary shafts: the input shaft receives power directly from
+                            the engine, the layshaft contains multiple gears of different sizes for gear ratio changes,
+                            and the output shaft uses the dog clutch mechanism to engage different gear sets. This
+                            configuration provides direct power transfer with minimal energy loss.
+                        </p>
+
+                        <h3 class="title is-4">Dog Clutch Operation</h3>
+                        <p>
+                            When the dog clutch is engaged to any gear, other gear sets continue rotating freely, but
+                            only the selected gear pair transmits power. The dog clutch moves along the output shaft via
+                            splines and engages different gear sets quickly through chamfered slots on gear sides. This
+                            design eliminates the complexity and weight of synchronizers while providing instantaneous
+                            engagement.
+                        </p>
+
+                        <h3 class="title is-4">Gear Selection and Ratios</h3>
+                        <p>
+                            Each gear ratio was carefully calculated considering driver weight, track characteristics,
+                            and desired acceleration curves. The gear selection process involved determining pitch
+                            diameter, number of teeth, module, and pressure angle for each gear pair, ensuring optimal
+                            power transmission efficiency while maintaining mechanical reliability under racing
+                            conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Course:</strong> Junior Capstone Project</p>
+                        <p><strong>Duration:</strong> May 2021 – August 2021</p>
+                        <p><strong>Institution:</strong> University of Alberta</p>
+                        <p><strong>Role:</strong> Mechanical Team Member</p>
+                        <p><strong>Focus Area:</strong> Gear Design Team</p>
+                        <p><strong>Transmission Type:</strong> Sequential Dog Clutch</p>
+                        <p><strong>Gear Count:</strong> 5-Speed + Reverse</p>
+                        <p><strong>Shift Type:</strong> Instantaneous engagement</p>
+                        <p><strong>Application:</strong> Mario Kart Racing</p>
+                        <p><strong>Power Transfer:</strong> Direct mechanical</p>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Mechanical Design</span>
+                            <span class="tech-tag">Gear Analysis</span>
+                            <span class="tech-tag">Bearing Selection</span>
+                            <span class="tech-tag">Dog Clutch Design</span>
+                            <span class="tech-tag">Shaft Design</span>
+                            <span class="tech-tag">Spline Systems</span>
+                            <span class="tech-tag">Power Transmission</span>
+                            <span class="tech-tag">Racing Applications</span>
+                            <span class="tech-tag">SMath Calculations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Technical Implementation</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Gear Design and Analysis</h4>
+                                <ul>
+                                    <li><strong>Material Selection:</strong> Steel gears for maximum durability and
+                                        load-bearing capacity</li>
+                                    <li><strong>Geometric Parameters:</strong> Optimized pitch diameter, teeth count,
+                                        module, and pressure angle</li>
+                                    <li><strong>Safety Factors:</strong> Comprehensive SMath calculations incorporating
+                                        multiple safety margins</li>
+                                    <li><strong>Load Analysis:</strong> Torque requirements calculated for each speed
+                                        ratio</li>
+                                    <li><strong>Efficiency Optimization:</strong> Gear profiles designed for maximum
+                                        power transmission efficiency</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Bearing and Shaft Systems</h4>
+                                <ul>
+                                    <li><strong>Deep Groove Ball Bearings:</strong> Selected for main shafts to handle
+                                        radial and axial loads</li>
+                                    <li><strong>Needle Bearings:</strong> Chosen for gear support due to compact size
+                                        and high radial capacity</li>
+                                    <li><strong>Spline Design:</strong> Output shaft splines enable dog clutch sliding
+                                        while preventing slip</li>
+                                    <li><strong>Keyway Systems:</strong> Secure gear attachment to input and layshafts
+                                    </li>
+                                    <li><strong>Shaft Analysis:</strong> Comprehensive load distribution and deflection
+                                        calculations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 class="title is-5">Dog Clutch Mechanism Design</h4>
+                        <p>
+                            The dog clutch represents the core innovation of our transmission design. Unlike traditional
+                            synchronized transmissions, our dog clutch system provides instantaneous engagement through
+                            mechanical interference. The chamfered dog teeth guide engagement while the splined output
+                            shaft allows rapid axial movement for gear selection.
+                        </p>
+
+                        <h4 class="title is-5">Reverse Gear Implementation</h4>
+                        <p>
+                            The reverse gear system differs from forward gears by incorporating an idler gear to reverse
+                            rotation direction without changing gear ratio. This configuration provides slower, more
+                            controlled reverse speeds while maintaining the same dog clutch engagement mechanism for
+                            consistency across all gear selections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Technical Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Technical Contributions</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Gear Design and Calculation</h4>
+                        <p>
+                            I took leadership in gear design and analysis, performing comprehensive SMath calculations
+                            to determine optimal gear ratios for all five forward speeds and reverse. This involved
+                            analyzing torque requirements, speed characteristics, and safety factors to ensure reliable
+                            operation under racing conditions. My calculations incorporated driver weight, track
+                            characteristics, and desired acceleration profiles.
+                        </p>
+
+                        <h4 class="title is-5">Bearing Selection and Analysis</h4>
+                        <p>
+                            I selected appropriate bearings for different applications throughout the transmission. Deep
+                            groove ball bearings were chosen for main shafts due to their ability to handle combined
+                            radial and axial loads with low friction. Needle bearings were selected for individual gear
+                            support, providing high radial load capacity in a compact package while enabling independent
+                            gear rotation.
+                        </p>
+
+                        <h4 class="title is-5">Mechanical Component Integration</h4>
+                        <ul>
+                            <li><strong>Spline Systems:</strong> Designed output shaft splines for non-slip power
+                                transmission while allowing dog clutch axial movement</li>
+                            <li><strong>Keyway Design:</strong> Specified keyways for secure gear attachment to input
+                                and layshafts</li>
+                            <li><strong>Shaft Configuration:</strong> Coordinated three-shaft architecture for optimal
+                                power flow and mechanical packaging</li>
+                            <li><strong>Dog Clutch Integration:</strong> Ensured proper engagement geometry and chamfer
+                                design for smooth shifts</li>
+                        </ul>
+
+                        <h4 class="title is-5">Presentation and Communication</h4>
+                        <p>
+                            I contributed to our project presentation by producing a comprehensive YouTube walkthrough
+                            and a commercial-style video for our final design presentation. These materials effectively
+                            communicated both the technical functionality and competitive appeal of our transmission
+                            system to both technical and non-technical audiences at the Capstone Conference.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Challenges and Solutions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Design Challenges and Engineering Solutions</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Dog Clutch Engagement Challenges</h4>
+                        <p>
+                            One significant challenge was ensuring smooth dog clutch engagement without synchronizers.
+                            Traditional synchronized transmissions use friction cones to match gear speeds before
+                            engagement. Our solution involved carefully designed chamfered dog teeth that guide
+                            engagement and help align rotational speeds during shifting.
+                        </p>
+
+                        <h4 class="title is-5">Power Transfer Efficiency</h4>
+                        <p>
+                            Maximizing power transmission efficiency required careful attention to gear tooth profiles,
+                            bearing selection, and shaft alignment. We optimized gear geometry for minimal friction
+                            losses while ensuring adequate strength for racing loads. The direct mechanical engagement
+                            of the dog clutch system eliminates the energy losses associated with hydraulic or
+                            friction-based systems.
+                        </p>
+
+                        <h4 class="title is-5">Mechanical Packaging Constraints</h4>
+                        <p>
+                            Fitting five forward gears plus reverse into a compact transmission housing required careful
+                            spatial planning. Our three-shaft configuration optimizes space utilization while
+                            maintaining accessibility for manufacturing and assembly. The sequential nature of the dog
+                            clutch system simplifies the control mechanism compared to traditional manual transmissions.
+                        </p>
+
+                        <h4 class="title is-5">Racing-Specific Requirements</h4>
+                        <p>
+                            Racing applications demand rapid gear changes, mechanical reliability under high loads, and
+                            minimal weight. Our dog clutch system addresses these requirements by providing
+                            instantaneous shifts, direct mechanical engagement, and fewer components than synchronized
+                            alternatives—making it ideal for competitive motorsports applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Analysis and Validation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">System Analysis and Performance Validation</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Gear Train Analysis</h4>
+                        <p>
+                            Comprehensive analysis included bearing load calculations, spline stress distribution, and
+                            power transmission optimization. Each gear pair was analyzed for contact stress, bending
+                            stress, and fatigue life under racing conditions. Safety factors were incorporated to ensure
+                            reliable operation despite the demanding nature of competitive racing.
+                        </p>
+
+                        <h4 class="title is-5">Load Path Verification</h4>
+                        <p>
+                            Power flow analysis confirmed efficient transmission from input shaft through the layshaft
+                            to the output shaft. The dog clutch mechanism ensures that only the selected gear pair
+                            transmits load, while other gears rotate freely without contributing to system losses. This
+                            selective engagement is crucial for maintaining efficiency across all gear ratios.
+                        </p>
+
+                        <h4 class="title is-5">Mechanical Advantage Calculations</h4>
+                        <p>
+                            Each gear ratio was optimized for specific racing scenarios, providing appropriate
+                            mechanical advantage for acceleration, top speed, and handling characteristics expected in
+                            Mario Kart-style competition. The reverse gear incorporates higher reduction for controlled
+                            low-speed maneuvering.
+                        </p>
+
+                        <h4 class="title is-5">Design Validation Results</h4>
+                        <p>
+                            Our design successfully demonstrated mechanical feasibility and functionality of a compact
+                            5-speed + reverse dog clutch transmission. The system features reliable torque transfer,
+                            responsive shifting, and a clean modular layout suitable for racing applications. All gear
+                            ratios met performance requirements within our design constraints.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Improvements and Learning Outcomes -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Future Improvements and Learning Outcomes</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Potential Design Enhancements</h4>
+                        <p>
+                            Future iterations could benefit from finite element analysis of gear contact and bending
+                            stresses, shaft deformation analysis, and detailed dog clutch engagement studies. While our
+                            course emphasized analytical calculations using formulas and safety factors, FEA validation
+                            would provide additional confidence in high-stress applications.
+                        </p>
+
+                        <h4 class="title is-5">Synchronization Considerations</h4>
+                        <p>
+                            Although our design intentionally avoided synchronizers for racing applications, future
+                            development might explore hybrid systems that provide synchronization assistance while
+                            maintaining the rapid engagement characteristics of dog clutches. This could improve
+                            drivability for street applications while preserving racing performance.
+                        </p>
+
+                        <h4 class="title is-5">Technical Learning Outcomes</h4>
+                        <ul>
+                            <li><strong>Gear Design Fundamentals:</strong> Gained deep understanding of gear geometry,
+                                load analysis, and material selection</li>
+                            <li><strong>Bearing Application:</strong> Learned to select appropriate bearings for
+                                specific load and space constraints</li>
+                            <li><strong>Mechanical Systems Integration:</strong> Developed skills in coordinating
+                                multiple mechanical subsystems</li>
+                            <li><strong>Racing Technology:</strong> Understood performance requirements and design
+                                trade-offs in motorsports applications</li>
+                            <li><strong>Design Communication:</strong> Enhanced ability to present technical concepts to
+                                diverse audiences</li>
+                        </ul>
+
+                        <h4 class="title is-5">Project Impact and Recognition</h4>
+                        <p>
+                            Our design was well-received at the Capstone Conference, particularly for its
+                            professional-level presentation and technical completeness. The project demonstrated our
+                            team's ability to integrate mechanical design principles with performance requirements,
+                            resulting in a functional and innovative transmission solution for competitive racing
+                            applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>

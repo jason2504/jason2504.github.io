@@ -1,0 +1,716 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="AMR Platform Design - Jason Chen" />
+    <meta name="keywords" content="Robotics AMR Platform Design Capstone Mobile Robot Industrial" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AMR Platform Design - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover,
+        .gallery video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Results highlight box */
+        .results-highlight {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        /* Clickable media styles */
+        .clickable-media {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .clickable-media:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                margin-top: 0;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid #e9ecef;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">AMR Platform Design</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        Autonomous Mobile Robot Platform for Industrial Applications
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Results Highlight -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Led 5-engineer team developing 2-ton capacity tracked platform for industrial 6-DOF robotic
+                        arm, achieving sub-160-micron precision</strong> through comprehensive FEA validation. Delivered
+                    complete $90,000 design supporting extreme temperature operation (-40°C to 30°C) with 6-hour runtime
+                    for autonomous welding and additive manufacturing applications.
+                </p>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            This senior capstone project involved designing a proof-of-concept autonomous mobile robot
+                            (AMR) platform to support a Yaskawa GP-50 6-DOF robotic arm for large-scale robotic metal
+                            additive manufacturing and heavy-duty industrial welding. The platform needed to be rugged,
+                            all-terrain, and capable of operating continuously in extreme environments—both indoors and
+                            outdoors.
+                        </p>
+
+                        <h3 class="title is-4">Design Requirements</h3>
+                        <p>
+                            Our client specified demanding requirements that pushed the boundaries of conventional
+                            mobile robotics design. The platform needed to support a 2-ton robotic payload while
+                            maintaining precision sufficient for high-quality welding operations. Additionally, it had
+                            to traverse 15% grade inclines, maintain stability during high-precision arm operations, and
+                            endure harsh temperature ranges from −40°C to 30°C.
+                        </p>
+
+                        <h3 class="title is-4">Design Philosophy and Approach</h3>
+                        <p>
+                            We prioritized robustness and reliability over weight optimization, recognizing that
+                            industrial welding and additive manufacturing applications demand unwavering precision and
+                            dependability. Our approach centered on comprehensive structural analysis, thorough
+                            component selection, and systematic validation of all design decisions through finite
+                            element analysis.
+                        </p>
+
+                        <!-- Design Visualization -->
+                        <div class="columns" style="margin-top: 2rem;">
+                            <div class="column">
+                                <div class="content">
+                                    <img src="images/AMR.png" class="clickable-media"
+                                        onclick="showImage('images/AMR.png')" alt="AMR Platform CAD Design"
+                                        style="width: 100%; max-width: 600px; margin: 0 auto; display: block;" />
+                                    <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                                        <strong>Complete AMR platform design:</strong> Featuring tracked mobility
+                                        system, integrated battery enclosure, and mounting interface for 6-DOF robotic
+                                        arm. The design emphasizes structural rigidity and component accessibility for
+                                        industrial maintenance.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="title is-4">Mobility System Design</h3>
+                        <p>
+                            After evaluating wheels, mecanum wheels, and tracks for mobility, we selected a tracked
+                            system due to its superior weight distribution on uneven terrain. Tracks provide better
+                            performance on loose and packed dirt—the typical working environment for our target
+                            applications. We also considered adding spider outriggers to improve stability, but center
+                            of mass analysis revealed this complexity was unnecessary for our design envelope.
+                        </p>
+
+                        <h3 class="title is-4">Power and Control Systems</h3>
+                        <p>
+                            For propulsion, we evaluated hydraulic motors but selected electric motors for their
+                            simplicity and higher energy efficiency. The power system features two 75 HP inverter-duty
+                            electric motors powered by 24 LG Lithium-Ion Pacifica modules with 62.4 kWh capacity. This
+                            configuration enables 3.5km of maneuvering on tracks while supporting continuous welding
+                            operations and robotic arm control.
+                        </p>
+
+                        <h3 class="title is-4">Structural Engineering and FEA Analysis</h3>
+                        <p>
+                            We conducted comprehensive finite element analysis to ensure the platform could handle the
+                            2-ton payload with minimal deflection at the robotic arm's end effector. Our structural
+                            design maintained functionality of the precision robotic arm by limiting deflection to under
+                            160 microns—critical for maintaining welding quality and additive manufacturing precision.
+                        </p>
+
+                        <h3 class="title is-4">Environmental Considerations</h3>
+                        <p>
+                            The design addresses extreme operating conditions including the ability to traverse 15%
+                            inclines, withstand -40°C temperature, and operate both indoors and outdoors. Material
+                            selection prioritized thermal stability and structural integrity across the full temperature
+                            range while ensuring reliable operation of electronic systems and mechanical components.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Course:</strong> MEC E 460 - Senior Capstone Project</p>
+                        <p><strong>Duration:</strong> January 2024 – April 2024</p>
+                        <p><strong>Institution:</strong> University of Alberta</p>
+                        <p><strong>Role:</strong> Project Manager</p>
+                        <p><strong>Team Size:</strong> 5 Engineers</p>
+                        <p><strong>Budget:</strong> $90,000</p>
+                        <p><strong>Payload Capacity:</strong> 2 tons</p>
+                        <p><strong>Operating Range:</strong> -40°C to 30°C</p>
+                        <p><strong>Battery Capacity:</strong> 62.4 kWh</p>
+                        <p><strong>Runtime:</strong> 6 hours continuous operation</p>
+                        <p><strong>Max Deflection:</strong>
+                            <160 microns</p>
+
+                                <div class="tech-stack">
+                                    <span class="tech-tag">SolidWorks</span>
+                                    <span class="tech-tag">FEA Analysis</span>
+                                    <span class="tech-tag">Project Management</span>
+                                    <span class="tech-tag">Material Selection</span>
+                                    <span class="tech-tag">Structural Design</span>
+                                    <span class="tech-tag">Cost Analysis</span>
+                                    <span class="tech-tag">6-DOF Robotics</span>
+                                    <span class="tech-tag">Industrial Automation</span>
+                                    <span class="tech-tag">Tracked Vehicles</span>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Technical Implementation</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Mechanical Systems</h4>
+                                <ul>
+                                    <li><strong>Chassis Material:</strong> ST 52-3 steel for main structure, Steel A36
+                                        for baseplate and hub components</li>
+                                    <li><strong>Battery Enclosure:</strong> Aluminum 6061 for weight reduction while
+                                        maintaining structural integrity</li>
+                                    <li><strong>Track System:</strong> Bobcat T76 interchangeable tracks for proven
+                                        durability and serviceability</li>
+                                    <li><strong>Robotic Interface:</strong> Custom baseplate design for Yaskawa GP-50
+                                        6-DOF arm mounting</li>
+                                    <li><strong>Sensor Integration:</strong> GNSS compass, 2D LiDAR, stereo cameras, and
+                                        shaft encoders</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Power and Control</h4>
+                                <ul>
+                                    <li><strong>Motors:</strong> Two 75 HP inverter-duty electric motors with redundant
+                                        control systems</li>
+                                    <li><strong>Battery System:</strong> 24 LG Lithium-Ion Pacifica modules selected for
+                                        energy density and safety</li>
+                                    <li><strong>Range of Motion:</strong> 180° lateral and 230° vertical robotic arm
+                                        operation</li>
+                                    <li><strong>Emergency Systems:</strong> Multiple emergency stop systems and
+                                        fail-safe protocols</li>
+                                    <li><strong>Navigation:</strong> Multi-sensor fusion for precise positioning and
+                                        autonomous operation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4 class="title is-5">Finite Element Analysis Results</h4>
+                        <p>
+                            Our comprehensive FEA analysis validated the structural design under worst-case loading
+                            conditions. Maximum von Mises stress reached 62 MPa at the chassis base—well below the ST
+                            52-3 steel yield strength of 355 MPa, providing a robust safety margin. Most critically,
+                            end-effector deflection remained under 160 microns, ensuring precision robotic operations.
+                        </p>
+
+                        <h4 class="title is-5">Manufacturing and Cost Analysis</h4>
+                        <p>
+                            The design required only four custom manufactured parts: chassis, baseplate, battery
+                            enclosure, and hub. Manufacturing cost analysis included weld length calculations, shop
+                            rates, and setup margins. We validated manufacturing feasibility through industry partner
+                            consultations and cost estimation through platforms like Xometry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Trade-offs and Decisions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Design Trade-offs and Engineering Decisions</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Mobility System Selection</h4>
+                        <p>
+                            We prioritized stability over portability by selecting tracks instead of wheels. While this
+                            increased overall weight and complexity, it dramatically improved performance on uneven
+                            terrain—essential for outdoor industrial applications. The track system also provided
+                            superior load distribution, critical for our 2-ton payload requirement.
+                        </p>
+
+                        <h4 class="title is-5">Material Selection Strategy</h4>
+                        <p>
+                            To meet cost requirements, we opted for proven steel alloys instead of exotic lightweight
+                            materials. This decision slightly increased weight but ensured cost-efficiency,
+                            manufacturing familiarity, and field serviceability. Our material choices balanced
+                            performance requirements with practical considerations for industrial deployment.
+                        </p>
+
+                        <h4 class="title is-5">Power System Architecture</h4>
+                        <p>
+                            Electric motors were chosen over hydraulic alternatives for their energy efficiency, control
+                            precision, and reduced maintenance requirements. The battery system design prioritized
+                            energy density and safety, with LG Pacifica modules providing proven performance in
+                            automotive applications.
+                        </p>
+
+                        <h4 class="title is-5">Structural Design Philosophy</h4>
+                        <p>
+                            Our design philosophy emphasized over-engineering critical load paths while optimizing
+                            non-structural components for weight and cost. The chassis design concentrated material
+                            where structural analysis indicated highest stress concentrations, ensuring long-term
+                            durability under harsh operating conditions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Leadership and Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Leadership and Technical Contributions</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Project Management Excellence</h4>
+                        <p>
+                            As project manager, I coordinated all cross-functional team efforts, maintained regular
+                            client communication, and ensured all technical requirements were met on schedule. I
+                            developed comprehensive project timelines, managed deliverable schedules, and facilitated
+                            effective team communication throughout the project lifecycle.
+                        </p>
+
+                        <h4 class="title is-5">Structural Analysis Leadership</h4>
+                        <p>
+                            I led the finite element analysis efforts, conducting multiple load case simulations under
+                            worst-case scenarios. This included full extension robotic arm operations, maximum payload
+                            conditions, and extreme environmental loading. I interpreted stress/strain distributions and
+                            optimized frame geometry and material selection based on analytical results.
+                        </p>
+
+                        <h4 class="title is-5">Technical Design Contributions</h4>
+                        <ul>
+                            <li><strong>Mechanical Design:</strong> Co-designed chassis and battery enclosure using
+                                SolidWorks, integrating constraints for sensor placement, access panels, and thermal
+                                management</li>
+                            <li><strong>Material Engineering:</strong> Selected ST 52-3 steel for main chassis and
+                                6061-T6 aluminum for battery enclosure, balancing strength, weight, and
+                                manufacturability</li>
+                            <li><strong>System Integration:</strong> Participated in load rating analysis and vendor
+                                consultation for track systems and motors</li>
+                            <li><strong>Manufacturing Validation:</strong> Used FEA data and industry estimates to
+                                validate manufacturing feasibility and cost within project budget</li>
+                        </ul>
+
+                        <h4 class="title is-5">Documentation and Communication</h4>
+                        <p>
+                            I maintained detailed engineering documentation throughout the project, supported teammates
+                            in their subsystem development, and ensured technical decisions aligned with client
+                            requirements and long-term autonomous deployment vision. My documentation included design
+                            rationale, analysis results, and manufacturing specifications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results and Validation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Results and Validation</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Structural Performance Validation</h4>
+                        <p>
+                            Our design successfully met all structural requirements with significant safety margins.
+                            Maximum stress of 62.5 MPa remained well within material limits, and end-effector deflection
+                            stayed under the critical 160-micron threshold. These results confirmed the platform's
+                            suitability for precision robotic operations.
+                        </p>
+
+                        <h4 class="title is-5">System Capabilities Achieved</h4>
+                        <ul>
+                            <li><strong>Payload Performance:</strong> Successfully designed for 2-ton robotic arm
+                                support with operational precision</li>
+                            <li><strong>Mobility Performance:</strong> Validated 15% grade climbing capability and
+                                all-terrain operation</li>
+                            <li><strong>Endurance Validation:</strong> Demonstrated 6 hours continuous welding with
+                                3.5km maneuvering capability</li>
+                            <li><strong>Environmental Qualification:</strong> Confirmed operation across -40°C to 30°C
+                                temperature range</li>
+                            <li><strong>Budget Compliance:</strong> Delivered complete design within $90,000 budget
+                                constraint</li>
+                        </ul>
+
+                        <h4 class="title is-5">Manufacturing Readiness</h4>
+                        <p>
+                            The design passed manufacturability review with industry partners and received client
+                            approval as the foundation for their future autonomous welding and additive manufacturing
+                            system. Cost analysis confirmed economic viability for industrial deployment, with clear
+                            paths to volume production optimization.
+                        </p>
+
+                        <h4 class="title is-5">Client Impact and Future Development</h4>
+                        <p>
+                            Our robust, fully-validated mechanical design provides the client with a solid foundation
+                            for their autonomous manufacturing vision. The design's modularity and over-engineering
+                            ensure compatibility with future technological upgrades while maintaining current precision
+                            and reliability requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lessons Learned and Future Improvements -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Lessons Learned and Future Improvements</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Project Management Insights</h4>
+                        <p>
+                            Leading a multidisciplinary engineering team reinforced the importance of clear
+                            communication, structured documentation, and regular milestone reviews. Coordinating
+                            mechanical, electrical, and controls engineering perspectives required careful attention to
+                            interface requirements and system-level thinking.
+                        </p>
+
+                        <h4 class="title is-5">Technical Learning Outcomes</h4>
+                        <ul>
+                            <li><strong>FEA Expertise:</strong> Gained deep experience in structural analysis under
+                                complex loading conditions</li>
+                            <li><strong>Material Science Application:</strong> Developed practical understanding of
+                                material selection for extreme environments</li>
+                            <li><strong>System Integration:</strong> Learned to balance competing requirements across
+                                mechanical, thermal, and electrical subsystems</li>
+                            <li><strong>Manufacturing Considerations:</strong> Gained appreciation for
+                                design-for-manufacturing principles in industrial applications</li>
+                        </ul>
+
+                        <h4 class="title is-5">Future Development Opportunities</h4>
+                        <p>
+                            Given more development time, we would have implemented physical prototyping and field
+                            testing to validate simulation results. Additionally, exploring lightweight materials and
+                            advanced manufacturing techniques could optimize weight without compromising structural
+                            integrity. Integration of predictive maintenance systems would enhance long-term operational
+                            reliability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>

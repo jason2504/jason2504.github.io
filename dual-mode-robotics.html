@@ -94,12 +94,12 @@
             position: absolute;
             background-color: white;
             min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             z-index: 1001;
             top: 100%;
             left: 0;
-            margin-top: 0.5rem;
+            margin-top: 0;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -164,15 +164,26 @@
             margin: 2rem 0;
         }
 
-        .gallery img, .gallery video {
+        .gallery img,
+        .gallery video {
             width: 100%;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        .gallery img:hover, .gallery video:hover {
+        .gallery img:hover,
+        .gallery video:hover {
             transform: scale(1.05);
+        }
+
+        /* Results highlight box */
+        .results-highlight {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
 
         /* Responsive design */
@@ -277,53 +288,103 @@
 
     <section class="section">
         <div class="container is-max-desktop">
+            <!-- Results Highlight -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Successfully designed and prototyped a novel dual-mode robotic system capable of both
+                        precision manipulation (250g payload, ±2mm accuracy) and dynamic locomotion support.</strong>
+                    Developed two distinct architectural approaches: a rigid joint-based system with universal joint
+                    innovation and a continuum cable-actuated design, both featuring a compliant 3-finger gripper with
+                    worm gear reduction enabling seamless mode transitions.
+                </p>
+                <p style="margin-top: 0.5rem; color: #064e3b;">
+                    Research conducted at University of Pennsylvania's GRASP Laboratory with Dr. Nadia Figueroa,
+                    targeting applications in search & rescue, exploration robotics, and adaptive service systems.
+                </p>
+            </div>
+
             <!-- Project Overview -->
             <div class="columns">
                 <div class="column is-8">
                     <div class="content">
                         <h2 class="title is-3">Project Overview</h2>
                         <p>
-                            This ongoing research project at the University of Pennsylvania's GRASP Laboratory focuses on developing 
-                            innovative dual-mode robotic systems capable of both precision manipulation and dynamic locomotion. 
-                            Under the supervision of Dr. Nadia Figueroa in the Figueroa Robotics Lab, I am designing and prototyping 
-                            robotic arms that can seamlessly transition between delicate object manipulation and robust locomotion support.
-                        </p>
-                        
-                        <h3 class="title is-4">Technical Approach</h3>
-                        <p>
-                            The project explores two distinct design paradigms:
-                        </p>
-                        <ul>
-                            <li><strong>Rigid Joint-Based System:</strong> Features custom universal joints and precision servo mechanisms 
-                            with timing belt transmission and bevel gear coupling for high-precision control</li>
-                            <li><strong>Cable-Actuated Continuum System:</strong> Utilizes distributed motor control with flexible 
-                            vertebrae structures, providing enhanced adaptability and compliance</li>
-                        </ul>
+                            This ongoing research project at the University of Pennsylvania's GRASP Laboratory addresses
+                            a fundamental challenge in robotics: creating a single system that excels at both precision
+                            manipulation and dynamic locomotion. Current robotic systems typically specialize in either
+                            mobility (quadrupeds like Boston Dynamics' Spot) or manipulation (industrial arms), but
+                            rarely achieve both capabilities cost-effectively within a <$3,000 prototype budget. </p>
 
-                        <h3 class="title is-4">Key Innovations</h3>
-                        <p>
-                            The core innovation lies in the compliant 3-finger gripper design, which incorporates worm gear reduction 
-                            and spring-based adaptive control. This allows for seamless transitions between:
-                        </p>
-                        <ul>
-                            <li>Delicate manipulation tasks requiring precise force control</li>
-                            <li>Robust ground contact support for locomotion</li>
-                            <li>Cooperative manipulation between multiple arms</li>
-                        </ul>
+                                <p>
+                                    Drawing inspiration from biological systems—particularly Dr. Octopus from Marvel
+                                    comics and natural organisms like primates that use limbs for both locomotion and
+                                    manipulation—the project explores dual-function limb designs. The research
+                                    challenges conventional robotics paradigms by creating arms that serve as both
+                                    precision manipulators and adaptive locomotion supporters.
+                                </p>
 
-                        <h3 class="title is-4">Current Progress</h3>
-                        <p>
-                            As of April 2025, I have completed the initial mechanical design and fabrication of the first prototype. 
-                            The system successfully demonstrates basic dual-mode functionality, with ongoing work focused on:
-                        </p>
-                        <ul>
-                            <li>Control algorithm development for smooth mode transitions</li>
-                            <li>Integration of tactile feedback systems</li>
-                            <li>Performance optimization for both manipulation and locomotion tasks</li>
-                        </ul>
+                                <h3 class="title is-4">Design Evolution: Two Architectural Approaches</h3>
+
+                                <h4 class="title is-5">Version 1: Rigid Joint-Based System</h4>
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        <p>
+                                            The initial design employed a 4-DOF configuration with custom universal
+                                            joints at the shoulder, providing 2-DOF motion through timing belt
+                                            transmission and bevel gear coupling. This approach demonstrated dual-mode
+                                            feasibility but revealed limitations in terrain adaptability and mechanical
+                                            complexity requiring precision-machined components.
+                                        </p>
+                                    </div>
+                                    <div class="column is-4">
+                                        <img src="images/Cute_Octopus_1st_iteration.jpg"
+                                            onclick="showImage('images/Cute_Octopus_1st_iteration.jpg')"
+                                            alt="Version 1 Rigid Joint Design"
+                                            style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'" />
+                                    </div>
+                                </div>
+
+                                <h4 class="title is-5">Version 2: Cable-Actuated Continuum System</h4>
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        <p>
+                                            The second iteration transitioned to a continuum arm architecture featuring
+                                            6 triangular vertebrae connected by TPU springs and controlled via fishing
+                                            line tendons. This design provides infinite degrees of freedom through
+                                            3-motor cable coordination, offering superior terrain adaptation and
+                                            eliminating complex universal joint mechanisms.
+                                        </p>
+                                    </div>
+                                    <div class="column is-4">
+                                        <img src="images/Cute_Octopus_2nd_iteration.png"
+                                            onclick="showImage('images/Cute_Octopus_2nd_iteration.png')"
+                                            alt="Version 2 Continuum Design"
+                                            style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'" />
+                                    </div>
+                                </div>
+
+                                <h3 class="title is-4">Unified Gripper Innovation</h3>
+                                <p>
+                                    Both iterations feature the same fundamental innovation: a compliant 3-finger
+                                    gripper with 60:1 worm gear reduction, spring-loaded compliance, and self-locking
+                                    capability. This enables seamless transitions between delicate object manipulation
+                                    (250g payload) and robust ground contact support during locomotion.
+                                </p>
+
+                                <h3 class="title is-4">Performance Targets and Validation</h3>
+                                <p>
+                                    Comprehensive torque analysis using SolidWorks mass properties validates servo
+                                    adequacy across operational modes, achieving manipulation precision of ±2mm with
+                                    5-50N force range, 1-2m/s locomotion speed capability, and <1s mode switching time
+                                        within <10kg total system weight. </p>
                     </div>
                 </div>
-                
+
                 <div class="column is-4">
                     <div class="project-details">
                         <h3 class="title is-5">Project Details</h3>
@@ -332,15 +393,89 @@
                         <p><strong>Laboratory:</strong> GRASP Laboratory, Figueroa Robotics Lab</p>
                         <p><strong>Supervisor:</strong> Dr. Nadia Figueroa</p>
                         <p><strong>Role:</strong> Graduate Research Assistant</p>
-                        
-                        <div class="tech-stack">
-                            <span class="tech-tag">SolidWorks</span>
-                            <span class="tech-tag">3D Printing</span>
-                            <span class="tech-tag">Servo Control</span>
-                            <span class="tech-tag">Embedded Systems</span>
-                            <span class="tech-tag">Cable Actuation</span>
-                            <span class="tech-tag">Mechatronics</span>
+                        <p><strong>Applications:</strong> Search & Rescue, Exploration, Service Robotics</p>
+                        <p><strong>Budget:</strong>
+                            <$3,000 prototype system</p>
+
+                                <div class="tech-stack">
+                                    <span class="tech-tag">SolidWorks CAD</span>
+                                    <span class="tech-tag">3D Printing (PLA/TPU)</span>
+                                    <span class="tech-tag">Servo Control</span>
+                                    <span class="tech-tag">Cable Actuation</span>
+                                    <span class="tech-tag">Continuum Robotics</span>
+                                    <span class="tech-tag">Reinforcement Learning</span>
+                                    <span class="tech-tag">Genesis Physics Engine</span>
+                                    <span class="tech-tag">URDF Modeling</span>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill of Materials and System Architecture -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">System Architecture and Component Selection</h2>
+
+                    <h4 class="title is-5">Core Electronics Package</h4>
+                    <div class="content">
+                        <p>The system employs a sophisticated electronics architecture designed for autonomous
+                            operation:</p>
+
+                        <div class="columns">
+                            <div class="column">
+                                <h6 class="title is-6">Computational and Sensing</h6>
+                                <ul>
+                                    <li>NVIDIA Jetson Orin NX 16GB (10-25W) - Central processing for real-time control
+                                        and AI</li>
+                                    <li>Adafruit BNO085 IMU - 9-DOF sensor fusion at 1000Hz for balance</li>
+                                    <li>Dual Arducam Fisheye Cameras - 160° field of view for environmental awareness
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h6 class="title is-6">Power and Actuation</h6>
+                                <ul>
+                                    <li>4x Samsung 21700 batteries (25A continuous, 5000mAh each) - Steady-state power
+                                    </li>
+                                    <li>TATTU R-Line 14.8V LiPo (240A burst) - Dynamic servo movements</li>
+                                    <li>U2D2 Power Hub - USB to servo communication with 20A distribution</li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+
+                    <h4 class="title is-5">Actuation Systems Comparison</h4>
+                    <div class="columns">
+                        <div class="column">
+                            <h6 class="title is-6">Version 1: Rigid Joint System</h6>
+                            <ul>
+                                <li>5x STS3215 Smart Servos per arm (6.5 kg·cm continuous torque)</li>
+                                <li>Universal joint with timing belt transmission and bevel gear coupling</li>
+                                <li>MXL timing belts and custom 3D-printed precision components</li>
+                                <li>Total system mass: 3.17kg (2 arms) or 4.67kg (4 arms)</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h6 class="title is-6">Version 2: Continuum System</h6>
+                            <ul>
+                                <li>3x Dynamixel XM430-W210-T per arm (310.39 N·cm stall torque)</li>
+                                <li>6 triangular vertebrae with TPU inter-vertebral springs</li>
+                                <li>0.3mm monofilament fishing line with distributed cable routing</li>
+                                <li>Infinite DOF through cooperative cable coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 class="title is-5">Manufacturing Strategy</h4>
+                    <div class="content">
+                        <p>Additive manufacturing approach enables rapid prototyping and cost-effective production:</p>
+                        <ul>
+                            <li>Bambu Lab PLA Basic (adjusted: 1464 MPa modulus, 0.66 g/cm³ density with 15% infill)
+                            </li>
+                            <li>Optimized print orientation with Z-axis aligned to arm length for maximum strength</li>
+                            <li>Hybrid approach combining 3D printed structures with off-the-shelf precision elements
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -348,46 +483,80 @@
             <!-- Media Gallery -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Project Gallery</h2>
-                    <div class="gallery">
-                        <video controls autoplay loop muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
+                    <h2 class="title is-3">Gripper Demonstration</h2>
+                    <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                        <video controls autoplay loop muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')"
+                            style="max-width: 500px; width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
+                            onmouseover="this.style.transform='scale(1.05)'"
+                            onmouseout="this.style.transform='scale(1)'">
                             <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
                         </video>
-                        <img src="images/Cute_Octopus_1st_iteration.jpg" 
-                             onclick="showImage('images/Cute_Octopus_1st_iteration.jpg')"
-                             alt="First Iteration Design" />
-                        <img src="images/Cute_Octopus_2nd_iteration.png" 
-                             onclick="showImage('images/Cute_Octopus_2nd_iteration.png')"
-                             alt="Second Iteration Design" />
+                    </div>
+
+                    <div class="content">
+                        <p style="margin-top: 1rem; font-style: italic; text-align: center;">
+                            <strong>Compliant 3-Finger Gripper Demonstration:</strong> Shows the adaptive grasping
+                            capabilities of the worm gear reduction system with spring-loaded compliance mechanism,
+                            enabling object conformance while maintaining secure grip for dual-mode operation.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Specifications -->
+            <!-- Technical Analysis -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Technical Specifications</h2>
+                    <h2 class="title is-3">Technical Analysis and Performance Validation</h2>
+
+                    <h4 class="title is-5">Torque Analysis and Servo Sizing Verification</h4>
                     <div class="content">
                         <div class="columns">
                             <div class="column">
-                                <h4 class="title is-5">System Architecture</h4>
+                                <h6 class="title is-6">Manipulation Mode</h6>
                                 <ul>
-                                    <li>4 degrees of freedom per arm</li>
-                                    <li>Dual actuation modes (rigid/continuum)</li>
-                                    <li>Distributed motor control system</li>
-                                    <li>Cooperative cable control for redundancy</li>
+                                    <li>Maximum payload: 250g with 5× acceleration and 2× safety factors</li>
+                                    <li>Total force required: 24.5N across 3 gripper fingers</li>
+                                    <li>Required torque: 1.96 N·m with available 2.58 N·m (safety margin)</li>
                                 </ul>
                             </div>
                             <div class="column">
-                                <h4 class="title is-5">Gripper Design</h4>
+                                <h6 class="title is-6">Locomotion Mode</h6>
                                 <ul>
-                                    <li>3-finger compliant gripper</li>
-                                    <li>Worm gear reduction mechanism</li>
-                                    <li>Spring-based adaptive force control</li>
-                                    <li>Transition capability between modes</li>
+                                    <li>Rolling resistance: 0.06 coefficient on smooth surfaces</li>
+                                    <li>Acceleration target: 0.5 m/s² with 2.0 safety factor</li>
+                                    <li>All servos provide sufficient torque for rolling locomotion</li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+
+                    <h4 class="title is-5">Design Evolution Rationale</h4>
+                    <div class="content">
+                        <p>Version 2 addresses key limitations identified in Version 1 analysis:</p>
+                        <ul>
+                            <li><strong>Terrain Adaptation:</strong> Continuum design provides superior surface
+                                conformance vs. discrete joints</li>
+                            <li><strong>Mechanical Simplification:</strong> Cable actuation eliminates complex universal
+                                joint precision requirements</li>
+                            <li><strong>Workspace Enhancement:</strong> Infinite DOF enables unlimited positioning
+                                within operational envelope</li>
+                            <li><strong>Impact Resistance:</strong> Inherent compliance provides safety and damage
+                                tolerance</li>
+                        </ul>
+                    </div>
+
+                    <h4 class="title is-5">Control Development Strategy</h4>
+                    <div class="content">
+                        <p>Hardware-centric approach acknowledging continuum mechanics modeling limitations:</p>
+                        <ul>
+                            <li>Genesis Physics Engine with GPU acceleration for parallel environment training</li>
+                            <li>Proximal Policy Optimization (PPO) for stable continuous control during mode transitions
+                            </li>
+                            <li>Real-world reinforcement learning prioritizing empirical adaptation over theoretical
+                                models</li>
+                            <li>URDF conversion from SolidWorks preserving mass properties and kinematic relationships
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -398,20 +567,57 @@
                     <h2 class="title is-3">My Contributions</h2>
                     <div class="content">
                         <p>
-                            As the lead graduate researcher on this project, my contributions span mechanical design, 
-                            fabrication, and system integration:
+                            As the lead graduate researcher working under Dr. Nadia Figueroa, I am responsible for all
+                            mechanical design, component selection, analysis, and system integration:
                         </p>
+
+                        <h4 class="title is-5">Mechanical Design and Innovation</h4>
                         <ul>
-                            <li><strong>Mechanical Design:</strong> Developed the complete CAD models for both rigid and continuum 
-                            arm variants, including custom joint designs and actuation mechanisms</li>
-                            <li><strong>Fabrication:</strong> Managed the manufacturing process using 3D printing, CNC machining, 
-                            and assembly of precision mechanical components</li>
-                            <li><strong>Control Integration:</strong> Designed the servo control architecture and implemented 
-                            basic motion control algorithms</li>
-                            <li><strong>Testing & Validation:</strong> Conducted experimental validation of dual-mode functionality 
-                            and documented performance characteristics</li>
-                            <li><strong>Research Documentation:</strong> Maintaining detailed design documentation and preparing 
-                            materials for future publication</li>
+                            <li><strong>Universal Joint Development:</strong> Designed custom 2-DOF system with
+                                integrated timing belt transmission eliminating traditional 3-servo shoulder
+                                configurations</li>
+                            <li><strong>Continuum Architecture:</strong> Developed vertebral spine system with
+                                triangular vertebrae and TPU springs for infinite DOF through 3-motor coordination</li>
+                            <li><strong>Compliant Gripper System:</strong> Created unified 3-finger design with 60:1
+                                worm gear reduction and spring-loaded compliance spanning both iterations</li>
+                            <li><strong>Complete CAD Development:</strong> Generated comprehensive SolidWorks models
+                                with detailed assemblies and GD&T specifications</li>
+                        </ul>
+
+                        <h4 class="title is-5">Component Selection and Integration</h4>
+                        <ul>
+                            <li><strong>Electronics Architecture:</strong> Selected Jetson Orin NX, dual battery system,
+                                IMU, and fisheye cameras for autonomous operation</li>
+                            <li><strong>Actuation Specification:</strong> Determined servo requirements
+                                (STS3215/Dynamixel) based on comprehensive torque analysis</li>
+                            <li><strong>Power System Design:</strong> Implemented dual-battery architecture with U2D2
+                                hub for optimal power distribution</li>
+                            <li><strong>Material Characterization:</strong> Optimized 3D printing parameters for
+                                structural PLA applications</li>
+                        </ul>
+
+                        <h4 class="title is-5">Engineering Analysis and Validation</h4>
+                        <ul>
+                            <li><strong>Torque Analysis:</strong> Performed systematic load calculations using
+                                SolidWorks mass properties for both operational modes</li>
+                            <li><strong>Mass Properties:</strong> Determined system-level center of mass and weight
+                                distribution across configurations</li>
+                            <li><strong>Material Properties:</strong> Adjusted standard PLA characteristics based on
+                                printing parameters for accurate analysis</li>
+                            <li><strong>Design Iteration:</strong> Identified Version 1 limitations and developed
+                                technical rationale for continuum transition</li>
+                        </ul>
+
+                        <h4 class="title is-5">Control System Development</h4>
+                        <ul>
+                            <li><strong>URDF Model Creation:</strong> Converted SolidWorks assemblies to URDF format
+                                preserving mass properties and kinematic relationships for future simulation work</li>
+                            <li><strong>Control Framework Planning:</strong> Identified Genesis Physics Engine and PPO
+                                as optimal approaches for future dual-mode policy development</li>
+                            <li><strong>Hardware-First Strategy:</strong> Developed plans for empirical learning
+                                approach acknowledging continuum modeling limitations</li>
+                            <li><strong>Future Work:</strong> Next phase involves implementing simulation environment
+                                and real-world reinforcement learning on hardware</li>
                         </ul>
                     </div>
                 </div>
