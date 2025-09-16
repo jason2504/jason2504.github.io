@@ -38,12 +38,10 @@
             transition: all 0.3s ease;
         }
 
-        /* Add padding to body to account for fixed header */
         body {
             padding-top: 80px;
         }
 
-        /* Navigation container styles */
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -83,7 +81,6 @@
             transform: translateY(-1px);
         }
 
-        /* Dropdown styles */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -126,7 +123,6 @@
             transform: translateY(-1px);
         }
 
-        /* Project page specific styles */
         .project-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -177,7 +173,6 @@
             transform: scale(1.05);
         }
 
-        /* Results highlight box */
         .results-highlight {
             background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
             border-left: 4px solid #10b981;
@@ -186,19 +181,66 @@
             margin: 2rem 0;
         }
 
-        /* Clickable media styles */
         .clickable-media {
             transition: all 0.3s ease;
             border-radius: 8px;
+            cursor: pointer;
         }
 
         .clickable-media:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
         }
 
-        /* Responsive design */
+        /* Component table styling */
+        .component-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .component-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .component-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .component-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+
+        .component-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .component-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        .label-number {
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -305,9 +347,10 @@
                 <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
                 <p style="font-size: 1.1rem; color: #064e3b;">
                     <strong>Led 5-engineer team developing 2-ton capacity tracked platform for industrial 6-DOF robotic
-                        arm, achieving sub-160-micron precision</strong> through comprehensive FEA validation. Delivered
+                        arm, achieving sub-160-micron precision through comprehensive FEA validation.</strong> Delivered
                     complete $90,000 design supporting extreme temperature operation (-40°C to 30°C) with 6-hour runtime
-                    for autonomous welding and additive manufacturing applications.
+                    for autonomous welding and additive manufacturing applications. Maximum stress of 62.5 MPa remained
+                    well within material limits (355 MPa yield), demonstrating robust safety margins.
                 </p>
             </div>
 
@@ -358,40 +401,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <h3 class="title is-4">Mobility System Design</h3>
-                        <p>
-                            After evaluating wheels, mecanum wheels, and tracks for mobility, we selected a tracked
-                            system due to its superior weight distribution on uneven terrain. Tracks provide better
-                            performance on loose and packed dirt—the typical working environment for our target
-                            applications. We also considered adding spider outriggers to improve stability, but center
-                            of mass analysis revealed this complexity was unnecessary for our design envelope.
-                        </p>
-
-                        <h3 class="title is-4">Power and Control Systems</h3>
-                        <p>
-                            For propulsion, we evaluated hydraulic motors but selected electric motors for their
-                            simplicity and higher energy efficiency. The power system features two 75 HP inverter-duty
-                            electric motors powered by 24 LG Lithium-Ion Pacifica modules with 62.4 kWh capacity. This
-                            configuration enables 3.5km of maneuvering on tracks while supporting continuous welding
-                            operations and robotic arm control.
-                        </p>
-
-                        <h3 class="title is-4">Structural Engineering and FEA Analysis</h3>
-                        <p>
-                            We conducted comprehensive finite element analysis to ensure the platform could handle the
-                            2-ton payload with minimal deflection at the robotic arm's end effector. Our structural
-                            design maintained functionality of the precision robotic arm by limiting deflection to under
-                            160 microns—critical for maintaining welding quality and additive manufacturing precision.
-                        </p>
-
-                        <h3 class="title is-4">Environmental Considerations</h3>
-                        <p>
-                            The design addresses extreme operating conditions including the ability to traverse 15%
-                            inclines, withstand -40°C temperature, and operate both indoors and outdoors. Material
-                            selection prioritized thermal stability and structural integrity across the full temperature
-                            range while ensuring reliable operation of electronic systems and mechanical components.
-                        </p>
                     </div>
                 </div>
 
@@ -406,7 +415,6 @@
                         <p><strong>Budget:</strong> $90,000</p>
                         <p><strong>Payload Capacity:</strong> 2 tons</p>
                         <p><strong>Operating Range:</strong> -40°C to 30°C</p>
-                        <p><strong>Battery Capacity:</strong> 62.4 kWh</p>
                         <p><strong>Runtime:</strong> 6 hours continuous operation</p>
                         <p><strong>Max Deflection:</strong>
                             <160 microns</p>
@@ -422,6 +430,227 @@
                                     <span class="tech-tag">Industrial Automation</span>
                                     <span class="tech-tag">Tracked Vehicles</span>
                                 </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Architecture and Component Breakdown -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">System Architecture and Component Breakdown</h2>
+
+                    <!-- Exploded View -->
+                    <div style="margin: 2rem 0;">
+                        <img src="images/AMR_exploded view.png" class="clickable-media"
+                            onclick="showImage('images/AMR_exploded view.png')" alt="AMR Platform Exploded View"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                            <strong>AMR Platform Exploded View:</strong> Detailed component breakdown showing assembly
+                            relationships, custom manufactured parts, and integration of off-the-shelf components for
+                            industrial robotic applications.
+                        </p>
+                    </div>
+
+                    <!-- Component Table -->
+                    <div class="component-table">
+                        <h4 class="title is-5" style="margin-bottom: 1rem; padding-left: 1rem; padding-top: 1rem;">Table
+                            1: Component List of Final Design</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Label</th>
+                                    <th>Component</th>
+                                    <th>Feature</th>
+                                    <th>Source</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="label-number">1</span></td>
+                                    <td>Fronius TPS 600i Welding Power Source</td>
+                                    <td>Power Source for welding tool</td>
+                                    <td>Client</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">2</span></td>
+                                    <td>Global Navigation Satellite System (GNSS) Compass</td>
+                                    <td>Provides GPS positional accuracy and the same data as the Orientus, to avoid
+                                        drift</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">3</span></td>
+                                    <td>Bolts</td>
+                                    <td>Connect the robot arm to the baseplate</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">4</span></td>
+                                    <td>Yaskawa GP-50 robot arm</td>
+                                    <td>3D metal additive manufacturing robot arm</td>
+                                    <td>Client</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">5</span></td>
+                                    <td>Electronic enclosure</td>
+                                    <td>Enclosure for all required sensors and electronics</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">6</span></td>
+                                    <td>Baseplate</td>
+                                    <td>Provides a flat surface for the arm and acts as the connection between the
+                                        chassis and the robot arm</td>
+                                    <td>Custom</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">7</span></td>
+                                    <td>Chassis</td>
+                                    <td>Framework to mount all other components</td>
+                                    <td>Custom</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">8</span></td>
+                                    <td>Radicon PL 2520 14:1 planetary gearbox</td>
+                                    <td>Reduces the speed and multiplies the torque from the electric motors to drive
+                                        the tracks</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">9</span></td>
+                                    <td>Marathon Y574 inverter duty motors</td>
+                                    <td>2 electric motors used for differential steering to accompany the track system
+                                    </td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">10</span></td>
+                                    <td>Trelleborg Bobcat Compact Track System</td>
+                                    <td>Provides low ground loading, greater traction and heavy load handling</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">11</span></td>
+                                    <td>Hub</td>
+                                    <td>Power integration for electric motor</td>
+                                    <td>Custom</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">12</span></td>
+                                    <td>LG Lithium-Ion Pacifica Module Batteries</td>
+                                    <td>24 batteries arranged to supply 6 hours of welding + 2 hours of maneuvering</td>
+                                    <td>Market</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">13</span></td>
+                                    <td>Yaskawa YRC1000</td>
+                                    <td>Controller for the Yaskawa GP-50 robot arm</td>
+                                    <td>Client</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-number">14</span></td>
+                                    <td>Battery Enclosure</td>
+                                    <td>Provides coverage for batteries, controller and motors while housing the welding
+                                        power source</td>
+                                    <td>Custom</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Working Envelope and Range of Motion -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Yaskawa GP-50 Working Envelope</h2>
+                    <div style="margin: 2rem 0;">
+                        <img src="images/AMR_Yaskawa_envelope.jpg" class="clickable-media"
+                            onclick="showImage('images/AMR_Yaskawa_envelope.jpg')"
+                            alt="Yaskawa GP-50 Working Envelope and Range of Motion"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                            <strong>Yaskawa GP-50 Working Envelope:</strong> Demonstrating 180° lateral and 230°
+                            vertical range of motion capabilities. The robotic arm provides comprehensive reach for
+                            industrial welding and additive manufacturing operations while maintaining precision
+                            throughout the entire working envelope.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEA Analysis and Structural Validation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Finite Element Analysis and Structural Validation</h2>
+
+                    <!-- FEA Setup -->
+                    <div style="margin: 2rem 0;">
+                        <img src="images/AMR_deflection_setup.png" class="clickable-media"
+                            onclick="showImage('images/AMR_deflection_setup.png')" alt="FEA Deflection Analysis Setup"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                            <strong>FEA Deflection Analysis Setup:</strong> Load case configuration showing weight
+                            distribution (W1-W5) across the AMR platform for worst-case robotic arm positioning.
+                            Analysis validates structural integrity under 2-ton payload with full arm extension.
+                        </p>
+                    </div>
+
+                    <!-- Deflection Results -->
+                    <div style="margin: 2rem 0;">
+                        <img src="images/AMR_deflection.png" class="clickable-media"
+                            onclick="showImage('images/AMR_deflection.png')" alt="FEA Deflection Results"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                            <strong>FEA Deflection Results:</strong> Structural deflection analysis showing maximum
+                            displacement of 2.23e-02 mm at the robot mounting interface. Critical end-effector
+                            deflection remains under 160 microns, ensuring precision robotic operations.
+                        </p>
+                    </div>
+
+                    <!-- Stress Analysis Results -->
+                    <div style="margin: 2rem 0;">
+                        <img src="images/AMR_stress.png" class="clickable-media"
+                            onclick="showImage('images/AMR_stress.png')" alt="FEA von Mises Stress Results"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+                            <strong>FEA von Mises Stress Analysis:</strong> Maximum stress concentration of 6.518e+07
+                            N/m² (65.18 MPa) at chassis base connections, well below ST 52-3 steel yield strength of 355
+                            MPa, providing robust safety margin of 5.4:1.
+                        </p>
+                    </div>
+
+                    <div class="content">
+                        <h4 class="title is-5">Structural Performance Validation</h4>
+                        <p>
+                            Our comprehensive FEA analysis validated the structural design under worst-case loading
+                            conditions. Maximum von Mises stress reached 65.18 MPa at the chassis base—well below the ST
+                            52-3 steel yield strength of 355 MPa, providing a robust safety margin of 5.4:1. Most
+                            critically,
+                            end-effector deflection remained under 160 microns, ensuring precision robotic operations.
+                        </p>
+
+                        <div class="columns">
+                            <div class="column">
+                                <h6 class="title is-6">Key FEA Results</h6>
+                                <ul>
+                                    <li><strong>Maximum Stress:</strong> 65.18 MPa (safety factor: 5.4)</li>
+                                    <li><strong>End-Effector Deflection:</strong>
+                                        <160 microns</li>
+                                    <li><strong>Material:</strong> ST 52-3 steel (355 MPa yield)</li>
+                                    <li><strong>Load Cases:</strong> 2-ton payload + full arm extension</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h6 class="title is-6">Design Validation</h6>
+                                <ul>
+                                    <li><strong>Structural Integrity:</strong> Confirmed under extreme loading</li>
+                                    <li><strong>Precision Capability:</strong> Validated for industrial welding</li>
+                                    <li><strong>Safety Margins:</strong> Conservative design approach</li>
+                                    <li><strong>Manufacturing Ready:</strong> Analysis supports production</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -463,14 +692,6 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <h4 class="title is-5">Finite Element Analysis Results</h4>
-                        <p>
-                            Our comprehensive FEA analysis validated the structural design under worst-case loading
-                            conditions. Maximum von Mises stress reached 62 MPa at the chassis base—well below the ST
-                            52-3 steel yield strength of 355 MPa, providing a robust safety margin. Most critically,
-                            end-effector deflection remained under 160 microns, ensuring precision robotic operations.
-                        </p>
 
                         <h4 class="title is-5">Manufacturing and Cost Analysis</h4>
                         <p>
@@ -574,14 +795,6 @@
                 <div class="column">
                     <h2 class="title is-3">Results and Validation</h2>
                     <div class="content">
-                        <h4 class="title is-5">Structural Performance Validation</h4>
-                        <p>
-                            Our design successfully met all structural requirements with significant safety margins.
-                            Maximum stress of 62.5 MPa remained well within material limits, and end-effector deflection
-                            stayed under the critical 160-micron threshold. These results confirmed the platform's
-                            suitability for precision robotic operations.
-                        </p>
-
                         <h4 class="title is-5">System Capabilities Achieved</h4>
                         <ul>
                             <li><strong>Payload Performance:</strong> Successfully designed for 2-ton robotic arm

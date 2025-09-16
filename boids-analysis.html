@@ -676,3 +676,80 @@
                                 space exploration rather than intuitive parameter selection</li>
                             <li><strong>Counter-Intuitive Results:</strong> Discovered that biological inspiration
                                 doesn't
+                                always translate directly to optimal robotics performance</li>
+                            <li><strong>Simulation Scale:</strong> Gained experience in designing and executing
+                                large-scale
+                                simulation studies for robust statistical analysis</li>
+                            <li><strong>Performance Metrics:</strong> Developed understanding of how to design
+                                meaningful
+                                metrics for evaluating swarm behavior</li>
+                            <li><strong>Collaborative Research:</strong> Enhanced skills in collaborative algorithm
+                                development
+                                and research methodology design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
+
+</html>
