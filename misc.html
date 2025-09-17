@@ -157,6 +157,54 @@
             font-weight: 500;
         }
 
+        /* Clickable media styles */
+        .clickable-media {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .clickable-media:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .modal-close:hover {
+            color: #ccc;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .nav-container {
@@ -335,16 +383,21 @@
                                     <div class="key-skills">
                                         <h6>Key Skills:</h6>
                                         <div class="skills-tags">
-                                            <span class="skill-tag">SolidWorks Surface Modelling</span>
+                                            <span class="skill-tag">SolidWorks Surfacing</span>
                                             <span class="skill-tag">KeyShot Rendering</span>
                                             <span class="skill-tag">Ergonomic Design</span>
+                                            <span class="skill-tag">Material Visualization</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4">
                                     <figure class="image">
                                         <img src="./images/Gaming_controller_render.jpg" alt="Gaming Controller Render"
-                                            style="border-radius: 8px; max-height: 200px; object-fit: contain;">
+                                            class="clickable-media"
+                                            style="border-radius: 8px; max-height: 200px; object-fit: contain; cursor: pointer; transition: transform 0.3s ease;"
+                                            onclick="showImage('images/Gaming_controller_render.jpg')"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'">
                                     </figure>
                                 </div>
                             </div>
@@ -373,13 +426,18 @@
                                             <span class="skill-tag">CAM Programming</span>
                                             <span class="skill-tag">GD&T</span>
                                             <span class="skill-tag">Precision Manufacturing</span>
+                                            <span class="skill-tag">Toolpath Optimization</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4">
                                     <figure class="image">
                                         <img src="./images/Guitar_multitool.jpg" alt="CNC Guitar Multi-Tool"
-                                            style="border-radius: 8px; max-height: 200px; object-fit: contain;">
+                                            class="clickable-media"
+                                            style="border-radius: 8px; max-height: 200px; object-fit: contain; cursor: pointer; transition: transform 0.3s ease;"
+                                            onclick="showImage('images/Guitar_multitool.jpg')"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'">
                                     </figure>
                                 </div>
                             </div>
@@ -408,14 +466,17 @@
                                             <span class="skill-tag">Mechatronic Design</span>
                                             <span class="skill-tag">3D Printing</span>
                                             <span class="skill-tag">Servo Control</span>
+                                            <span class="skill-tag">Sensor Integration</span>
                                             <span class="skill-tag">Embedded Programming</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4">
-                                    <video
-                                        style="border-radius: 8px; max-height: 200px; width: 100%; object-fit: contain;"
-                                        controls autoplay loop muted>
+                                    <video class="clickable-media"
+                                        style="border-radius: 8px; max-height: 200px; width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.3s ease;"
+                                        controls autoplay loop muted onclick="showVideo('images/WALLE_video.MOV')"
+                                        onmouseover="this.style.transform='scale(1.05)'"
+                                        onmouseout="this.style.transform='scale(1)'">
                                         <source src="./images/WALLE_video.MOV" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -439,17 +500,22 @@
                                     <div class="key-skills">
                                         <h6>Key Skills:</h6>
                                         <div class="skills-tags">
-                                            <span class="skill-tag">3D Printing</span>
+                                            <span class="skill-tag">Precision 3D Printing</span>
                                             <span class="skill-tag">Modular Design</span>
                                             <span class="skill-tag">Microrobotics</span>
                                             <span class="skill-tag">Optical Systems</span>
+                                            <span class="skill-tag">Miniaturization</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column is-4">
                                     <figure class="image">
                                         <img src="./images/microrobot_platform.jpg" alt="Microrobot Platform"
-                                            style="border-radius: 8px; max-height: 200px; object-fit: contain;">
+                                            class="clickable-media"
+                                            style="border-radius: 8px; max-height: 200px; object-fit: contain; cursor: pointer; transition: transform 0.3s ease;"
+                                            onclick="showImage('images/microrobot_platform.jpg')"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'">
                                     </figure>
                                 </div>
                             </div>
@@ -484,6 +550,14 @@
         </div>
     </section>
 
+    <!-- Media Modal -->
+    <div id="mediaModal" class="modal-overlay" style="display: none;" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content" style="display: none;" />
+        <video id="modalVideo" class="modal-content" style="display: none;" controls>
+        </video>
+    </div>
+
     <footer class="footer">
         <div class="container is-max-desktop">
             <div class="column is-centered">
@@ -498,6 +572,47 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function showImage(src) {
+            const modal = document.getElementById('mediaModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalImage.src = src;
+            modalImage.style.display = 'block';
+            modalVideo.style.display = 'none';
+            modalVideo.pause();
+            modal.style.display = 'flex';
+        }
+
+        function showVideo(src) {
+            const modal = document.getElementById('mediaModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalVideo.src = src;
+            modalVideo.style.display = 'block';
+            modalImage.style.display = 'none';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modal.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.src = "";
+        }
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
