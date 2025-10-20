@@ -293,7 +293,7 @@
                 <div class="column is-8 has-text-centered">
                     <h1 class="title is-1" style="color: white;">Autonomous Competition Robot</h1>
                     <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
-                        RoBA Competition Platform with Dual-Mode Control
+                        RoBA Competition Platform with Single-MCU Architecture
                     </h2>
                 </div>
             </div>
@@ -306,11 +306,12 @@
             <div class="results-highlight">
                 <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
                 <p style="font-size: 1.1rem; color: #064e3b;">
-                    <strong>Achieved perfect 50/50 evaluation score in competitive robotics arena with innovative
-                        dual-MCU architecture and robust autonomous navigation.</strong>
+                    <strong>Achieved perfect 50/50 evaluation score in competitive robotics arena with unified
+                        single-MCU architecture managing all real-time tasks simultaneously.</strong>
                     Successfully implemented wall-following PD control (Kp=0.4, Kd=0.02), real-time web interface for
-                    manual control, and reliable I2C communication between sensor and motor controllers, demonstrating
-                    complete mechatronic system integration under competitive pressure.
+                    manual control, and reliable I2C communication with competition TopHat module for HP tracking,
+                    demonstrating
+                    complete mechatronic system integration under competitive pressure on a single ESP32-S2.
                 </p>
                 <p style="margin-top: 0.5rem; color: #064e3b;">
                     🏆 MEAM 5100 Competition Project at University of Pennsylvania with teammates Leo Tan and Tenzi
@@ -334,9 +335,11 @@
                         <p>
                             The RoBA (Robot Battle Arena) competition featured head-to-head matches where teams attacked
                             opposing bases (Nexus), captured neutral towers, and defended their own assets. Each robot
-                            carried a "Top Hat" module that tracked health points, enforced game rules, and penalized
-                            excessive WiFi communication, requiring careful balance between autonomous operation and
-                            manual control strategies.
+                            carried a "TopHat" module provided by teaching staff that tracked health points through I2C
+                            communication,
+                            enforced game rules via whisker switch detection, and penalized excessive WiFi
+                            communication,
+                            requiring careful balance between autonomous operation and manual control strategies.
                         </p>
 
                         <h3 class="title is-4">Game Rules and Strategic Constraints</h3>
@@ -347,10 +350,11 @@
                                     design approach:
                                 </p>
                                 <ul>
-                                    <li><strong>Health System:</strong> Robots started with fixed HP, losing 10 HP per
-                                        physical hit with 0.5s cooldown</li>
+                                    <li><strong>Health System:</strong> Robots started with fixed HP tracked by TopHat,
+                                        losing 10 HP per
+                                        physical hit (whisker switch trigger) with 0.5s cooldown</li>
                                     <li><strong>Communication Cost:</strong> Each WiFi packet cost 1 HP, penalizing
-                                        overuse of remote communication</li>
+                                        overuse of remote communication and manual control</li>
                                     <li><strong>Arena Features:</strong> Central ramp, multiple towers, and Nexus
                                         targets requiring precise navigation</li>
                                     <li><strong>Victory Conditions:</strong> Direct Nexus destruction or gradual damage
@@ -370,15 +374,19 @@
                             </div>
                         </div>
 
-                        <h3 class="title is-4">Technical Innovation: Dual-MCU Architecture</h3>
+                        <h3 class="title is-4">Technical Innovation: Unified Single-MCU Architecture</h3>
                         <div class="columns">
                             <div class="column is-8">
                                 <p>
-                                    Our design employed two cooperating ESP32-S2 microcontrollers with specialized
-                                    responsibilities to ensure robust real-time performance. The Sensor MCU handled
-                                    high-level planning and sensor fusion, while the Motor MCU focused exclusively on
-                                    low-level control with encoder feedback. This separation ensured time-critical motor
-                                    actuation remained unaffected by higher-level computational workloads.
+                                    Our design employed a single ESP32-S2 microcontroller managing all system functions
+                                    simultaneously,
+                                    including sensor processing, motor control with encoder feedback, web server
+                                    hosting, autonomous navigation
+                                    algorithms, and I2C communication with the competition TopHat module. This unified
+                                    architecture demonstrated
+                                    efficient real-time task management, ensuring time-critical motor actuation and
+                                    sensor processing remained
+                                    responsive while handling high-level planning and web interface operations.
                                 </p>
                             </div>
                             <div class="column is-4">
@@ -390,8 +398,8 @@
                                     onmouseout="this.style.transform='scale(1)'" />
                                 <p
                                     style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
-                                    Complete system wiring diagram showing ESP32, sensors, motors, and Vive detection
-                                    circuits
+                                    Complete system wiring diagram showing ESP32-S2, sensors, motors, TopHat I2C
+                                    connection, and Vive detection circuits
                                 </p>
                             </div>
                         </div>
@@ -403,8 +411,11 @@
                                     The robot featured sophisticated autonomous navigation using PD control for wall
                                     following, combined with Vive localization for precise positioning during attack
                                     sequences. Manual control was implemented through a custom web interface hosted
-                                    directly on the ESP32, providing real-time WASD keyboard controls without requiring
-                                    additional software installation.
+                                    directly on the ESP32-S2, providing real-time WASD keyboard controls without
+                                    requiring
+                                    additional software installation. The TopHat module communicated via I2C to track
+                                    health points
+                                    and game state throughout the competition.
                                 </p>
                             </div>
                             <div class="column is-4">
@@ -435,13 +446,13 @@
                         <p><strong>Result:</strong> Perfect 50/50 Evaluation Score</p>
 
                         <div class="tech-stack">
-                            <span class="tech-tag">ESP32-S2 Dual-MCU</span>
+                            <span class="tech-tag">ESP32-S2 Single-MCU</span>
                             <span class="tech-tag">C/C++ Programming</span>
                             <span class="tech-tag">PD Control Theory</span>
                             <span class="tech-tag">Web Interface</span>
                             <span class="tech-tag">HC-SR04 Ultrasonic</span>
                             <span class="tech-tag">Vive Tracking</span>
-                            <span class="tech-tag">I2C Communication</span>
+                            <span class="tech-tag">I2C with TopHat</span>
                             <span class="tech-tag">3D Printing/Laser Cutting</span>
                             <span class="tech-tag">Encoder Feedback</span>
                         </div>
@@ -458,15 +469,15 @@
                         <ul>
                             <li>Wall-following accuracy: ±2cm deviation</li>
                             <li>PD control parameters: Kp=0.4, Kd=0.02</li>
-                            <li>Sensor response time: 50ms</li>
+                            <li>Sensor response time: <50ms< /li>
                             <li>Navigation success rate: 100% during evaluation</li>
                         </ul>
                     </div>
                     <div class="column">
                         <h5 class="title is-6">System Integration</h5>
                         <ul>
-                            <li>I2C communication latency: 5ms</li>
-                            <li>Web interface response time: 100ms</li>
+                            <li>I2C TopHat communication latency: <5ms< /li>
+                            <li>Web interface response time: <100ms< /li>
                             <li>Attack mechanism reliability: 100%</li>
                             <li>Overall evaluation score: 50/50 points</li>
                         </ul>
@@ -495,7 +506,8 @@
                                 HC-SR04 ultrasonic sensors and PD control, showcasing precise navigation and consistent
                                 performance during competition evaluation.</li>
                             <li><strong>Image:</strong> Complete robot platform featuring 3-layer mechanical design with
-                                dual ESP32-S2 controllers, attack arm mechanism, sensor array, and protective bumper
+                                single ESP32-S2 controller, TopHat module, attack arm mechanism, sensor array, and
+                                protective bumper
                                 system optimized for competitive arena gameplay.</li>
                         </ul>
                     </div>
@@ -632,7 +644,7 @@
                                         <td>0.00</td>
                                         <td>0.00</td>
                                         <td>2</td>
-                                        <td>Provided for competition</td>
+                                        <td>Staff-provided competition module (I2C)</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Miscellaneous (rubber bands, power bank)</strong></td>
@@ -710,10 +722,10 @@
                             <div class="column">
                                 <h6 class="title is-6">Manual Control Interface</h6>
                                 <ul>
-                                    <li>Real-time web interface hosted on ESP32</li>
+                                    <li>Real-time web interface hosted on ESP32-S2</li>
                                     <li>WASD keyboard controls with visual feedback</li>
                                     <li>Closed-loop/open-loop mode switching</li>
-                                    <li>Health monitoring and game state display</li>
+                                    <li>Health monitoring via TopHat I2C communication</li>
                                 </ul>
                             </div>
                         </div>
@@ -721,16 +733,17 @@
 
                     <h4 class="title is-5">Electronic Systems and Communication</h4>
                     <div class="content">
-                        <p>The electronic architecture emphasized reliability and real-time performance:</p>
+                        <p>The electronic architecture emphasized reliability and real-time performance on a single MCU:
+                        </p>
                         <ul>
-                            <li><strong>Dual-MCU Design:</strong> ESP32-S2 controllers with specialized task
-                                distribution for optimal performance</li>
+                            <li><strong>Unified Single-MCU Design:</strong> ESP32-S2 managing all tasks simultaneously
+                                including sensor processing, motor control, web server, and game communication</li>
                             <li><strong>Sensor Integration:</strong> HC-SR04 ultrasonic sensors for wall detection and
-                                obstacle avoidance</li>
+                                obstacle avoidance with real-time processing</li>
                             <li><strong>Power Management:</strong> Efficient power distribution with dedicated motor
                                 drivers and control circuits</li>
-                            <li><strong>Communication Protocol:</strong> I2C master-slave architecture ensuring
-                                deterministic control timing</li>
+                            <li><strong>I2C Communication with TopHat:</strong> Reliable protocol for HP tracking,
+                                whisker hit detection, and game state management</li>
                         </ul>
                     </div>
                 </div>
@@ -765,10 +778,11 @@
                                 and encoder feedback systems for precise movement</li>
                             <li><strong>Attack Arm Logic:</strong> Programmed servo control sequences for competition
                                 gameplay with reliable timing</li>
-                            <li><strong>I2C Communication Protocol:</strong> Implemented communication between sensor
-                                and motor MCUs with error handling and timeout management</li>
+                            <li><strong>I2C Communication Protocol:</strong> Implemented communication with TopHat
+                                module
+                                for HP tracking, whisker detection, and game state management with error handling</li>
                             <li><strong>System Integration:</strong> Coordinated mechanical and electrical subsystems
-                                ensuring robust performance under competition stress</li>
+                                ensuring robust performance under competition stress on single-MCU architecture</li>
                         </ul>
 
                         <h4 class="title is-5">Testing and Optimization</h4>
@@ -791,14 +805,16 @@
                 <div class="column">
                     <h2 class="title is-3">Technical Challenges and Solutions</h2>
                     <div class="content">
-                        <h4 class="title is-5">Real-Time Control Coordination</h4>
+                        <h4 class="title is-5">Real-Time Task Management on Single MCU</h4>
                         <p>
-                            <strong>Challenge:</strong> Ensuring motor control remained responsive while processing
-                            sensor data and high-level navigation decisions.
+                            <strong>Challenge:</strong> Managing sensor processing, motor control, web server,
+                            autonomous navigation, and I2C communication simultaneously on a single ESP32-S2 without
+                            performance degradation.
                         </p>
                         <p>
-                            <strong>Solution:</strong> Implemented dual-MCU architecture with dedicated motor
-                            controller, preventing sensor processing delays from affecting critical actuator timing.
+                            <strong>Solution:</strong> Implemented efficient task scheduling and prioritization,
+                            ensuring time-critical motor control and sensor processing maintained responsiveness while
+                            handling web interface and TopHat communication.
                         </p>
 
                         <h4 class="title is-5">Sensor Reliability in Competition Environment</h4>
@@ -814,17 +830,18 @@
                         <h4 class="title is-5">Power and Communication Management</h4>
                         <p>
                             <strong>Challenge:</strong> Balancing WiFi communication needs with HP conservation
-                            requirements (1 HP per packet).
+                            requirements (1 HP per packet) reported through TopHat I2C.
                         </p>
                         <p>
                             <strong>Solution:</strong> Optimized communication protocols with efficient data packaging
-                            and implemented smart mode switching to minimize unnecessary transmissions.
+                            and implemented smart mode switching to minimize unnecessary transmissions while maintaining
+                            I2C health monitoring.
                         </p>
 
                         <h4 class="title is-5">Mechanical Durability Under Competition Stress</h4>
                         <p>
                             <strong>Challenge:</strong> Ensuring robot survived physical contact during competitive
-                            matches while maintaining precision.
+                            matches while maintaining precision and protecting TopHat whisker detection system.
                         </p>
                         <p>
                             <strong>Solution:</strong> Designed protective bumper systems and robust mounting
