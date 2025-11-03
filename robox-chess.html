@@ -1,0 +1,1020 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Robox Chess Set - IPD 5010 - Jason Chen" />
+    <meta name="keywords" content="CNC Machining Lathe Manufacturing Chess Set Robox 3D Printing SolidWorks" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Robox Chess Set - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Add padding to body to account for fixed header */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navigation container styles */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        /* Project page specific styles */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Results highlight box */
+        .results-highlight {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        /* Process steps */
+        .process-step {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-name {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.3rem;
+            }
+
+            .nav-buttons .button {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="robox-chess.html">Robox Chess Set</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Robox Chess Set</h1>
+                    <h2 class="subtitle is-4" style="color: white;">Underground Boxing Ring Themed Chess Set with Transformable Robot Assembly</h2>
+                    <p class="subtitle is-5" style="color: white;">IPD 5010 - Integrated Computer-Aided Design, Manufacturing and Analysis | October 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Project Details -->
+            <div class="project-details">
+                <div class="columns">
+                    <div class="column">
+                        <h4 class="title is-5">Course</h4>
+                        <p>IPD 5010 - Integrated Computer-Aided Design, Manufacturing and Analysis</p>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-5">Timeline</h4>
+                        <p>October - November 2025 (1 month)</p>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-5">Team</h4>
+                        <p>Team Robox (4 members - Jason Chen, Ethan Green, Catherine Bai, and Eliana Jaffee)</p>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-5">Budget</h4>
+                        <p>$350 (Used: $309.42)</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">CNC Turning (TL-1)</span>
+                    <span class="tech-tag">SolidWorks CAD</span>
+                    <span class="tech-tag">MasterCAM</span>
+                    <span class="tech-tag">3D Printing (PLA/TPU)</span>
+                    <span class="tech-tag">Laser Cutting</span>
+                    <span class="tech-tag">Anodizing</span>
+                    <span class="tech-tag">Woodworking</span>
+                    <span class="tech-tag">Surface Modeling</span>
+                    <span class="tech-tag">Post-Processing</span>
+                </div>
+            </div>
+
+            <!-- 1. PROJECT OVERVIEW -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Project Overview</h2>
+                    <div class="content">
+                        <p>
+                            The Robox Chess Set is an innovative fusion of functional chess pieces and a transformable robot assembly system, inspired by underground boxing rings and movies like <em>Real Steel</em> and <em>Iron Man</em>. This project challenged our team to create a unique chess set where each piece serves dual purposes: traditional gameplay and as components of an assembled humanoid robot.
+                        </p>
+                        <p>
+                            Team Robox designed and manufactured 32 precision-machined aluminum chess pieces using CNC turning, complemented by an elaborate underground boxing ring-themed board featuring integrated storage drawers, LED lighting, fog machine effects, stone tile chess board, and 3D-printed robot exoskeleton components. The design emphasizes manufacturability through axisymmetric geometries while incorporating complex assemblies through threaded connections and slip fits.
+                        </p>
+                    </div>
+
+                    <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div>
+                            <img src="images/IPD_5010_Complete_View.jpg" alt="Complete Robox chess set overview" 
+                                 style="height: 20em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Complete_View.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Complete chess set with boxing ring board and assembled robot
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Full_Robot_Assembly.jpg" alt="Fully assembled Robox fighter" 
+                                 style="height: 30em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Full_Robot_Assembly.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                12" tall assembled robot showing chess piece integration with 3D-printed components
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. KEY ACHIEVEMENT -->
+            <div class="results-highlight">
+                <h3 class="title is-4">Key Achievement</h3>
+                <div class="content">
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Successfully designed and manufactured a complete dual-purpose chess set</strong> where 32 precision CNC-machined aluminum pieces assemble into a 12" articulated robot fighter, integrated with an underground boxing ring-themed board featuring LED lighting, fog effects, and storage drawers—completing the entire project within a one-month timeline and $350 budget constraint. The project demonstrated advanced multi-process fabrication skills including CNC turning on the Haas TL-1, 3D printing with multiple materials (PLA/TPU), laser cutting, surface finishing through anodizing, and complex assembly design with threaded connections and slip-fit interfaces.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. DESIGN CONCEPT & INSPIRATION -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Design Concept & Inspiration</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Underground Boxing Ring Theme</h4>
+                        <p>
+                            The Robox concept draws inspiration from underground boxing culture, combining the strategic nature of chess with the dramatic atmosphere of robot combat. The design was influenced by:
+                        </p>
+                        <ul>
+                            <li><strong>Real Steel's "Atom":</strong> Robot boxing fighter with modular construction and combat-ready stance</li>
+                            <li><strong>Iron Man's "Hulkbuster":</strong> Assemblable armor system with individual component pieces that combine into a larger form</li>
+                            <li><strong>Underground boxing rings:</strong> Gritty aesthetic with concrete edges, dramatic lighting, and atmospheric fog effects</li>
+                        </ul>
+
+                        <h4 class="title is-5">Dual-Purpose Philosophy</h4>
+                        <p>
+                            Each chess piece was designed to serve as both a playable game piece and a functional robot component. The design maintains traditional chess piece proportions and silhouettes while incorporating attachment features:
+                        </p>
+                        <ul>
+                            <li><strong>Pawn (8 pieces):</strong> Skeletal/muscular structure forming robot torso frame and joints</li>
+                            <li><strong>Bishop (4 pieces):</strong> Upper arm segments with curved bicep geometry</li>
+                            <li><strong>Knight (4 pieces):</strong> Forearm and fist assemblies</li>
+                            <li><strong>Rook (4 pieces):</strong> Lower leg segments with tower-like structure</li>
+                            <li><strong>Queen (2 pieces):</strong> Heart component housed in chest cavity</li>
+                            <li><strong>King (2 pieces):</strong> Head assembly with crown details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CAD DESIGN & ASSEMBLY -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">CAD Design & Assembly</h2>
+                    <div class="content">
+                        <p>
+                            Complete SolidWorks assembly showing the integration of all 32 CNC-machined chess pieces into the boxing ring board system. The design features modular assembly with interchangeable robot configurations and storage drawers. All CAD modeling was performed in SolidWorks with careful attention to axisymmetric part design for CNC turning, surface modeling for organic robot forms, and assembly modeling with precise mate constraints.
+                        </p>
+
+                        <h4 class="title is-5">Design for Manufacturing Principles</h4>
+                        <p><strong>CNC Lathe-Optimized Geometry:</strong></p>
+                        <ul>
+                            <li><strong>Axisymmetric design:</strong> All chess pieces designed with rotational symmetry about central axis for single-setup lathe operations</li>
+                            <li><strong>No off-center features:</strong> Avoided square features and eccentric holes that would require mill operations or complex indexing</li>
+                            <li><strong>Fillets:</strong> Internal corners designed with radii matching available tool geometries</li>
+                            <li><strong>Avoid thin walls:</strong> Maintained minimum wall thickness of 0.080" to prevent chatter and deflection during machining</li>
+                            <li><strong>Material removal considerations:</strong> Designed geometry to minimize unnecessary material removal, reducing cycle time and tool wear</li>
+                        </ul>
+
+                        <p><strong>3D Printing Optimization:</strong></p>
+                        <ul>
+                            <li><strong>Build plate orientation:</strong> Parts oriented to minimize overhangs and support material</li>
+                            <li><strong>Snap-fit design:</strong> Integrated cantilever snaps with appropriate deflection limits for PLA's mechanical properties</li>
+                            <li><strong>Thread compensation:</strong> Undersize thread diameters by 0.1" to account for print tolerances and ensure proper function</li>
+                        </ul>
+                    </div>
+
+                    <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                        <div>
+                            <img src="images/IPD_5010_Chess_Set_on_Board_CAD.webp" alt="Complete CAD assembly of chess set" 
+                                 style="height: 14em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Chess_Set_on_Board_CAD.webp')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Complete SolidWorks assembly with boxing ring, drawers, and chess pieces
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Chess_Set.webp" alt="Chess board layout with pieces" 
+                                 style="height: 14em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Chess_Set.webp')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Chess board layout showing alternating black and gray stone tile pattern with each chess piece 
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Full_Assembly_CAD.png" alt="Two robots fighting on boxing ring" 
+                                 style="height: 14em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Full_Assembly_CAD.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Two assembled robots in fighting stance on the boxing ring arena
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. JOINT DESIGN DETAILS -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Joint Design Details</h2>
+                    <div class="content">
+                        <p>
+                            Each joint was carefully designed to balance functionality, aesthetics, and manufacturability. The robot features four distinct joint types, each optimized for its specific role in the assembly while maintaining the chess piece aesthetic. All joints incorporate 1-DOF articulation with spring-loaded tension or compression mechanisms to maintain positioning and enable dynamic poses.
+                        </p>
+                    </div>
+
+                    <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                        <div>
+                            <img src="images/IPD_5010_Shoulder_Joint.webp" alt="Shoulder joint assembly" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Shoulder_Joint.webp')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Shoulder Joint:</strong> Two-piece clamshell design with pawn screwed in and bishop clamped between halves
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Elbow_Joint.webp" alt="Elbow joint assembly" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Elbow_Joint.webp')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Elbow Joint:</strong> Bishop and knight connected via pin joint with threaded fasteners
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Hip_Joint.png" alt="Hip joint with ratchet mechanism" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Hip_Joint.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Hip Joint:</strong> Tension spring mechanism with ratchet teeth for angle adjustment and locking
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Knee_Joint.webp" alt="Knee joint with thread connection" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Knee_Joint.webp')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Knee Joint:</strong> Threaded pawn-rook connection with ratchet teeth for rotation and locking
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Front_Torso.png" alt="Front torso piece with rib cage design" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Front_Torso.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Front Torso:</strong> Rib cage design with snap-fit features and mounting points for arms
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Back_Torso.png" alt="Back torso piece with spine design" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Back_Torso.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Back Torso:</strong> Spine design with snap-fit tabs and internal cavity for chess pieces
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Torso.png" alt="Torso assembly with snap fit" 
+                                 style="height: 13em; width: 100%; object-fit: contain; background: #f5f5f5;"
+                                 onclick="showImage('images/IPD_5010_Torso_Assembly.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Torso Assembly:</strong> Front and back clamshell with snap-fit connection, holds interchangeable king/queen head
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. JOINT DESIGN FEATURES -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Joint Design Features</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Detailed Joint Specifications</h4>
+                        <ul>
+                            <li><strong>Shoulder:</strong> Clamshell design allows secure bishop capture while maintaining pawn connection via 1/4-20 threads. The two-piece 3D-printed housing provides reliable clamping force and enables disassembly for chess gameplay.</li>
+                            <li><strong>Elbow:</strong> Pin joint provides full rotation with bishop-knight threaded assembly. The joint uses precision-fit pins for smooth articulation while maintaining structural integrity under load.</li>
+                            <li><strong>Hip:</strong> Tension spring provides constant force while ratchet teeth enable discrete angle positioning. McMaster-Carr spring selected for appropriate stiffness to support leg weight.</li>
+                            <li><strong>Knee:</strong> 1/4-20 threading between pawn and rook with integrated ratchet for reliable joint locking. Compression spring maintains extended position while allowing controlled flexion.</li>
+                            <li><strong>Torso:</strong> Snap-fit clamshell eliminates fasteners while securing king or queen as interchangeable head piece. Internal cavity designed to nest pawns and queen/king pieces during chess mode.</li>
+                            <li><strong>Material Integration:</strong> 3D-printed PLA/TPU components interface seamlessly with CNC aluminum pieces through threaded connections.</li>
+                        </ul>
+
+                        <h4 class="title is-5">Robot Assembly System Specifications</h4>
+                        <ul>
+                            <li><strong>Overall height:</strong> 12" tall when fully assembled in combat stance</li>
+                            <li><strong>Torso construction:</strong> 2-piece snap-fit main body housing king, queen, and 6 pawns with rib cage and spine aesthetic</li>
+                            <li><strong>Articulated joints:</strong> 8 total 1-DOF connections (2× shoulder, 2× elbow, 2× hip, 2× knee) with spring-loaded tension/compression mechanisms</li>
+                            <li><strong>3D printed components:</strong> PLA structural parts (body panels, joints), TPU flexible accessories (helmet, boxing gloves, socks) for realistic appearance</li>
+                            <li><strong>Surface modeling:</strong> Complex geometries for organic-looking armor panels and joint housings created using lofts, sweeps, and boundary surfaces</li>
+                            <li><strong>Assembly time:</strong> Approximately 5-10 minutes to fully assemble robot from chess pieces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. CNC MACHINING PROCESS -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">CNC Machining Process</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Chess Pieces - CNC Turned Aluminum Specifications</h4>
+                        <ul>
+                            <li><strong>Material:</strong> 1" diameter 6061-T6 Aluminum rod - selected for excellent machinability, anodizing capability, appropriate weight for chess pieces, and cost-effectiveness</li>
+                            <li><strong>Manufacturing method:</strong> CNC turning on Haas TL-1 lathe with MasterCAM programming</li>
+                            <li><strong>Design approach:</strong> Axisymmetric geometry optimized for single-setup lathe operations, minimizing secondary operations and fixturing complexity</li>
+                            <li><strong>Height range:</strong> 1.31" (Pawn) to 2.56" (King), maintaining traditional chess piece proportions</li>
+                            <li><strong>Base diameter range:</strong> 0.84" (Pawn) to 1.00" (King) for stability during gameplay</li>
+                            <li><strong>Dual functionality:</strong> 1/4-20 threaded holes serve for both anodizing fixturing (hang pieces during process) and robot assembly connections</li>
+                            <li><strong>Assembly features:</strong> Snap fits and threaded connections for secure robot construction</li>
+                            <li><strong>Surface finish:</strong> Mirror-like finish achieved through proper cutting speeds, sharp tools, and finish passes</li>
+                            <li><strong>Quantity:</strong> 32 total pieces (16 red, 16 blue) manufactured within one-month timeline</li>
+                        </ul>
+
+                        <h4 class="title is-5">Machining Operations</h4>
+                        <p><strong>Process Flow:</strong></p>
+                        <ol>
+                            <li><strong>Stock Preparation:</strong>
+                                <ul>
+                                    <li>Cut aluminum rod stock to required lengths using parting tool on lathe</li>
+                                    <li>Face-off ends for perpendicularity to spindle axis</li>
+                                    <li>Center drill and drill 1/4" hole for future tapping (reduced RPM to manage aluminum's soft characteristics and prevent galling)</li>
+                                    <li>Chamfer hole entrance to prevent burr formation during tapping</li>
+                                </ul>
+                            </li>
+                            <li><strong>Lathe Operations (Haas TL-1):</strong>
+                                <ul>
+                                    <li>Standard collet fixturing - no custom fixtures required due to axisymmetric design philosophy</li>
+                                    <li>Rough turning with Tool 2 (1/32" radius insert, 55° plunge angle) removing bulk material at 0.050" DOC</li>
+                                    <li>Finish turning with Tool 2 at 0.010" DOC for surface quality and dimensional accuracy</li>
+                                    <li>Tight radius features on king and queen crowns with Tool 7 (full round grooving insert) for intricate details</li>
+                                    <li>Cut-off with Tool 6 (square insert, 0.75" max DOC) to separate finished piece from stock</li>
+                                    <li>Typical cycle time: 5-8 minutes per piece depending on complexity</li>
+                                </ul>
+                            </li>
+                            <li><strong>Flip Operation:</strong>
+                                <ul>
+                                    <li>Flip stock 180° and re-chuck in collet for opposite end machining</li>
+                                    <li>Tool zeroing with neutral tool (Tool 3) to establish consistent Z-datum on finished face</li>
+                                    <li>Challenge: Time-consuming process requiring careful alignment; improved efficiency through workflow batching</li>
+                                </ul>
+                            </li>
+                            <li><strong>Post-Processing:</strong>
+                                <ul>
+                                    <li>Deburring all sharp edges with deburring wheel</li>
+                                    <li>Tapping 1/4-20 threads in pre-drilled holes using tap wrench and cutting fluid</li>
+                                    <li>Bandsaw operations for rook towers, queen/king crowns, and bishop/knight decorative features - removing material that couldn't be machined on lathe</li>
+                                    <li>Dremel detailing with carbide burrs for intricate crown and tower geometries</li>
+                                    <li>Final inspection with calipers to verify dimensions within ±0.005" tolerance</li>
+                                </ul>
+                            </li>
+                            <li><strong>Anodizing:</strong>
+                                <ul>
+                                    <li>Red anodizing for one team, blue for opponent team - provides corrosion protection and team color differentiation</li>
+                                    <li>1/4-20 threaded holes used for fixturing during anodizing process - pieces hung on aluminum wire during acid bath and dyeing</li>
+                                    <li>Type II anodizing process creating durable oxide layer</li>
+                                    <li>Post-anodizing seal for enhanced corrosion resistance</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div>
+                            <img src="images/IPD_5010_Lathe.jpg" alt="CNC turning operation" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Lathe.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Live turning operation on Haas TL-1 showing chip formation and cutting action
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Stock_Prep.jpg" alt="Prepared aluminum stock" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Stock_Prep.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Stock preparation: faced and center-drilled aluminum rods ready for machining
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content" style="margin-top: 2rem;">
+                        <h4 class="title is-5">Manufacturing Challenges & Solutions</h4>
+                        <ul>
+                            <li><strong>Drilling challenges:</strong> Aluminum's low melting point (1220°F) and tendency to gall required reduced RPM (400 RPM vs typical 1200 RPM) and peck drilling cycles for chip evacuation</li>
+                            <li><strong>Time management:</strong> Flip operations time-consuming; streamlined workflow by batching similar pieces and optimizing tool changes</li>
+                            <li><strong>Surface finish:</strong> Achieved mirror-like finish through proper cutting speeds (300 SFM), sharp carbide tools, and minimal tool pressure during finish passes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. BOARD FABRICATION -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Board Fabrication</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Boxing Ring Board Specifications</h4>
+                        <ul>
+                            <li><strong>Dimensions:</strong> 13.2" × 13.2" outer perimeter, 10.4" × 10.4" playing surface (64 squares @ 1.3" × 1.3" each)</li>
+                            <li><strong>Base structure:</strong> Laser-cut 1/4" birch wood with zigzag joinery for press-fit assembly, spray-painted with stone texture paint for authentic concrete aesthetic</li>
+                            <li><strong>Playing surface:</strong> Alternating black and gray natural stone tiles cut to precise 1.3" × 1.3" dimensions, grouted for flush finish and professional appearance</li>
+                            <li><strong>Ring posts:</strong> 3D-printed PLA with removable inner poles and cotton rope tensioning system mimicking boxing ring construction</li>
+                            <li><strong>Integrated grating:</strong> 0.08" aluminum 6061-T6 sheet metal with laser-cut openings for fog/light dispersion creating dramatic underlit effect</li>
+                            <li><strong>Storage drawers:</strong> Two opposing drawer assemblies (1/4" birch wood construction) with linear rail sliders for smooth operation - stores all 3D printed robot pieces when not used</li>
+                            <li><strong>Lighting effects:</strong> LED lights mounted beneath grating with remote control for dramatic illumination</li>
+                            <li><strong>Fog machine:</strong> Integrated fog machine system with tube routing through side panel for atmospheric underground ring ambiance</li>
+                            <li><strong>3D-printed bleachers:</strong> Miniature audience seating that mounts on drawer ledges when robot is disassembled, adding to underground fight club theme</li>
+                        </ul>
+
+                        <h4 class="title is-5">Wood Frame Construction</h4>
+                        <ul>
+                            <li>Laser-cut 1/4" birch plywood with zigzag joinery for strong press-fit assembly without fasteners</li>
+                            <li>Kerf compensation (0.008") in laser cutting file to ensure tight press fits after material removal during cutting</li>
+                            <li>Spray-painted with stone texture paint (Rust-Oleum Stone Creations) applied in multiple coats for authentic gritty concrete aesthetic</li>
+                            <li>Wood glue (Titebond II) assembly with corner reinforcement and 24-hour curing time</li>
+                        </ul>
+
+                        <h4 class="title is-5">Playing Surface - Stone Tile Work</h4>
+                        <ul>
+                            <li>Natural stone tiles (4" × 8" sheets) cut to 1.3" × 1.3" individual squares using wet saw - challenges with vibration causing uneven cuts requiring multiple attempts</li>
+                            <li>Stone adhesive (Loctite Power Grab) application on laser-cut aluminum sheet substrate with careful spacing for grout lines</li>
+                            <li>Grouting with color-matched grout (Polyblend sanded grout) for flush, seamless playing surface - excess grout removal after 15-minute setup</li>
+                            <li>Final polishing with damp sponge for clean professional appearance</li>
+                        </ul>
+
+                        <h4 class="title is-5">Drawer System Assembly</h4>
+                        <ul>
+                            <li>Six-piece birch wood construction per drawer (1/4" thick panels), glued with wood adhesive and brad nailed for reinforcement</li>
+                            <li>Linear rail sliders attached to side panels with wood screws - challenges with spacing and alignment requiring jigs for parallel installation</li>
+                            <li>Drawer handles (brushed nickel finish) press-fit or glued to drawer fronts for easy pull-out operation</li>
+                            <li>Drawer capacity: Each drawer holds 1 set of 3D printed robot torso and joints in organized layout</li>
+                        </ul>
+
+                        <h4 class="title is-5">Electronics Integration</h4>
+                        <ul>
+                            <li>LED lights mounted to underside of board base with wire routing through internal cavity</li>
+                            <li>Fog machine tube (flexible silicone, 1/2" diameter) press-fit to side panel opening with seal to prevent fog leakage</li>
+                        </ul>
+                    </div>
+
+                    <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div>
+                            <img src="images/IPD_5010_Boxing_Ring_Pre_Paint.jpg" alt="Laser-cut wood frame" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Boxing_Ring_Pre_Paint.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Laser-cut 1/4" birch wood frame with zigzag joinery before surface finishing
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Boxing_Ring_Post_Paint.jpg" alt="Painted boxing ring frame" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Boxing_Ring_Post_Paint.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Stone texture spray paint application creating realistic concrete appearance
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Stone_Tile_Cutting.jpg" alt="Stone tile cutting process" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Stone_Tile_Cutting.jpg')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Precision cutting of stone tiles with wet saw for chess board squares
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/IPD_5010_Grouted_Chess_Board.png" alt="Stone tile cutting process" 
+                                 style="height: 12em; width: 100%; object-fit: cover;"
+                                 onclick="showImage('images/IPD_5010_Grouted_Chess_Board.png')" />
+                            <p class="has-text-centered" style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                Stone tiles joint together with stone glue and grout to form flush chess board surface
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content" style="margin-top: 2rem;">
+                        <h4 class="title is-5">Robot Components - 3D Printing & Assembly</h4>
+                        <p><strong>Iterative Design Development:</strong></p>
+                        <ul>
+                            <li>Multiple print iterations (5-7 versions) to refine snap-fit tolerances - initial designs too tight causing breakage, later versions too loose</li>
+                            <li>Thread geometry testing for chess piece connections - experimented with pitch and depth to optimize holding strength</li>
+                            <li>Print failure troubleshooting including spiraling out (due to loose belts), layer adhesion issues (bed temperature adjustment), and warping (enclosure use)</li>
+                        </ul>
+
+                        <p><strong>Material Selection Rationale:</strong></p>
+                        <ul>
+                            <li><strong>PLA:</strong> Structural components (body panels, joints, linkages) - chosen for rigidity (tensile strength 50 MPa), excellent print quality, and ease of post-processing</li>
+                            <li><strong>TPU:</strong> Flexible accessories (helmet, boxing gloves, socks) - provides compliance (Shore hardness 95A) and realistic appearance for soft goods</li>
+                            <li><strong>Print settings:</strong> 0.2mm layer height, 20% infill for structural parts, 100% infill for high-stress joints, 3 perimeter walls</li>
+                            <li><strong>Support structures:</strong> Tree supports for complex geometries, dissolvable PVA supports for enclosed features</li>
+                        </ul>
+
+                        <p><strong>Spring System:</strong></p>
+                        <ul>
+                            <li>Tension springs for knee and elbow joints - maintain extended position and provide return force during articulation (McMaster-Carr #9271K181)</li>
+                            <li>Compression springs for hip and shoulder - provide resistance and controlled motion (McMaster-Carr #9657K112)</li>
+                            <li>Spring selection based on joint load requirements (supporting ~0.5 lb per limb) and desired stiffness for pose holding</li>
+                            <li>Spring attachment points designed with recessed pockets and capture features to prevent slippage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill of Materials -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Bill of Materials</h2>
+                    <div class="content">
+                        <p>Total project cost: <strong>$309.42</strong> (within $350 budget, 11.6% under budget)</p>
+                        <div style="overflow-x: auto;">
+                            <table class="table is-striped is-hoverable" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Source</th>
+                                        <th>Item Name</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Cost ($)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2"><strong>Robot</strong></td>
+                                        <td>McMaster-Carr</td>
+                                        <td>Knee tension spring</td>
+                                        <td>1</td>
+                                        <td>12.13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>McMaster-Carr</td>
+                                        <td>Hip tension spring</td>
+                                        <td>1</td>
+                                        <td>17.68</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="10"><strong>Chess Board</strong></td>
+                                        <td>OSH Cut</td>
+                                        <td>Aluminum grates</td>
+                                        <td>1</td>
+                                        <td>48.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Fog Machine</td>
+                                        <td>2</td>
+                                        <td>39.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home Depot</td>
+                                        <td>Tiles (Black)</td>
+                                        <td>1</td>
+                                        <td>14.38</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home Depot</td>
+                                        <td>Tiles (Grey)</td>
+                                        <td>1</td>
+                                        <td>14.38</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>LED lights</td>
+                                        <td>1</td>
+                                        <td>19.89</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Rope</td>
+                                        <td>1</td>
+                                        <td>6.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Stone glue</td>
+                                        <td>1</td>
+                                        <td>8.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Linear rails</td>
+                                        <td>2</td>
+                                        <td>10.31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Drawer Handle</td>
+                                        <td>2</td>
+                                        <td>10.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>Stone Texture Spray Paint</td>
+                                        <td>1</td>
+                                        <td>19.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>McMaster-Carr</td>
+                                        <td>Ring tension springs</td>
+                                        <td>3</td>
+                                        <td>11.80</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align: right;"><strong>Total Cost:</strong></td>
+                                        <td><strong>$309.42</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 1rem;"><em>Note: Aluminum stock, 3D printing filament (PLA/TPU), laser cutting material (Birch wood) and anodizing services were provided by the course and not included in budget.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. CHALLENGES & LEARNING OUTCOMES -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Challenges & Learning Outcomes</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Technical Challenges</h4>
+                        <ul>
+                            <li><strong>CNC lathe learning curve:</strong> First experience with CNC turning required understanding of tool geometry (rake angles, relief angles), work holding principles (collet vs chuck), and programming conventions (absolute vs incremental positioning). Overcame through hands-on training, watching experienced operators, and iterative practice.</li>
+                            <li><strong>Aluminum drilling issues:</strong> Soft material properties (low melting point, high ductility) caused galling and chip packing in drilled holes; solved through RPM reduction (from 1200 to 400 RPM), peck drilling cycles (0.050" increments), and liberal cutting fluid application.</li>
+                            <li><strong>Flip-side operations:</strong> Time-consuming process requiring careful tool zeroing and alignment; improved efficiency through workflow batching (completing all first-side operations before flipping entire batch) and developing consistent setup procedures.</li>
+                            <li><strong>3D print failures:</strong> Layer separation issues during long prints (8+ hours) and spiraling/shifting problems; resolved through bed leveling calibration, temperature optimization (nozzle 210°C, bed 60°C), print orientation to minimize overhangs, and enclosure use to maintain ambient temperature.</li>
+                            <li><strong>Fit tolerance iteration:</strong> Multiple print iterations (5-7 versions) required to achieve proper snap-fit engagement (too tight = breakage, too loose = falls apart) and threaded connections (undersized by 0.1" for reliable assembly); learned importance of test prints before committing to full-scale production.</li>
+                            <li><strong>Laser cut press fits:</strong> Kerf compensation critical for proper fit (material burned away during cutting affects dimensions); required test cuts with calipers measurement to dial in settings (final kerf = 0.008" for 1/4" birch).</li>
+                            <li><strong>Linear rail alignment:</strong> Drawer sliders required precise parallel mounting (within 0.010" over 12" length) for smooth operation; used jigs, careful measurement with combination square, and incremental adjustments to ensure binding-free travel.</li>
+                            <li><strong>Anodizing fixturing:</strong> Required creative solutions to hang pieces during acid bath without affecting critical surfaces; used 1/4-20 holes with aluminum wire hangers, designed to minimize contact area and ensure even dye coverage.</li>
+                        </ul>
+
+                        <h4 class="title is-5">Key Learnings</h4>
+                        <ul>
+                            <li><strong>CNC turning fundamentals:</strong> Gained proficiency in lathe operations including tool selection (inserts for different geometries), cutting parameter optimization (speeds/feeds based on material), work holding strategies (collet selection, stick-out minimization), and MasterCAM programming (toolpath generation, simulation verification).</li>
+                            <li><strong>Multi-process integration:</strong> Learned to coordinate CNC machining, 3D printing, laser cutting, and manual fabrication into cohesive workflow with dependencies and critical path understanding; developed project management skills in scheduling parallel tasks.</li>
+                            <li><strong>Design iteration importance:</strong> Rapid prototyping with 3D printing enabled quick fit-checking and design refinement (test print → measure → adjust CAD → reprint cycle) before finalizing assembly; learned value of "fail fast" approach and incremental improvement.</li>
+                            <li><strong>Material behavior understanding:</strong> Deepened knowledge of aluminum machining characteristics (chip formation, built-up edge prevention), 3D printing material properties (PLA rigidity vs TPU flexibility, anisotropic strength), and wood working techniques (grain direction, moisture content effects).</li>
+                            <li><strong>Time management in manufacturing:</strong> Learned to balance design ambition with realistic production timelines and resource constraints; developed estimation skills for machining time, print duration, and assembly complexity.</li>
+                            <li><strong>Quality vs. schedule trade-offs:</strong> Made strategic decisions on which features warranted extra time investment (e.g., stone tile precision, anodizing quality) vs. acceptable simplifications (e.g., simplified crown geometry, reduced bleacher detail) to meet deadlines.</li>
+                            <li><strong>Team coordination:</strong> Effectively divided tasks among four team members while maintaining design consistency and assembly compatibility; learned importance of communication, documentation (shared CAD assembly), and regular check-ins.</li>
+                            <li><strong>Problem-solving methodology:</strong> Developed systematic approach to troubleshooting: identify problem → research solutions → test hypothesis → implement fix → verify results; learned to balance trial-and-error with analytical thinking.</li>
+                            <li><strong>Design for manufacturing (DFM):</strong> Gained practical understanding of how design decisions affect manufacturability, cost, and quality; learned to design with specific processes in mind (axisymmetric for turning, minimal overhangs for printing, press-fit geometry for laser cutting).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. MY CONTRIBUTIONS -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <p>
+                            As a team member of Team Robox, I was involved in all aspects of this project from concept development through final assembly:
+                        </p>
+
+                        <h4 class="title is-5">Design & CAD Modeling</h4>
+                        <ul>
+                            <li>Collaborated on initial concept development and theme selection for underground boxing ring aesthetic during brainstorming sessions</li>
+                            <li>Created SolidWorks models for multiple chess pieces (specifically: pawns, rooks, and bishops) ensuring axisymmetric geometry for CNC turning with appropriate tool clearances and fillet radii</li>
+                            <li>Designed 3D-printed robot components including shoulder joints, knee linkages, and front torso sections with appropriate fit tolerances (0.1" thread oversize)</li>
+                            <li>Developed surface models for organic robot forms requiring complex curved geometries using lofts, sweeps, and boundary surfaces in SolidWorks</li>
+                            <li>Specified threaded connections (1/4-20) and slip-fit interfaces for robot assembly system with tolerance analysis to ensure proper function</li>
+                            <li>Created assembly models to verify component compatibility and assembly sequences, identifying interference issues before manufacturing</li>
+                            <li>Participated in design reviews (Preliminary Design Review, Critical Design Review) presenting CAD models and manufacturing plans</li>
+                        </ul>
+
+                        <h4 class="title is-5">Manufacturing</h4>
+                        <ul>
+                            <li>Completed TL-1 CNC lathe training certification and machined 8 chess pieces (2 pawns, 2 bishops, 2 rooks, 1 king, 1 queen) including turning, facing, grooving, and cut-off operations over 3 machining sessions</li>
+                            <li>Programmed MasterCAM toolpaths for axisymmetric chess piece geometry with proper tool selection (roughing vs finishing inserts) and cutting parameters (300 SFM, 0.005 IPR)</li>
+                            <li>Performed stock preparation including cutting aluminum rod to length, facing operations for perpendicularity, center drilling, and drilling 1/4" holes for tapping</li>
+                            <li>Conducted post-processing including deburring, tapping 1/4-20 threads with cutting fluid, and bandsaw detail work for rook towers and king crown features</li>
+                            <li>Operated 3D printers for robot components using both PLA (structural parts at 0.2mm layer height, 15% infill) and TPU (flexible accessories at 0.15mm layer height, 15% infill) </li>
+                            <li>Led with laser cutting operations for wood frame components on 60W CO2 laser, including file preparation with kerf compensation (0.008") and machine setup</li>
+                            <li>Participated in board assembly including stone tile installation (cutting with wet saw, adhering with stone adhesive, grouting), drawer construction (Birch wood laser cutting, gluing, linear rail installation), and electronics integration (LED lights, fog machine tube routing)</li>
+                        </ul>
+
+                        <h4 class="title is-5">Finishing & Assembly</h4>
+                        <ul>
+                            <li>Prepared chess pieces for anodizing by fixturing through 1/4-20 holes with aluminum wire hangers, ensuring proper hang angle for even dye coverage</li>
+                            <li>Applied spray paint texture to wood frame for concrete aesthetic in ventilated area with proper PPE, multiple thin coats for even coverage</li>
+                            <li>Assembled robot components verifying fit and function of all joints and connections, identifying tolerance issues requiring CAD adjustments and reprints</li>
+                            <li>Conducted final quality inspection of all components, checking dimensions with calipers, visual inspection for defects, and functional testing of all moving parts</li>
+                        </ul>
+
+                        <h4 class="title is-5">Project Management</h4>
+                        <ul>
+                            <li>Contributed to bill of materials development including vendor research (McMaster-Carr, Amazon, Home Depot), price comparison, and material procurement planning to stay within $350 budget</li>
+                            <li>Participated in design reviews and manufacturing planning sessions, presenting progress updates and identifying potential issues/risks</li>
+                            <li>Coordinated with team members on timeline and task allocation using shared spreadsheet, ensuring parallel work streams and identifying dependencies</li>
+                            <li>Assisted with project documentation including Preliminary Design Report (PDR - concept development, initial CAD), Critical Design Report (CDR - detailed drawings, manufacturing plans, BOM), and final presentation (PowerPoint with photos, videos, lessons learned)</li>
+                            <li>Maintained project schedule tracking, flagging delays and coordinating resource sharing (3D printers, CNC machine time slots)</li>
+                            <li>Contributed to troubleshooting sessions when manufacturing challenges arose, proposing solutions and testing alternatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); cursor: pointer;"
+        onclick="closeModal()">
+        <span style="position: absolute; top: 20px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;"
+              onclick="closeModal()">&times;</span>
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 85%;" />
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+    }
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
+
+</html>
