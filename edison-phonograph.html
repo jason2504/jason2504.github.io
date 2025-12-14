@@ -1,0 +1,587 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Edison Phonograph Project - Jason Chen" />
+    <meta name="keywords" content="Phonograph Mechanical Recording CNC Machining IPD 5010" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edison Phonograph Project - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Fixed navigation styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            padding-top: 80px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #363636;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-name:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-buttons .button {
+            background: #363636;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .button:hover {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1001;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #363636;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .button {
+            background: #4a4a4a;
+            transform: translateY(-1px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .results-highlight {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            margin-bottom: 2rem;
+        }
+
+        .clickable-media {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .clickable-media:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .modal-close:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-cogs"></i>
+                            </span>
+                            <span>Projects</span>
+                            <span class="icon">
+                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="upper-body-exo.html">EMG-Controlled Elbow Exoskeleton</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="edison-phonograph.html">Edison Phonograph</a>
+                            <a href="robox-chess.html">Robox Chess Set</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-scroll"></i>
+                            </span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Edison Phonograph</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        Sound and Motion - Mechanical Recording and Playback System
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Results Highlight -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Successfully recreated Edison's 1877 phonograph using modern manufacturing, achieving clear recording and playback of spoken messages with decent sound quality.</strong>
+                    Designed and fabricated complete leadscrew-based translation system with belt-driven transmission operating at constant 120 RPM. Hand-rolled brass horn from outsourced sheet metal, integrated Arduino Uno motor control with dual limit switches, and combined CNC machining, 3D printing, and metal fabrication—all within $1,000 budget.
+                </p>
+                <p style="margin-top: 0.5rem; color: #064e3b;">
+                    🎵 IPD 5010 capstone project at University of Pennsylvania with teammates Ethan Green and Jason Li (Team Vibrasian), demonstrating practical mechatronics integration and multi-process manufacturing expertise.
+                </p>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            The Edison phonograph, invented in 1877, was the first device capable of both recording and reproducing sound. Our IPD 5010 (Sound and Motion) project recreates this groundbreaking technology using a combination of precision CNC machining, 3D printing, hand fabrication, and modern Arduino-based control systems while maintaining the core mechanical recording mechanism that made the original revolutionary.
+                        </p>
+
+                        <p>
+                            Rather than simply replicating the original design, we adapted Edison's principles to modern manufacturing capabilities. The system features a precision leadscrew mechanism that translates the recording stylus across a rotating aluminum foil-wrapped cylinder at constant 120 RPM. Sound waves travel through a hand-rolled brass horn to a diaphragm-mounted stylus that mechanically etches vibration patterns into the foil, which can then be played back by reversing the motor direction.
+                        </p>
+
+                        <h3 class="title is-4">Mechanical Transmission System</h3>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    <strong>Power Flow Path:</strong> The 36mm BLDC motor drives a bottom pulley via set screw connection, which transmits power through a V-belt to the top pulley. The top pulley drives the leadscrew rotation, converting rotational motion into linear translation of the cylinder carriage. This belt-driven approach provides vibration isolation between the motor and recording mechanism—critical for clean audio recording.
+                                </p>
+                                <p>
+                                    The leadscrew pitch was carefully selected to provide appropriate groove spacing for audio fidelity, while the pulley ratio was sized to achieve exactly 120 RPM cylinder speed from the motor's base rotational velocity. Arduino Uno microcontroller manages motor direction (forward for record, reverse for playback) and monitors dual limit switches at travel endpoints for automatic stop functionality.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/phonograph_cad.png" class="clickable-media"
+                                    onclick="showImage('images/phonograph_cad.png')"
+                                    alt="Phonograph CAD Model"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Complete CAD assembly showing leadscrew, cylinder, and belt transmission
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="title is-4">Recording Mechanism Design</h3>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    The stylus assembly consists of a thin flexible diaphragm cap that vibrates in response to sound pressure, a rigid carriage cap that holds the stylus and diaphragm in precise position, and a sharp needle stylus that etches grooves into aluminum foil. Spring preload maintains consistent contact force between the stylus and foil surface—essential for uniform groove depth and playback volume consistency.
+                                </p>
+                                <p>
+                                    Standard kitchen aluminum foil serves as the recording surface, wrapped around the rotating cylinder with controlled tension to prevent wrinkling. The foil provides sufficient compliance for stylus indentation while maintaining its shape during playback. After recording, the foil can be carefully removed and replaced with fresh material for new recordings.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/phonograph_mechanism.jpg" class="clickable-media"
+                                    onclick="showImage('images/phonograph_mechanism.jpg')"
+                                    alt="Stylus Assembly"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Leadscrew carriage mechanism with diaphragm and stylus assembly
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="title is-4">Hand-Fabricated Brass Horn</h3>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    The brass horn serves as an acoustic impedance matcher, coupling sound waves in air to mechanical vibrations of the diaphragm. We sourced brass sheet metal externally (0.032" thickness) and hand-rolled it around a mandrel to create the exponential horn profile. The throat diameter was matched precisely to the diaphragm diameter for optimal acoustic coupling, while the large bell aperture captures maximum sound energy from the speaker's voice.
+                                </p>
+                                <p>
+                                    The exponential taper profile was designed specifically for the voice frequency range (100-4000 Hz), providing natural amplification without electronic components. After forming, the seam was connected via rivets. This traditional brass construction significantly outperformed 3D-printed alternatives in acoustic quality and sound amplification during testing.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/phonograph_horn.jpg" class="clickable-media"
+                                    onclick="showImage('images/phonograph_horn.jpg')"
+                                    alt="Brass Horn Detail"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Hand-rolled brass horn for sound amplification and acoustic coupling
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="title is-4">Multi-Process Manufacturing Approach</h3>
+                        <p>
+                            The project strategically combined multiple manufacturing processes to balance precision, cost, and development speed. CNC machining was used for critical rotating components (leadscrew, cylinder, pulleys, bearing mounts) requiring tight tolerances and concentricity. 3D printing (PLA) enabled rapid iteration on non-critical parts like limit switch mounts, motor housing, and cable management clips. Hand fabrication of the brass horn saved significant cost compared to outsourcing while demonstrating traditional metalworking skills.
+                        </p>
+
+                        <p>
+                            The 304 stainless steel base frame provides rigid support preventing deflection under belt tension, while 6061 aluminum rotational components minimize rotating inertia for responsive motor control. All machined parts were programmed using Mastercam and produced on CNC mills and lathes in the university machine shop, with final assembly requiring careful attention to bearing alignment and belt tensioning.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Course:</strong> IPD 5010 - Sound and Motion</p>
+                        <p><strong>Duration:</strong> Fall 2025</p>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Team:</strong> Jason Chen, Ethan Green, Jason Li</p>
+                        <p><strong>Team Name:</strong> Vibrasian</p>
+                        <p><strong>Role:</strong> Mechanical Design & Machining Lead</p>
+                        <p><strong>Budget:</strong> $1,000</p>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">CNC Milling</span>
+                            <span class="tech-tag">CNC Turning</span>
+                            <span class="tech-tag">SolidWorks CAD</span>
+                            <span class="tech-tag">3D Printing (PLA)</span>
+                            <span class="tech-tag">Sheet Metal Fabrication</span>
+                            <span class="tech-tag">Arduino Programming</span>
+                            <span class="tech-tag">Motor Control</span>
+                            <span class="tech-tag">Mastercam</span>
+                            <span class="tech-tag">Mechanical Assembly</span>
+                        </div>
+
+                        <h3 class="title is-5" style="margin-top: 1.5rem;">Key Components</h3>
+                        <ul style="font-size: 0.9rem;">
+                            <li><strong>Motor:</strong> 36mm BLDC 12V</li>
+                            <li><strong>MCU:</strong> Arduino Uno R3</li>
+                            <li><strong>Power:</strong> 24V Variable Supply</li>
+                            <li><strong>Frame:</strong> 304 Stainless Steel</li>
+                            <li><strong>Cylinder:</strong> 6061 Aluminum</li>
+                            <li><strong>Leadscrew:</strong> High-Speed Steel</li>
+                            <li><strong>Horn:</strong> Hand-Rolled Brass</li>
+                            <li><strong>Recording:</strong> Aluminum Foil</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-details">
+                        <h3 class="title is-5">Performance</h3>
+                        <ul style="font-size: 0.9rem;">
+                            <li><strong>Speed:</strong> 120 RPM ±2 RPM</li>
+                            <li><strong>Recording:</strong> Clear voice capture</li>
+                            <li><strong>Playback:</strong> Decent intelligibility</li>
+                            <li><strong>Frequency:</strong> 200-3000 Hz optimal</li>
+                            <li><strong>Travel:</strong> Full leadscrew length</li>
+                            <li><strong>Safety:</strong> Dual limit switches</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manufacturing Details -->
+            <div class="content">
+                <h2 class="title is-3">Manufacturing & Material Selection</h2>
+                
+                <h3 class="title is-4">CNC Machined Components</h3>
+                <p><strong>Why CNC Machining:</strong></p>
+                <ul>
+                    <li><strong>Concentricity:</strong> Rotating components require tight runout tolerances (&lt;0.005" TIR)</li>
+                    <li><strong>Bearing Interfaces:</strong> Shoulder diameters and seat depths critical for alignment</li>
+                    <li><strong>Surface Finish:</strong> Mating surfaces benefit from machined smoothness (32 Ra or better)</li>
+                </ul>
+
+                <p><strong>Key Machined Parts:</strong></p>
+                <ul>
+                    <li>304 Stainless Steel Base Frame (rigidity and corrosion resistance)</li>
+                    <li>6061 Aluminum Cylinder (turned to precise OD for foil wrapping)</li>
+                    <li>Aluminum Pulleys (V-groove profile for belt retention)</li>
+                    <li>Bearing Mounts (precision bored and reamed for bearing seats)</li>
+                </ul>
+
+                <h3 class="title is-4">3D Printed Components (PLA)</h3>
+                <p><strong>Why 3D Printing:</strong></p>
+                <ul>
+                    <li><strong>Geometric Complexity:</strong> Organic shapes difficult or expensive to machine</li>
+                    <li><strong>Design Iteration:</strong> Rapid prototyping of mounting positions and clearances</li>
+                    <li><strong>Low Structural Load:</strong> Parts experience minimal forces, PLA strength sufficient</li>
+                    <li><strong>Cost Effectiveness:</strong> Avoid machining setup time for simple brackets</li>
+                </ul>
+
+                <p><strong>3D Printed Parts:</strong></p>
+                <ul>
+                    <li>Limit Switch Mounts (positioned at exact travel endpoints)</li>
+                    <li>Motor Housing (protective enclosure with integrated mounting)</li>
+                    <li>Horn Support Bracket (adjustable for optimal acoustic coupling)</li>
+                    <li>Cable Management Clips (wire routing to prevent interference)</li>
+                </ul>
+
+                <h3 class="title is-4">Hand-Fabricated Brass Horn</h3>
+                <ul>
+                    <li><strong>Material:</strong> 0.032" brass sheet metal (outsourced, formed in-house)</li>
+                    <li><strong>Process:</strong> Hand-rolled around mandrel, seam brazed/soldered</li>
+                    <li><strong>Finish:</strong> Polished for aesthetics and acoustic properties</li>
+                    <li><strong>Acoustic Advantages:</strong> Natural sound amplification, traditional material authentic to 1877 design</li>
+                </ul>
+            </div>
+
+            <!-- Performance & Results -->
+            <div class="content">
+                <h2 class="title is-3">Performance & Results</h2>
+                
+                <h3 class="title is-4">Recording Quality</h3>
+                <ul>
+                    <li><strong>Speed Stability:</strong> Maintained 120 RPM ±2 RPM throughout recording cycle</li>
+                    <li><strong>Sound Capture:</strong> Successfully recorded clear spoken words and short phrases</li>
+                    <li><strong>Dynamic Range:</strong> Captured volume variations from normal speech to loud exclamations</li>
+                    <li><strong>Frequency Response:</strong> Best performance in voice range (200-3000 Hz)</li>
+                </ul>
+
+                <h3 class="title is-4">Playback Quality</h3>
+                <ul>
+                    <li><strong>Intelligibility:</strong> Majority of recorded message reproduced with decent clarity</li>
+                    <li><strong>Tonal Quality:</strong> Recognizable voice characteristics preserved</li>
+                    <li><strong>Background Noise:</strong> Minimal mechanical noise from transmission system</li>
+                    <li><strong>Distortion:</strong> Some high-frequency rolloff due to mechanical limitations</li>
+                </ul>
+
+                <h3 class="title is-4">Challenges & Solutions</h3>
+                <div class="columns">
+                    <div class="column is-6">
+                        <p><strong>Challenge 1: Stylus Contact Force</strong></p>
+                        <ul>
+                            <li><strong>Issue:</strong> Inconsistent groove depth → volume variations</li>
+                            <li><strong>Solution:</strong> Spring preload for consistent force</li>
+                        </ul>
+                        
+                        <p><strong>Challenge 2: Motor Speed Regulation</strong></p>
+                        <ul>
+                            <li><strong>Issue:</strong> Variable speed under changing loads</li>
+                            <li><strong>Solution:</strong> Arduino PWM control with back-EMF feedback</li>
+                        </ul>
+                    </div>
+                    <div class="column is-6">
+                        <p><strong>Challenge 3: Foil Wrinkling</strong></p>
+                        <ul>
+                            <li><strong>Issue:</strong> Wrinkles during wrapping process</li>
+                            <li><strong>Solution:</strong> Wrapping technique with controlled tension</li>
+                        </ul>
+                        
+                        <p><strong>Challenge 4: Horn Acoustic Coupling</strong></p>
+                        <ul>
+                            <li><strong>Issue:</strong> Insufficient initial amplification</li>
+                            <li><strong>Solution:</strong> Redesigned flare based on impedance matching</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lessons Learned -->
+            <div class="content">
+                <h2 class="title is-3">Lessons Learned & Future Improvements</h2>
+                
+                <h3 class="title is-4">Technical Insights</h3>
+                <ul>
+                    <li><strong>Material Impact:</strong> Brass horn significantly outperformed 3D-printed alternatives in acoustic quality</li>
+                    <li><strong>Precision Requirements:</strong> Small bearing misalignments caused noticeable playback artifacts</li>
+                    <li><strong>Speed Control:</strong> ±5% speed variation produced audible pitch shifting</li>
+                </ul>
+
+                <h3 class="title is-4">Manufacturing Takeaways</h3>
+                <ul>
+                    <li><strong>Hybrid Manufacturing:</strong> Combining machining and 3D printing accelerated development</li>
+                    <li><strong>In-House Fabrication:</strong> Hand-rolling brass horn saved cost despite longer time</li>
+                    <li><strong>Tolerance Stack-Up:</strong> Multiple machined parts required attention to cumulative variations</li>
+                </ul>
+
+                <h3 class="title is-4">Potential Future Improvements</h3>
+                <ul>
+                    <li>Closed-loop motor control with optical encoder for precise 120 RPM regulation</li>
+                    <li>Wax-coated cylinders or polymer films for better fidelity and reusability</li>
+                    <li>Dual stylus system with optimized geometries for record vs. playback</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function showImage(src) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImage').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+    <footer class="footer" style="margin-top: 3rem;">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Team Vibrasian</strong> - University of Pennsylvania<br>
+                    IPD 5010: Sound and Motion
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
