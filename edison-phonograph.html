@@ -24,7 +24,6 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
     <style>
-        /* Fixed navigation styles */
         .fixed-header {
             position: fixed;
             top: 0;
@@ -257,7 +256,6 @@
         </div>
     </header>
 
-    <!-- Project Header -->
     <section class="project-header">
         <div class="container is-max-desktop">
             <div class="columns is-centered">
@@ -273,7 +271,6 @@
 
     <section class="section">
         <div class="container is-max-desktop">
-            <!-- Results Highlight -->
             <div class="results-highlight">
                 <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
                 <p style="font-size: 1.1rem; color: #064e3b;">
@@ -285,7 +282,6 @@
                 </p>
             </div>
 
-            <!-- Project Overview -->
             <div class="columns">
                 <div class="column is-8">
                     <div class="content">
@@ -295,7 +291,7 @@
                         </p>
 
                         <p>
-                            Rather than simply replicating the original design, we adapted Edison's principles to modern manufacturing capabilities. The system features a precision leadscrew mechanism that translates the recording stylus across a rotating aluminum foil-wrapped cylinder at constant 120 RPM. Sound waves travel through a hand-rolled brass horn to a diaphragm-mounted stylus that mechanically etches vibration patterns into the foil, which can then be played back by reversing the motor direction.
+                            Rather than simply replicating the original design, we adapted Edison's principles to modern manufacturing capabilities. The system features a precision leadscrew mechanism that translates the recording stylus across a rotating aluminum tape-wrapped cylinder at constant 120 RPM. Sound waves travel through a hand-rolled brass horn to a diaphragm-mounted stylus that mechanically etches vibration patterns into the tape, which can then be played back by reversing the motor direction.
                         </p>
 
                         <h3 class="title is-4">Mechanical Transmission System</h3>
@@ -309,8 +305,8 @@
                                 </p>
                             </div>
                             <div class="column is-4">
-                                <img src="images/phonograph_cad.png" class="clickable-media"
-                                    onclick="showImage('images/phonograph_cad.png')"
+                                <img src="images/IPD_5010_Phonograph_CAD.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_CAD.png')"
                                     alt="Phonograph CAD Model"
                                     style="width: 100%; border-radius: 8px;" />
                                 <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
@@ -321,53 +317,154 @@
 
                         <h3 class="title is-4">Recording Mechanism Design</h3>
                         <div class="columns">
-                            <div class="column is-8">
+                            <div class="column is-6">
                                 <p>
-                                    The stylus assembly consists of a thin flexible diaphragm cap that vibrates in response to sound pressure, a rigid carriage cap that holds the stylus and diaphragm in precise position, and a sharp needle stylus that etches grooves into aluminum foil. Spring preload maintains consistent contact force between the stylus and foil surface—essential for uniform groove depth and playback volume consistency.
+                                    The stylus assembly consists of a thin flexible diaphragm cap that vibrates in response to sound pressure, a rigid carriage cap that holds the stylus and diaphragm in precise position, and a sharp needle stylus that etches grooves into aluminum tape. 
                                 </p>
                                 <p>
-                                    Standard kitchen aluminum foil serves as the recording surface, wrapped around the rotating cylinder with controlled tension to prevent wrinkling. The foil provides sufficient compliance for stylus indentation while maintaining its shape during playback. After recording, the foil can be carefully removed and replaced with fresh material for new recordings.
+                                    Thicker aluminum tape instead of standard kitchen foil serves as the recording surface, wrapped around the rotating cylinder with controlled tension to prevent wrinkling. The tape provides sufficient compliance for stylus indentation while maintaining its shape during playback. After recording, the tape can be carefully removed and replaced with fresh material for new recordings.
                                 </p>
                             </div>
-                            <div class="column is-4">
-                                <img src="images/phonograph_mechanism.jpg" class="clickable-media"
-                                    onclick="showImage('images/phonograph_mechanism.jpg')"
-                                    alt="Stylus Assembly"
+                            <div class="column is-3">
+                                <img src="images/IPD_5010_Phonograph_Stylus_Iso.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_Stylus_Iso.png')"
+                                    alt="Diaphragm Assembly"
                                     style="width: 100%; border-radius: 8px;" />
                                 <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
-                                    Leadscrew carriage mechanism with diaphragm and stylus assembly
+                                    Diaphragm assembly with mounting structure and brass counterweight
+                                </p>
+                            </div>
+                            <div class="column is-3">
+                                <img src="images/IPD_5010_Phonograph_Stylus_Closeup.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_Stylus_Closeup.png')"
+                                    alt="Stylus and Gasket Detail"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Close-up view of needle stylus and silicon gasket mounting
                                 </p>
                             </div>
                         </div>
 
-                        <h3 class="title is-4">Hand-Fabricated Brass Horn</h3>
+                        <h3 class="title is-4">Arduino Motor Control System</h3>
+                        <p>
+                            The Arduino Uno R3 microcontroller serves as the brain of the phonograph, managing motor speed control, direction switching, and safety monitoring through limit switches. The control system uses PWM (Pulse Width Modulation) to regulate the 36mm BLDC planetary gear motor (model NF-GA36Y-3650), maintaining a constant 120 RPM regardless of mechanical load variations during recording and playback.
+                        </p>
+                        <p>
+                            <strong>Motor Specifications & Wiring:</strong> The NF-GA36Y-3650 is a 12V/24V high-torque brushless DC motor with integrated planetary gearbox. The motor features 5 color-coded wires with specific functions:
+                        </p>
+                        <ul>
+                            <li><strong>Red wire:</strong> VCC motor power supply (+24V in our implementation)</li>
+                            <li><strong>Black wire:</strong> GND motor power supply (ground/negative)</li>
+                            <li><strong>White wire:</strong> Forward and reverse control - connect with black wire (GND) for one direction, disconnect for opposite direction</li>
+                            <li><strong>Blue wire:</strong> PWM speed control wire (0-5V pulse width modulation signal from Arduino pin 9)</li>
+                            <li><strong>Yellow wire:</strong> FG signal wire (frequency generator output) - provides square wave pulses for speed feedback, functioning as a rotational encoder signal</li>
+                        </ul>
+                        <p>
+                            <strong>Motor Control Implementation:</strong> The Arduino code (Arduino Uno pins: PWM on pin 9, direction on pin 8, feedback on pin 2) reads the FG signal from the yellow wire to determine rotor position and calculate instantaneous RPM. The yellow wire outputs square wave pulses that can be detected by monitoring pulse frequency—equivalent to a single-wire encoder. By counting pulses over time and accounting for the 14:1 gear ratio and 6 pulses per revolution, the system calculates output shaft RPM.
+                        </p>
+                        <p>
+                            When mechanical load increases (such as stylus friction during recording), the system detects RPM drop through pulse timing on the yellow FG wire and automatically increases PWM duty cycle on the blue wire to maintain constant 120 RPM rotational velocity. This closed-loop feedback ensures consistent groove spacing critical for playback fidelity. The red and black wires supply power through a variable 24V DC power supply.
+                        </p>
+                        <p>
+                            <strong>Direction Control:</strong> A physical toggle switch (Arduino pin 11) connected to the Arduino determines motor direction through the white wire: when the white wire is connected to ground (black wire), the motor rotates in one direction for recording; when disconnected, it reverses for playback. The Arduino controls this electronically via pin 8 that switches a relay or transistor connecting/disconnecting the white wire.
+                        </p>
+                        <p>
+                            <strong>Safety System:</strong> Two limit switches mounted at the leadscrew travel endpoints connect to Arduino digital pins 3 (home) and 4 (end) with internal pull-up resistors. The home switch uses hardware interrupt capability on pin 3 for immediate response. When the carriage reaches either end, the corresponding switch triggers, and the Arduino immediately cuts motor power via PWM pin 9 to prevent mechanical damage. A power switch on pin 10 provides manual emergency shutoff capability.
+                        </p>
+                        <h3 class="title is-4">Detailed Mechanical Design Mechanisms</h3>
+                        
+                        <p><strong>1. Leadscrew Rotation Mechanism:</strong></p>
                         <div class="columns">
                             <div class="column is-8">
                                 <p>
-                                    The brass horn serves as an acoustic impedance matcher, coupling sound waves in air to mechanical vibrations of the diaphragm. We sourced brass sheet metal externally (0.032" thickness) and hand-rolled it around a mandrel to create the exponential horn profile. The throat diameter was matched precisely to the diaphragm diameter for optimal acoustic coupling, while the large bell aperture captures maximum sound energy from the speaker's voice.
+                                    The leadscrew achieves simultaneous rotation and horizontal translation through a clever mechanical constraint system. Two hex nuts are embedded within the left and right side mounts and secured with 3D-printed covers, preventing the nuts from rotating. As the motor drives the bottom pulley and V-belt transmits power to the top pulley, the leadscrew rotates while these fixed nuts act as anchor points.
                                 </p>
                                 <p>
-                                    The exponential taper profile was designed specifically for the voice frequency range (100-4000 Hz), providing natural amplification without electronic components. After forming, the seam was connected via rivets. This traditional brass construction significantly outperformed 3D-printed alternatives in acoustic quality and sound amplification during testing.
+                                    Power transfer from the top pulley to the leadscrew occurs through a ball bearing interface. The leadscrew was machined and faced down to create a precision groove accommodating two ball bearings (one top, one bottom) positioned between the leadscrew and a machined slot in the top pulley. This bearing connection allows rotational motion transfer while maintaining axial alignment. As the leadscrew rotates through the stationary nuts, it translates horizontally, carrying the cylinder carriage along its threaded shaft.
                                 </p>
                             </div>
                             <div class="column is-4">
-                                <img src="images/phonograph_horn.jpg" class="clickable-media"
-                                    onclick="showImage('images/phonograph_horn.jpg')"
-                                    alt="Brass Horn Detail"
+                                <img src="images/IPD_5010_Phonograph_ball_bearing.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_ball_bearing.png')"
+                                    alt="Leadscrew Mechanism"
                                     style="width: 100%; border-radius: 8px;" />
                                 <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
-                                    Hand-rolled brass horn for sound amplification and acoustic coupling
+                                    Leadscrew with fixed nuts and ball bearing connection to top pulley
                                 </p>
                             </div>
                         </div>
 
+                        <p><strong>2. Pivot Arm for Stylus Engagement:</strong></p>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    The diaphragm and stylus assembly mounts on a pivot arm that allows the stylus to be disengaged and removed once recording is complete. This design prevents the needle from remaining in contact with the aluminum tape during homing operations or when the system is idle, protecting both the stylus tip and the recorded grooves from accidental damage. The pivot mechanism provides smooth engagement/disengagement while maintaining precise vertical alignment when lowered onto the recording surface.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/IPD_5010_Phonograph_pivot_arm.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_pivot_arm.png')"
+                                    alt="Pivot Arm Mechanism"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Pivot arm allowing stylus engagement and disengagement
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>3. Horn Positioning System:</strong></p>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    Two 0.25" clear acrylic plates position the brass horn precisely at the center of the diaphragm, creating an optimal acoustic coupling interface. This acrylic positioning system allows the horn to be hand-held with stability and repeatable alignment during both recording (amplifying user's voice input) and playback (amplifying mechanical vibrations from the stylus). The clear acrylic maintains visibility of the diaphragm for alignment verification while providing rigid support.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/IPD_5010_Phonograph_horn_positioner.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_horn_positioner.png')"
+                                    alt="Horn Positioner"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Clear acrylic horn positioning system for precise diaphragm alignment
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>4. Counterweight Tension Adjustment:</strong></p>
+                        <div class="columns">
+                            <div class="column is-8">
+                                <p>
+                                    Brass counterweights threaded onto the diaphragm arm provide fine adjustment of stylus contact force on the aluminum tape. Insufficient tension produces inadequate groove depth resulting in weak playback, while excessive tension risks tearing through the tape entirely. Through iterative testing, we determined the optimal counterweight position that produces clear groove impressions without tape damage—balancing recording fidelity against recording surface integrity.
+                                </p>
+                            </div>
+                            <div class="column is-4">
+                                <img src="images/IPD_5010_Phonograph_counterweight.png" class="clickable-media"
+                                    onclick="showImage('images/IPD_5010_Phonograph_counterweight.png')"
+                                    alt="Counterweight System"
+                                    style="width: 100%; border-radius: 8px;" />
+                                <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                                    Brass counterweights on threaded rod for stylus force adjustment
+                                </p>
+                            </div>
+                        </div>
+
+                        <p><strong>5. Electrical Control Components:</strong></p>
+                        <ul>
+                            <li><strong>Arduino Uno R3:</strong> Central microcontroller managing motor control via PWM (pin 9), direction control (pin 8), FG signal monitoring (pin 2), and limit switch detection (pins 3, 4)</li>
+                            <li><strong>Dual Limit Switches:</strong> Normally-open microswitches at travel endpoints (home on pin 3 with interrupt, end on pin 4 polled) trigger automatic motor shutoff</li>
+                            <li><strong>Power Switch (pin 10):</strong> Main power ON/OFF control</li>
+                            <li><strong>Direction Switch (pin 11):</strong> Toggle switch selecting forward (record) or reverse (playback) motor rotation</li>
+                            <li><strong>24V Variable Power Supply:</strong> Adjustable DC source providing power to motor red (+) and black (GND) wires</li>
+                            <li><strong>Motor Driver Circuit:</strong> Interfaces Arduino 5V logic with 24V motor power, controls blue wire PWM input and white wire direction control</li>
+                        </ul>
+
                         <h3 class="title is-4">Multi-Process Manufacturing Approach</h3>
                         <p>
-                            The project strategically combined multiple manufacturing processes to balance precision, cost, and development speed. CNC machining was used for critical rotating components (leadscrew, cylinder, pulleys, bearing mounts) requiring tight tolerances and concentricity. 3D printing (PLA) enabled rapid iteration on non-critical parts like limit switch mounts, motor housing, and cable management clips. Hand fabrication of the brass horn saved significant cost compared to outsourcing while demonstrating traditional metalworking skills.
+                            The project strategically combined multiple manufacturing processes to balance precision, cost, and development speed. CNC machining was used for critical rotating components (leadscrew, cylinder, pulleys, bearing mounts) requiring tight tolerances and concentricity. 3D printing (PLA) enabled rapid iteration on non-critical parts like limit switch mounts and motor housing. Hand fabrication of the brass horn saved significant cost compared to outsourcing while demonstrating traditional metalworking skills.
                         </p>
 
                         <p>
-                            The 304 stainless steel base frame provides rigid support preventing deflection under belt tension, while 6061 aluminum rotational components minimize rotating inertia for responsive motor control. All machined parts were programmed using Mastercam and produced on CNC mills and lathes in the university machine shop, with final assembly requiring careful attention to bearing alignment and belt tensioning.
+                            Laser cutting via OshCut was used for the A36 steel frame components (base plate, motor mount, left/right mounts) and the sheet metal electronic enclosure. The horn positioner acrylic plates were also laser cut for precise dimensions. All machined parts were programmed using Mastercam and produced on CNC mills and lathes in the university machine shop, with final assembly requiring careful attention to bearing alignment and belt tensioning.
                         </p>
                     </div>
                 </div>
@@ -388,23 +485,23 @@
                             <span class="tech-tag">CNC Turning</span>
                             <span class="tech-tag">SolidWorks CAD</span>
                             <span class="tech-tag">3D Printing (PLA)</span>
+                            <span class="tech-tag">Laser Cutting</span>
                             <span class="tech-tag">Sheet Metal Fabrication</span>
                             <span class="tech-tag">Arduino Programming</span>
                             <span class="tech-tag">Motor Control</span>
                             <span class="tech-tag">Mastercam</span>
-                            <span class="tech-tag">Mechanical Assembly</span>
                         </div>
 
                         <h3 class="title is-5" style="margin-top: 1.5rem;">Key Components</h3>
                         <ul style="font-size: 0.9rem;">
-                            <li><strong>Motor:</strong> 36mm BLDC 12V</li>
+                            <li><strong>Motor:</strong> NF-GA36Y-3650 BLDC 12V/24V</li>
                             <li><strong>MCU:</strong> Arduino Uno R3</li>
                             <li><strong>Power:</strong> 24V Variable Supply</li>
-                            <li><strong>Frame:</strong> 304 Stainless Steel</li>
+                            <li><strong>Frame:</strong> A36 Steel (Laser Cut)</li>
                             <li><strong>Cylinder:</strong> 6061 Aluminum</li>
-                            <li><strong>Leadscrew:</strong> High-Speed Steel</li>
-                            <li><strong>Horn:</strong> Hand-Rolled Brass</li>
-                            <li><strong>Recording:</strong> Aluminum Foil</li>
+                            <li><strong>Leadscrew:</strong> Alloy Steel</li>
+                            <li><strong>Horn:</strong> Hand-Formed Brass</li>
+                            <li><strong>Recording:</strong> Aluminum Tape</li>
                         </ul>
                     </div>
 
@@ -434,12 +531,22 @@
                     <li><strong>Surface Finish:</strong> Mating surfaces benefit from machined smoothness (32 Ra or better)</li>
                 </ul>
 
-                <p><strong>Key Machined Parts:</strong></p>
+                <p><strong>Key Machined Parts (raw material sources listed):</strong></p>
                 <ul>
-                    <li>304 Stainless Steel Base Frame (rigidity and corrosion resistance)</li>
-                    <li>6061 Aluminum Cylinder (turned to precise OD for foil wrapping)</li>
-                    <li>Aluminum Pulleys (V-groove profile for belt retention)</li>
-                    <li>Bearing Mounts (precision bored and reamed for bearing seats)</li>
+                    <li><strong>Top Pulley:</strong> 6061 Aluminum (McMaster-Carr raw stock, CNC turned in-house)</li>
+                    <li><strong>Bottom Pulley:</strong> 6061 Aluminum (McMaster-Carr raw stock, CNC turned in-house)</li>
+                    <li><strong>Membrane Guard:</strong> 6061 Aluminum (CNC milled in-house)</li>
+                    <li><strong>Recording Cylinder:</strong> 6061 Aluminum (McMaster-Carr raw stock, CNC turned in-house)</li>
+                    <li><strong>Counterweight:</strong> Brass (McMaster-Carr raw stock, CNC turned in-house)</li>
+                    <li><strong>Cylinder Rod:</strong> 6061 Aluminum (CNC turned in-house)</li>
+                    <li><strong>Needle Guide:</strong> 6061 Aluminum (Amazon)</li>
+                    <li><strong>Lead Screw:</strong> Alloy Steel (McMaster-Carr raw stock, manual mill in-house)</li>
+                    <li><strong>Left Mount:</strong> A36 Steel (OshCut laser cut from raw sheet)</li>
+                    <li><strong>Right Mount:</strong> A36 Steel (OshCut laser cut from raw sheet)</li>
+                    <li><strong>Base Plate:</strong> A36 Steel (OshCut laser cut from raw sheet)</li>
+                    <li><strong>Motor Mount:</strong> A36 Steel (OshCut laser cut from raw sheet)</li>
+                    <li><strong>Electronic Enclosure:</strong> Sheet Metal (OshCut laser cut and formed)</li>
+                    <li><strong>Horn:</strong> Brass sheet metal (OshCut laser cut, hand-formed with rivets in-house)</li>
                 </ul>
 
                 <h3 class="title is-4">3D Printed Components (PLA)</h3>
@@ -451,21 +558,269 @@
                     <li><strong>Cost Effectiveness:</strong> Avoid machining setup time for simple brackets</li>
                 </ul>
 
-                <p><strong>3D Printed Parts:</strong></p>
+                <p><strong>3D Printed Parts (PLA):</strong></p>
                 <ul>
-                    <li>Limit Switch Mounts (positioned at exact travel endpoints)</li>
-                    <li>Motor Housing (protective enclosure with integrated mounting)</li>
-                    <li>Horn Support Bracket (adjustable for optimal acoustic coupling)</li>
-                    <li>Cable Management Clips (wire routing to prevent interference)</li>
+                    <li><strong>Top Pulley Cover:</strong> Protective cover for top pulley mechanism</li>
+                    <li><strong>Motor Tensioner:</strong> Adjustable belt tension mechanism for V-belt</li>
+                    <li><strong>Pulley Washers (x4):</strong> Spacing washers for pulley alignment</li>
+                    <li><strong>Limit Switch Mounts:</strong> Positioned at exact travel endpoints</li>
                 </ul>
 
-                <h3 class="title is-4">Hand-Fabricated Brass Horn</h3>
+                <h3 class="title is-4">Other Fabricated Components</h3>
                 <ul>
-                    <li><strong>Material:</strong> 0.032" brass sheet metal (outsourced, formed in-house)</li>
-                    <li><strong>Process:</strong> Hand-rolled around mandrel, seam brazed/soldered</li>
-                    <li><strong>Finish:</strong> Polished for aesthetics and acoustic properties</li>
-                    <li><strong>Acoustic Advantages:</strong> Natural sound amplification, traditional material authentic to 1877 design</li>
+                    <li><strong>Horn Positioner (x2):</strong> Two 0.25" clear acrylic plates (laser cut in-house)</li>
+                    <li><strong>Diaphragm Cap:</strong> Rubber sheet (silicone) for vibration sensitivity</li>
+                    <li><strong>Counterweights:</strong> Brass pieces threaded onto diaphragm arm for tension adjustment</li>
                 </ul>
+            </div>
+
+            <!-- Bill of Materials -->
+            <div class="content">
+                <h2 class="title is-3">Bill of Materials</h2>
+                <p><strong>Total Project Cost: ~$600 (within $1,000 budget)</strong></p>
+                <p style="font-size: 0.9rem; font-style: italic; margin-bottom: 1rem;">Note: "Source" refers to raw material supplier. Most components were manufactured in-house from purchased raw materials.</p>
+                
+                <div class="table-container">
+                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style="font-size: 0.85rem;">
+                        <thead>
+                            <tr style="background-color: #667eea; color: white;">
+                                <th>Component</th>
+                                <th>Material</th>
+                                <th>Raw Material Source</th>
+                                <th>Manufacturing</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>CNC Machined Components</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Top Pulley</td>
+                                <td>6061 Aluminum</td>
+                                <td>McMaster-Carr</td>
+                                <td>CNC Turned In-House</td>
+                                <td>Belt drive to leadscrew</td>
+                            </tr>
+                            <tr>
+                                <td>Bottom Pulley</td>
+                                <td>6061 Aluminum</td>
+                                <td>McMaster-Carr</td>
+                                <td>CNC Turned In-House</td>
+                                <td>Motor power transmission</td>
+                            </tr>
+                            <tr>
+                                <td>Membrane Guard</td>
+                                <td>6061 Aluminum</td>
+                                <td>In-house Stock</td>
+                                <td>CNC Milled In-House</td>
+                                <td>Diaphragm protection</td>
+                            </tr>
+                            <tr>
+                                <td>Recording Cylinder</td>
+                                <td>6061 Aluminum</td>
+                                <td>McMaster-Carr</td>
+                                <td>CNC Turned In-House</td>
+                                <td>Tape wrapping surface</td>
+                            </tr>
+                            <tr>
+                                <td>Counterweight</td>
+                                <td>Brass</td>
+                                <td>McMaster-Carr</td>
+                                <td>CNC Turned In-House</td>
+                                <td>Stylus tension adjustment</td>
+                            </tr>
+                            <tr>
+                                <td>Cylinder Rod</td>
+                                <td>6061 Aluminum</td>
+                                <td>In-house Stock</td>
+                                <td>CNC Turned In-House</td>
+                                <td>Cylinder support shaft</td>
+                            </tr>
+                            <tr>
+                                <td>Needle Guide</td>
+                                <td>6061 Aluminum</td>
+                                <td>Amazon</td>
+                                <td>Commercial Purchase</td>
+                                <td>Stylus positioning</td>
+                            </tr>
+                            <tr>
+                                <td>Lead Screw</td>
+                                <td>Alloy Steel</td>
+                                <td>McMaster-Carr</td>
+                                <td>Manual Mill In-House</td>
+                                <td>Horizontal translation</td>
+                            </tr>
+
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>Laser Cut Components</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Left Mount</td>
+                                <td>A36 Steel</td>
+                                <td>OshCut (Sheet Metal)</td>
+                                <td>Laser Cut by OshCut</td>
+                                <td>Leadscrew mounting</td>
+                            </tr>
+                            <tr>
+                                <td>Right Mount</td>
+                                <td>A36 Steel</td>
+                                <td>OshCut (Sheet Metal)</td>
+                                <td>Laser Cut by OshCut</td>
+                                <td>Leadscrew mounting</td>
+                            </tr>
+                            <tr>
+                                <td>Base Plate</td>
+                                <td>A36 Steel</td>
+                                <td>OshCut (Sheet Metal)</td>
+                                <td>Laser Cut by OshCut</td>
+                                <td>Frame foundation</td>
+                            </tr>
+                            <tr>
+                                <td>Motor Mount</td>
+                                <td>A36 Steel</td>
+                                <td>OshCut (Sheet Metal)</td>
+                                <td>Laser Cut by OshCut</td>
+                                <td>Motor mounting platform</td>
+                            </tr>
+                            <tr>
+                                <td>Electronic Enclosure</td>
+                                <td>Sheet Metal</td>
+                                <td>OshCut (Sheet Metal)</td>
+                                <td>Laser Cut by OshCut</td>
+                                <td>Electronics housing</td>
+                            </tr>
+                            <tr>
+                                <td>Horn</td>
+                                <td>Brass Sheet</td>
+                                <td>OshCut (Brass Sheet)</td>
+                                <td>Laser Cut + Hand-Formed</td>
+                                <td>Acoustic amplification</td>
+                            </tr>
+                            <tr>
+                                <td>Horn Positioner (x2)</td>
+                                <td>Acrylic (0.25")</td>
+                                <td>In-house Stock</td>
+                                <td>Laser Cut In-House</td>
+                                <td>Horn-diaphragm alignment</td>
+                            </tr>
+
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>3D Printed Components</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Top Pulley Cover</td>
+                                <td>PLA</td>
+                                <td>In-house Filament</td>
+                                <td>FDM 3D Printed In-House</td>
+                                <td>Pulley protection</td>
+                            </tr>
+                            <tr>
+                                <td>Motor Tensioner</td>
+                                <td>PLA</td>
+                                <td>In-house Filament</td>
+                                <td>FDM 3D Printed In-House</td>
+                                <td>Belt tension adjustment</td>
+                            </tr>
+                            <tr>
+                                <td>Pulley Washers (x4)</td>
+                                <td>PLA</td>
+                                <td>In-house Filament</td>
+                                <td>FDM 3D Printed In-House</td>
+                                <td>Pulley alignment</td>
+                            </tr>
+
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>Electronics & Control</strong></td>
+                            </tr>
+                            <tr>
+                                <td>BLDC Motor (NF-GA36Y-3650)</td>
+                                <td>-</td>
+                                <td>Approved Vendor</td>
+                                <td>Commercial Purchase</td>
+                                <td>Primary drive (5-wire: R/B/W/Blue/Y)</td>
+                            </tr>
+                            <tr>
+                                <td>Arduino Uno R3</td>
+                                <td>-</td>
+                                <td>Amazon</td>
+                                <td>Commercial Purchase</td>
+                                <td>Motor control & monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Variable Power Supply</td>
+                                <td>-</td>
+                                <td>Lab Equipment</td>
+                                <td>Commercial</td>
+                                <td>24V adjustable DC power</td>
+                            </tr>
+                            <tr>
+                                <td>Limit Switches (x2)</td>
+                                <td>-</td>
+                                <td>Amazon</td>
+                                <td>Commercial Purchase</td>
+                                <td>Safety cutoff</td>
+                            </tr>
+
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>Hardware & Fasteners</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Hex Nuts (x2)</td>
+                                <td>Carbon Steel</td>
+                                <td>McMaster-Carr</td>
+                                <td>Commercial Purchase</td>
+                                <td>Leadscrew anchors (1"-8)</td>
+                            </tr>
+                            <tr>
+                                <td>Ball Bearings (x2)</td>
+                                <td>Steel</td>
+                                <td>McMaster-Carr</td>
+                                <td>Commercial Purchase</td>
+                                <td>Pulley-leadscrew transfer</td>
+                            </tr>
+                            <tr>
+                                <td>V-Belt</td>
+                                <td>Polyester</td>
+                                <td>McMaster-Carr</td>
+                                <td>Commercial Purchase</td>
+                                <td>Power transmission</td>
+                            </tr>
+                            <tr>
+                                <td>Threaded Rod (3/8"-24)</td>
+                                <td>Steel</td>
+                                <td>McMaster-Carr</td>
+                                <td>Commercial Purchase</td>
+                                <td>Diaphragm arm</td>
+                            </tr>
+                            <tr>
+                                <td>Silicon Rubber Sheet</td>
+                                <td>Silicone</td>
+                                <td>Amazon</td>
+                                <td>Commercial Purchase</td>
+                                <td>Diaphragm membrane</td>
+                            </tr>
+                            <tr>
+                                <td>Aluminum Rivets</td>
+                                <td>Aluminum</td>
+                                <td>McMaster-Carr</td>
+                                <td>Commercial Purchase</td>
+                                <td>Horn seam connection</td>
+                            </tr>
+
+                            <tr style="background-color: #f0f0f0;">
+                                <td colspan="5"><strong>Recording Materials</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Aluminum Tape</td>
+                                <td>Aluminum</td>
+                                <td>McMaster-Carr / Amazon</td>
+                                <td>Commercial Purchase</td>
+                                <td>Recording surface (consumable)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Performance & Results -->
@@ -480,7 +835,61 @@
                     <li><strong>Frequency Response:</strong> Best performance in voice range (200-3000 Hz)</li>
                 </ul>
 
-                <h3 class="title is-4">Playback Quality</h3>
+                <div class="columns" style="margin-top: 1.5rem;">
+                    <div class="column is-6">
+                        <img src="images/IPD_5010_Phonograph_etches.png" class="clickable-media"
+                            onclick="showImage('images/IPD_5010_Phonograph_etches.png')"
+                            alt="Recorded Grooves"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                            Aluminum tape cylinder showing etched grooves after recording
+                        </p>
+                    </div>
+                    <div class="column is-6">
+                        <img src="images/IPD_5010_Phonograph_Showcase.jpg" class="clickable-media"
+                            onclick="showImage('images/IPD_5010_Phonograph_Showcase.jpg')"
+                            alt="Project Showcase"
+                            style="width: 100%; border-radius: 8px;" />
+                        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                            Complete phonograph system at IPD 5010 showcase day
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="title is-4" style="margin-top: 2rem;">Recording and Playback Demonstration</h3>
+                <p><strong>Recorded Message:</strong> "Hello hello, where is your work permit? Do you have a work permit? Hello hello, excuse me! Do you have a work permit?"</p>
+                
+                <div class="columns" style="margin-top: 1rem;">
+                    <div class="column is-4">
+                        <video controls style="width: 100%; border-radius: 8px;">
+                            <source src="images/IPD_5010_Phonograph_Recording_Video.MOV" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                            Recording process: Voice input through brass horn
+                        </p>
+                    </div>
+                    <div class="column is-4">
+                        <video controls style="width: 100%; border-radius: 8px;">
+                            <source src="images/IPD_5010_Phonograph_Playback_Video_In_Horn.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                            Playback view: Audio output from inside the horn
+                        </p>
+                    </div>
+                    <div class="column is-4">
+                        <video controls style="width: 100%; border-radius: 8px;">
+                            <source src="images/IPD_5010_Phonograph_Playback_Video_Side_View.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; text-align: center;">
+                            Playback side view: Stylus tracing recorded grooves
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="title is-4" style="margin-top: 2rem;">Playback Quality</h3>
                 <ul>
                     <li><strong>Intelligibility:</strong> Majority of recorded message reproduced with decent clarity</li>
                     <li><strong>Tonal Quality:</strong> Recognizable voice characteristics preserved</li>
@@ -494,17 +903,17 @@
                         <p><strong>Challenge 1: Stylus Contact Force</strong></p>
                         <ul>
                             <li><strong>Issue:</strong> Inconsistent groove depth → volume variations</li>
-                            <li><strong>Solution:</strong> Spring preload for consistent force</li>
+                            <li><strong>Solution:</strong> Counterweight system for consistent force</li>
                         </ul>
                         
                         <p><strong>Challenge 2: Motor Speed Regulation</strong></p>
                         <ul>
                             <li><strong>Issue:</strong> Variable speed under changing loads</li>
-                            <li><strong>Solution:</strong> Arduino PWM control with back-EMF feedback</li>
+                            <li><strong>Solution:</strong> Arduino PWM control with FG signal feedback</li>
                         </ul>
                     </div>
                     <div class="column is-6">
-                        <p><strong>Challenge 3: Foil Wrinkling</strong></p>
+                        <p><strong>Challenge 3: Tape Wrinkling</strong></p>
                         <ul>
                             <li><strong>Issue:</strong> Wrinkles during wrapping process</li>
                             <li><strong>Solution:</strong> Wrapping technique with controlled tension</li>
@@ -513,7 +922,7 @@
                         <p><strong>Challenge 4: Horn Acoustic Coupling</strong></p>
                         <ul>
                             <li><strong>Issue:</strong> Insufficient initial amplification</li>
-                            <li><strong>Solution:</strong> Redesigned flare based on impedance matching</li>
+                            <li><strong>Solution:</strong> Acrylic positioner for precise horn alignment</li>
                         </ul>
                     </div>
                 </div>
@@ -525,63 +934,86 @@
                 
                 <h3 class="title is-4">Technical Insights</h3>
                 <ul>
-                    <li><strong>Material Impact:</strong> Brass horn significantly outperformed 3D-printed alternatives in acoustic quality</li>
+                    <li><strong>Material Impact:</strong> Thicker aluminum tape provided better durability than thin foil</li>
                     <li><strong>Precision Requirements:</strong> Small bearing misalignments caused noticeable playback artifacts</li>
-                    <li><strong>Speed Control:</strong> ±5% speed variation produced audible pitch shifting</li>
+                    <li><strong>Speed Control:</strong> FG signal feedback from yellow wire critical for maintaining ±2 RPM stability</li>
                 </ul>
 
                 <h3 class="title is-4">Manufacturing Takeaways</h3>
                 <ul>
-                    <li><strong>Hybrid Manufacturing:</strong> Combining machining and 3D printing accelerated development</li>
-                    <li><strong>In-House Fabrication:</strong> Hand-rolling brass horn saved cost despite longer time</li>
+                    <li><strong>Hybrid Manufacturing:</strong> Combining CNC, 3D printing, and laser cutting accelerated development</li>
+                    <li><strong>In-House Fabrication:</strong> Hand-forming brass horn saved cost despite longer time</li>
                     <li><strong>Tolerance Stack-Up:</strong> Multiple machined parts required attention to cumulative variations</li>
                 </ul>
 
                 <h3 class="title is-4">Potential Future Improvements</h3>
                 <ul>
-                    <li>Closed-loop motor control with optical encoder for precise 120 RPM regulation</li>
+                    <li>Closed-loop encoder with higher resolution for more precise 120 RPM regulation beyond FG signal</li>
                     <li>Wax-coated cylinders or polymer films for better fidelity and reusability</li>
                     <li>Dual stylus system with optimized geometries for record vs. playback</li>
+                    <li>Electronic amplification stage for increased playback volume</li>
                 </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <!-- Media Modal -->
+    <div id="mediaModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
+        onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
+            controls>
+        </video>
     </div>
 
-    <script>
-        function showImage(src) {
-            document.getElementById('imageModal').style.display = 'flex';
-            document.getElementById('modalImage').src = src;
-        }
-
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
-
-    <footer class="footer" style="margin-top: 3rem;">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>Team Vibrasian</strong> - University of Pennsylvania<br>
-                    IPD 5010: Sound and Motion
-                </p>
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
             </div>
         </div>
     </footer>
-
 </body>
+
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalVideo').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function showVideo(src) {
+        document.getElementById('modalVideo').src = src;
+        document.getElementById('modalVideo').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'none';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+        document.getElementById('modalVideo').pause();
+    }
+</script>
 
 </html>
