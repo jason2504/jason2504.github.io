@@ -4,224 +4,59 @@
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="Dual-Mode Robotic Systems - Jason Chen" />
-    <meta name="keywords" content="Robotics Manipulation Locomotion Dual-Mode GRASP Laboratory" />
+    <meta name="keywords" content="Robotics Dual-Mode Manipulation Locomotion Continuum Exoskeleton GRASP" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dual-Mode Robotic Systems - Jason Chen</title>
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
-
     <link rel="stylesheet" href="./static/css/bulma.min.css" />
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
     <link rel="stylesheet" href="./static/css/index.css" />
     <link rel="icon" href="./images/icon.jpeg" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/index.js"></script>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script type="text/javascript" id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
     <style>
-        /* Fixed navigation styles */
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Add padding to body to account for fixed header */
-        body {
-            padding-top: 80px;
-        }
-
-        /* Navigation container styles */
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .nav-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #363636;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-name:hover {
-            color: #667eea;
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .nav-buttons .button {
-            background: #363636;
-            color: white;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-buttons .button:hover {
-            background: #4a4a4a;
-            transform: translateY(-1px);
-        }
-
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            z-index: 1001;
-            top: 100%;
-            left: 0;
-            margin-top: 0;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .dropdown-content a {
-            color: #363636;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-            border-radius: 8px;
-            margin: 4px;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .button {
-            background: #4a4a4a;
-            transform: translateY(-1px);
-        }
-
-        /* Project page specific styles */
-        .project-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .project-details {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .gallery img,
-        .gallery video {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery img:hover,
-        .gallery video:hover {
-            transform: scale(1.05);
-        }
-
-        /* Results highlight box */
-        .results-highlight {
-            background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
-            border-left: 4px solid #10b981;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        /* Responsive design */
+        .fixed-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 1rem 0; transition: all 0.3s ease; }
+        body { padding-top: 80px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-name { font-size: 1.5rem; font-weight: bold; color: #363636; text-decoration: none; transition: color 0.3s ease; }
+        .nav-name:hover { color: #667eea; }
+        .nav-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-buttons .button { background: #363636; color: white; border: none; transition: all 0.3s ease; }
+        .nav-buttons .button:hover { background: #4a4a4a; transform: translateY(-1px); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1001; top: 100%; left: 0; margin-top: 0; border: 1px solid rgba(0,0,0,0.1); }
+        .dropdown-content a { color: #363636; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; border-radius: 8px; margin: 4px; }
+        .dropdown-content a:hover { background-color: #f1f1f1; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .button { background: #4a4a4a; transform: translateY(-1px); }
+        .project-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem 0; margin-bottom: 2rem; }
+        .project-details { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tech-tag { background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .gallery-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .gallery-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .gallery-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .gallery img, .gallery video, .gallery-2 img, .gallery-3 img, .gallery-4 img { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease; }
+        .gallery img:hover, .gallery-2 img:hover, .gallery-3 img:hover, .gallery-4 img:hover { transform: scale(1.05); }
+        .gallery video { cursor: default; }
+        .results-highlight { background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%); border-left: 4px solid #10b981; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+        .img-caption { font-style: italic; color: #555; font-size: 0.85rem; margin-top: 0.4rem; text-align: center; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+        .comparison-table th { background: #667eea; color: white; padding: 0.6rem 1rem; text-align: left; }
+        .comparison-table td { padding: 0.5rem 1rem; border-bottom: 1px solid #e9ecef; }
+        .comparison-table tr:nth-child(even) { background: #f8f9fa; }
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .nav-name {
-                font-size: 1.2rem;
-            }
-
-            .nav-buttons {
-                gap: 0.3rem;
-            }
-
-            .nav-buttons .button {
-                font-size: 0.8rem;
-                padding: 0.5rem 0.8rem;
-            }
-
-            .dropdown-content {
-                position: static;
-                display: none;
-                box-shadow: none;
-                background-color: #f8f9fa;
-                margin-top: 0;
-                border-radius: 0;
-                border: none;
-                border-top: 1px solid #e9ecef;
-            }
-
-            .tech-stack {
-                justify-content: center;
-            }
+            .nav-container { flex-direction: column; gap: 0.5rem; }
+            .nav-name { font-size: 1.2rem; }
+            .nav-buttons { gap: 0.3rem; }
+            .nav-buttons .button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
+            .dropdown-content { position: static; display: none; box-shadow: none; background-color: #f8f9fa; margin-top: 0; border-radius: 0; border: none; border-top: 1px solid #e9ecef; }
+            .gallery-2, .gallery-3, .gallery-4 { grid-template-columns: 1fr; }
         }
-    </style>
+    </style>    <script src="./static/js/nav.js"></script>
 </head>
 
 <body>
@@ -232,19 +67,17 @@
                 <div class="nav-buttons">
                     <span class="link-block dropdown">
                         <a href="project.html" class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-cogs"></i>
-                            </span>
+                            <span class="icon"><i class="fa fa-cogs"></i></span>
                             <span>Projects</span>
-                            <span class="icon">
-                                <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
-                            </span>
+                            <span class="icon"><i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i></span>
                         </a>
-                        <div class="dropdown-content">
-                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
-                            <a href="upper-body-exo.html">EMG-Controlled Elbow Exoskeleton</a>
+                                                <div class="dropdown-content">
+                                                        <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="elbow-exo.html">Elbow Exoskeleton</a>
+                            <a href="hand-exo.html">Hand Exoskeleton</a>
                             <a href="tubular-composites.html">Tubular Braided Composites</a>
                             <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
                             <a href="edison-phonograph.html">Edison Phonograph</a>
                             <a href="robox-chess.html">Robox Chess Set</a>
                             <a href="boids-analysis.html">Boids Algorithm Analysis</a>
@@ -256,17 +89,13 @@
                     </span>
                     <span class="link-block">
                         <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-scroll"></i>
-                            </span>
+                            <span class="icon"><i class="fa fa-scroll"></i></span>
                             <span>Miscellaneous</span>
                         </a>
                     </span>
                     <span class="link-block">
                         <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-envelope"></i>
-                            </span>
+                            <span class="icon"><i class="fa fa-envelope"></i></span>
                             <span>Contact</span>
                         </a>
                     </span>
@@ -282,7 +111,7 @@
                 <div class="column is-8 has-text-centered">
                     <h1 class="title is-1" style="color: white;">Dual-Mode Robotic Systems</h1>
                     <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
-                        For Manipulation and Locomotion
+                        For Manipulation and Locomotion — GRASP Lab, University of Pennsylvania
                     </h2>
                 </div>
             </div>
@@ -291,275 +120,351 @@
 
     <section class="section">
         <div class="container is-max-desktop">
-            <!-- Results Highlight -->
+
+            <!-- Key Achievement -->
             <div class="results-highlight">
                 <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
                 <p style="font-size: 1.1rem; color: #064e3b;">
-                    <strong>Successfully designed and prototyped a novel dual-mode robotic system capable of both
-                        precision manipulation (250g payload, ±2mm accuracy) and dynamic locomotion support.</strong>
-                    Developed two distinct architectural approaches: a rigid joint-based system with universal joint
-                    innovation and a continuum cable-actuated design, both featuring a compliant 3-finger gripper with
-                    worm gear reduction enabling seamless mode transitions.
+                    <strong>Designed and prototyped a novel dual-mode robotic system capable of both precision manipulation (250g payload) and dynamic locomotion support</strong>, through three parallel arm architectures: a rigid joint system with integrated universal joint shoulder (V1), a biomimetic cable-actuated continuum arm (V2), and a Franka Panda-inspired serial manipulator (V3). All versions share a validated compliant 3-finger worm-gear gripper that adapts to objects ranging from a marble to an apple. A wearable "Dr. Oct" backpack variant was also designed for assistive robotics applications.
                 </p>
                 <p style="margin-top: 0.5rem; color: #064e3b;">
-                    Research conducted at University of Pennsylvania's GRASP Laboratory with Dr. Nadia Figueroa,
-                    targeting applications in search & rescue, exploration robotics, and adaptive service systems.
+                    🤖 Research ongoing at the University of Pennsylvania GRASP Laboratory under Dr. Nadia Figueroa, targeting search &amp; rescue, hazardous inspection, and assistive robotics.
                 </p>
             </div>
 
-            <!-- Project Overview -->
+            <!-- Project Overview + Details Sidebar -->
             <div class="columns">
                 <div class="column is-8">
                     <div class="content">
                         <h2 class="title is-3">Project Overview</h2>
                         <p>
-                            This ongoing research project at the University of Pennsylvania's GRASP Laboratory addresses
-                            a fundamental challenge in robotics: creating a single system that excels at both precision
-                            manipulation and dynamic locomotion. Current robotic systems typically specialize in either
-                            mobility (quadrupeds like Boston Dynamics' Spot) or manipulation (industrial arms), but
-                            rarely achieve both capabilities cost-effectively within a <$3,000 prototype budget. </p>
+                            This research addresses a fundamental gap: the lack of a cost-effective system excelling at both precision manipulation and dynamic locomotion. Quadrupeds like Boston Dynamics' Spot excel at locomotion; industrial arms excel at manipulation; humanoids excel at both but are prohibitively expensive. Drawing inspiration from Dr. Octopus from Marvel comics and from primates that use their limbs for both locomotion and manipulation, this project explores dual-function limb designs through three parallel architectures — each contributing unique insight into the manipulation–locomotion trade-off space.
+                        </p>
+                        <p>
+                            Rather than iterating linearly, all three versions were developed concurrently to explore different points in the design space. The team consisted of a PhD student and Master's student focused on controls, while I led all mechanical and electrical design.
+                        </p>
 
-                                <p>
-                                    Drawing inspiration from biological systems—particularly Dr. Octopus from Marvel
-                                    comics and natural organisms like primates that use limbs for both locomotion and
-                                    manipulation—the project explores dual-function limb designs. The research
-                                    challenges conventional robotics paradigms by creating arms that serve as both
-                                    precision manipulators and adaptive locomotion supporters.
-                                </p>
-
-                                <h3 class="title is-4">Design Evolution: Two Architectural Approaches</h3>
-
-                                <h4 class="title is-5">Version 1: Rigid Joint-Based System</h4>
-                                <div class="columns">
-                                    <div class="column is-8">
-                                        <p>
-                                            The initial design employed a 4-DOF configuration with custom universal
-                                            joints at the shoulder, providing 2-DOF motion through timing belt
-                                            transmission and bevel gear coupling. This approach demonstrated dual-mode
-                                            feasibility but revealed limitations in terrain adaptability and mechanical
-                                            complexity requiring precision-machined components.
-                                        </p>
-                                    </div>
-                                    <div class="column is-4">
-                                        <img src="images/Cute_Octopus_1st_iteration.jpg"
-                                            onclick="showImage('images/Cute_Octopus_1st_iteration.jpg')"
-                                            alt="Version 1 Rigid Joint Design"
-                                            style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
-                                            onmouseover="this.style.transform='scale(1.05)'"
-                                            onmouseout="this.style.transform='scale(1)'" />
-                                    </div>
-                                </div>
-
-                                <h4 class="title is-5">Version 2: Cable-Actuated Continuum System</h4>
-                                <div class="columns">
-                                    <div class="column is-8">
-                                        <p>
-                                            The second iteration transitioned to a continuum arm architecture featuring
-                                            6 triangular vertebrae connected by TPU springs and controlled via fishing
-                                            line tendons. This design provides infinite degrees of freedom through
-                                            3-motor cable coordination, offering superior terrain adaptation and
-                                            eliminating complex universal joint mechanisms.
-                                        </p>
-                                    </div>
-                                    <div class="column is-4">
-                                        <img src="images/Cute_Octopus_2nd_iteration.png"
-                                            onclick="showImage('images/Cute_Octopus_2nd_iteration.png')"
-                                            alt="Version 2 Continuum Design"
-                                            style="width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
-                                            onmouseover="this.style.transform='scale(1.05)'"
-                                            onmouseout="this.style.transform='scale(1)'" />
-                                    </div>
-                                </div>
-
-                                <h3 class="title is-4">Unified Gripper Innovation</h3>
-                                <p>
-                                    Both iterations feature the same fundamental innovation: a compliant 3-finger
-                                    gripper with 60:1 worm gear reduction, spring-loaded compliance, and self-locking
-                                    capability. This enables seamless transitions between delicate object manipulation
-                                    (250g payload) and robust ground contact support during locomotion.
-                                </p>
-
-                                <h3 class="title is-4">Performance Targets and Validation</h3>
-                                <p>
-                                    Comprehensive torque analysis using SolidWorks mass properties validates servo
-                                    adequacy across operational modes, achieving manipulation precision of ±2mm with
-                                    5-50N force range, 1-2m/s locomotion speed capability, and <1s mode switching time
-                                        within <10kg total system weight. </p>
+                        <h3 class="title is-4">Design Criteria &amp; Constraints</h3>
+                        <p>
+                            Measurable success criteria were established from day one: each arm must grasp at least 250g, workspaces must overlap for multi-arm collaboration and DOF redundancy, the system must stay under 10kg with each arm under 1kg, and FDM 3D printing with PLA/TPU is used for rapid iteration. Smart servo motors with built-in microcontrollers provide closed-loop control. Safety factors of 2–5× are applied for dynamic loads. Material properties are adjusted from bulk PLA values (E = 1830 MPa) to reflect 15% infill with 4 exterior walls (E = 1464 MPa, ρ = 0.66 g/cm³) for accurate SolidWorks mass and FEA analysis.
+                        </p>
                     </div>
                 </div>
-
                 <div class="column is-4">
                     <div class="project-details">
                         <h3 class="title is-5">Project Details</h3>
-                        <p><strong>Duration:</strong> April 2025 - Present</p>
                         <p><strong>Institution:</strong> University of Pennsylvania</p>
-                        <p><strong>Laboratory:</strong> GRASP Laboratory, Figueroa Robotics Lab</p>
-                        <p><strong>Supervisor:</strong> Dr. Nadia Figueroa</p>
-                        <p><strong>Role:</strong> Graduate Research Assistant</p>
-                        <p><strong>Applications:</strong> Search & Rescue, Exploration, Service Robotics</p>
-                        <p><strong>Budget:</strong>
-                            <$3,000 prototype system</p>
-
-                                <div class="tech-stack">
-                                    <span class="tech-tag">SolidWorks CAD</span>
-                                    <span class="tech-tag">3D Printing (PLA/TPU)</span>
-                                    <span class="tech-tag">Servo Control</span>
-                                    <span class="tech-tag">Cable Actuation</span>
-                                    <span class="tech-tag">Continuum Robotics</span>
-                                    <span class="tech-tag">Reinforcement Learning</span>
-                                    <span class="tech-tag">Genesis Physics Engine</span>
-                                    <span class="tech-tag">URDF Modeling</span>
-                                </div>
+                        <p><strong>Laboratory:</strong> GRASP Lab · Figueroa Robotics Lab</p>
+                        <p><strong>Duration:</strong> April 2024 – Present</p>
+                        <p><strong>Advisor:</strong> Dr. Nadia Figueroa</p>
+                        <p><strong>Role:</strong> Lead Mechanical &amp; Electrical Design</p>
+                        <p><strong>Applications:</strong> Search &amp; Rescue, Hazardous Inspection, Assistive Robotics</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">SolidWorks CAD</span>
+                            <span class="tech-tag">FDM 3D Printing</span>
+                            <span class="tech-tag">Dynamixel Servos</span>
+                            <span class="tech-tag">CAN/Serial Bus</span>
+                            <span class="tech-tag">Torque Analysis</span>
+                            <span class="tech-tag">Continuum Robotics</span>
+                            <span class="tech-tag">Worm Gear Design</span>
+                            <span class="tech-tag">Jetson Orin NX</span>
+                            <span class="tech-tag">Reinforcement Learning</span>
+                            <span class="tech-tag">AGMA Gear Analysis</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bill of Materials and System Architecture -->
+            <!-- Design Evolution Overview -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">System Architecture and Component Selection</h2>
-
-                    <h4 class="title is-5">Core Electronics Package</h4>
+                    <h2 class="title is-3">Design Evolution: Three Parallel Architectures</h2>
                     <div class="content">
-                        <p>The system employs a sophisticated electronics architecture designed for autonomous
-                            operation:</p>
+                        <p>
+                            Versions 1 and 3 follow the rigid serial manipulator paradigm — traditional robot arms with discrete links and joints. Version 2 takes a completely different approach as a cable-driven continuum robot inspired by biological spines, providing inherent compliance and continuous bending instead of discrete joints. Each arm shown individually below; 2- and 4-arm full robot configurations are shown in later sections.
+                        </p>
+                    </div>
 
-                        <div class="columns">
-                            <div class="column">
-                                <h6 class="title is-6">Computational and Sensing</h6>
-                                <ul>
-                                    <li>NVIDIA Jetson Orin NX 16GB (10-25W) - Central processing for real-time control
-                                        and AI</li>
-                                    <li>Adafruit BNO085 IMU - 9-DOF sensor fusion at 1000Hz for balance</li>
-                                    <li>Dual Arducam Fisheye Cameras - 160° field of view for environmental awareness
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <h6 class="title is-6">Power and Actuation</h6>
-                                <ul>
-                                    <li>4x Samsung 21700 batteries (25A continuous, 5000mAh each) - Steady-state power
-                                    </li>
-                                    <li>TATTU R-Line 14.8V LiPo (240A burst) - Dynamic servo movements</li>
-                                    <li>U2D2 Power Hub - USB to servo communication with 20A distribution</li>
-                                </ul>
-                            </div>
+                    <!-- Three arm renders side by side -->
+                    <div class="gallery-3">
+                        <div>
+                            <img src="images/Dr_Oct_V1_arm.jpg"
+                                onclick="showImage('images/Dr_Oct_V1_arm.jpg')"
+                                alt="Version 1 — Universal Joint Rigid Arm" />
+                            <p class="img-caption">Version 1 — 4-DOF rigid arm with integrated universal joint shoulder (828g, 405mm reach)</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V2_arm.jpg"
+                                onclick="showImage('images/Dr_Oct_V2_arm.jpg')"
+                                alt="Version 2 — Cable-Actuated Continuum Robot" />
+                            <p class="img-caption">Version 2 — 6-vertebra continuum spine with ball-and-socket joints and TPU compression springs (628g)</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V3_arm.jpg"
+                                onclick="showImage('images/Dr_Oct_V3_arm.jpg')"
+                                alt="Version 3 — Franka Panda-Inspired Serial Manipulator" />
+                            <p class="img-caption">Version 3 — Franka Panda adaptation, 5-DOF, tiered motor selection (716g)</p>
                         </div>
                     </div>
 
-                    <h4 class="title is-5">Actuation Systems Comparison</h4>
-                    <div class="columns">
-                        <div class="column">
-                            <h6 class="title is-6">Version 1: Rigid Joint System</h6>
-                            <ul>
-                                <li>5x STS3215 Smart Servos per arm (6.5 kg·cm continuous torque)</li>
-                                <li>Universal joint with timing belt transmission and bevel gear coupling</li>
-                                <li>MXL timing belts and custom 3D-printed precision components</li>
-                                <li>Total system mass: 3.17kg (2 arms) or 4.67kg (4 arms)</li>
-                            </ul>
+                    <!-- Exploded animations -->
+                    <h4 class="title is-5" style="margin-top: 2rem;">Exploded Animations</h4>
+                    <div class="content">
+                        <p>Exploded animations reveal the internal component architecture of each arm version — showing the transmission mechanisms, joint assemblies, and how each subsystem nests together.</p>
+                    </div>
+                    <div class="gallery-3">
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/Dr_Oct_V1_exploded_animation.mp4')">
+                                <source src="images/Dr_Oct_V1_exploded_animation.mp4" type="video/mp4">
+                            </video>
+                            <p class="img-caption">V1 — exploded animation showing universal joint assembly and bevel gear coupling</p>
                         </div>
-                        <div class="column">
-                            <h6 class="title is-6">Version 2: Continuum System</h6>
-                            <ul>
-                                <li>3x Dynamixel XM430-W210-T per arm (310.39 N·cm stall torque)</li>
-                                <li>6 triangular vertebrae with TPU inter-vertebral springs</li>
-                                <li>0.3mm monofilament fishing line with distributed cable routing</li>
-                                <li>Infinite DOF through cooperative cable coordination</li>
-                            </ul>
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/Dr_Oct_V2_exploded_animation.mp4')">
+                                <source src="images/Dr_Oct_V2_exploded_animation.mp4" type="video/mp4">
+                            </video>
+                            <p class="img-caption">V2 — exploded animation showing vertebrae, TPU springs, and tendon routing</p>
+                        </div>
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/Dr_Oct_V3_exploded_animation.mp4')">
+                                <source src="images/Dr_Oct_V3_exploded_animation.mp4" type="video/mp4">
+                            </video>
+                            <p class="img-caption">V3 — exploded animation showing serial link stack and Dynamixel motor arrangement</p>
                         </div>
                     </div>
 
-                    <h4 class="title is-5">Manufacturing Strategy</h4>
+                    <!-- Annotated exploded views -->
+                    <h4 class="title is-5" style="margin-top: 2rem;">Annotated Exploded Views</h4>
                     <div class="content">
-                        <p>Additive manufacturing approach enables rapid prototyping and cost-effective production:</p>
-                        <ul>
-                            <li>Bambu Lab PLA Basic (adjusted: 1464 MPa modulus, 0.66 g/cm³ density with 15% infill)
-                            </li>
-                            <li>Optimized print orientation with Z-axis aligned to arm length for maximum strength</li>
-                            <li>Hybrid approach combining 3D printed structures with off-the-shelf precision elements
-                            </li>
-                        </ul>
+                        <p>Annotated exploded views identify every major component by name, showing the bearing interfaces, motor mounts, gear subassemblies, and orthotic attachment points for each version.</p>
+                    </div>
+                    <div class="gallery-3">
+                        <div>
+                            <img src="images/Dr_Oct_V1_exploded_annotated.png"
+                                onclick="showImage('images/Dr_Oct_V1_exploded_annotated.png')"
+                                alt="V1 annotated exploded view" />
+                            <p class="img-caption">V1 — annotated exploded view with shoulder link, elbow link, wrist link, bevel gears, and motor callouts</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V2_exploded_annotated.png"
+                                onclick="showImage('images/Dr_Oct_V2_exploded_annotated.png')"
+                                alt="V2 annotated exploded view" />
+                            <p class="img-caption">V2 — annotated exploded view with vertebrae, torsional strip spring, TPU compression spring, and Dynamixel motor callouts</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V3_exploded_annotated.png"
+                                onclick="showImage('images/Dr_Oct_V3_exploded_annotated.png')"
+                                alt="V3 annotated exploded view" />
+                            <p class="img-caption">V3 — annotated exploded view with link 1–5, big/small Dynamixel motors, deep groove ball bearing, and gripper subassembly callouts</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Media Gallery -->
+            <!-- Full Robot Configurations -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Gripper Demonstration</h2>
-                    <div style="display: flex; justify-content: center; margin: 2rem 0;">
-                        <video controls autoplay loop muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')"
-                            style="max-width: 500px; width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.05)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
-                        </video>
+                    <h2 class="title is-3">Full Robot Configurations</h2>
+                    <div class="content">
+                        <p>
+                            Individual arms are designed to be modular and easily replaceable. They are mounted symmetrically on a central torso that houses all electronics and batteries. A 4-arm version of the robot uses all four limbs for combined locomotion and manipulation, while a 2-arm version with V2 arms demonstrates the continuum robot in a bilateral manipulation configuration.
+                        </p>
                     </div>
 
+                    <div class="gallery-3">
+                        <div>
+                            <img src="images/Dr_Oct_V1_4arm_robot.jpg"
+                                onclick="showImage('images/Dr_Oct_V1_4arm_robot.jpg')"
+                                alt="4-arm robot with V1 arms" />
+                            <p class="img-caption">4-arm floor robot with V1 universal joint arms — caster wheels at each gripper enable rolling locomotion while the arms maintain manipulation capability</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V2_2arm_robot.jpg"
+                                onclick="showImage('images/Dr_Oct_V2_2arm_robot.jpg')"
+                                alt="2-arm robot with V2 continuum arms" />
+                            <p class="img-caption">2-arm configuration with V2 continuum arms — 950mm span, demonstrating bilateral continuum manipulation and the full 180° spine bend capability</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_V3_4arm_robot.jpg"
+                                onclick="showImage('images/Dr_Oct_V3_4arm_robot.jpg')"
+                                alt="4-arm robot with V3 arms" />
+                            <p class="img-caption">4-arm floor robot with V3 arms — current active simulation platform, with proven Franka Panda-derived kinematics and tiered Dynamixel motor selection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V1 Deep Dive -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Version 1: Universal Joint Rigid Manipulator</h2>
                     <div class="content">
-                        <p style="margin-top: 1rem; font-style: italic; text-align: center;">
-                            <strong>Compliant 3-Finger Gripper Demonstration:</strong> Shows the adaptive grasping
-                            capabilities of the worm gear reduction system with spring-loaded compliance mechanism,
-                            enabling object conformance while maintaining secure grip for dual-mode operation.
+                        <h4 class="title is-5">Key Innovation: Integrated 2-DOF Shoulder</h4>
+                        <p>
+                            Traditional designs use two separate motors mounted perpendicular for a 2-DOF shoulder. V1 combines both degrees of freedom into a single mechanism using a timing belt and bevel gear coupling for 90-degree power transmission — reducing motor count while maintaining full shoulder mobility. The 4-DOF configuration (2 at shoulder, 1 at elbow, 1 at wrist) was intentional: simpler control, fewer failure points, lower cost, and reduced weight, with multi-arm coordination compensating for the reduced individual workspace.
+                        </p>
+
+                        <h4 class="title is-5">Torque Analysis</h4>
+                        <p>
+                            Worst-case loading was modeled with the arm fully extended horizontally at 250g payload. The arm was split into four sections — universal joint (78.07g), elbow joint (74.14g), wrist joint (106.96g), and gripper with dummy load (397.75g) — with torque calculated backwards from the end-effector to each motor using SolidWorks mass properties for precise center-of-mass distances. Maximum required torque: 1.55 N·m at the shoulder, verified with a 3× safety factor. AGMA bevel gear bending and contact stress analysis confirmed PLA gears would fail at rated load, while steel gears (safety factor 2.8×) are adequate for production.
+                        </p>
+
+                        <h4 class="title is-5">Lessons Learned</h4>
+                        <p>
+                            Three key issues informed subsequent versions: (1) compact link lengths limited workspace — accepted weight trade-off, informed V3 scaling; (2) timing belt tensioning was difficult to maintain — spring-loaded idler pulleys identified as the solution; (3) backlash in 3D-printed bevel gears was acceptable for prototyping but production needs split gears or machined alternatives. Most critically, the coupled universal joint motors were difficult to control simultaneously: <em>more independent joints is easier to control than fewer coupled joints</em>.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Analysis -->
+            <!-- V2 Deep Dive -->
             <div class="columns">
                 <div class="column">
-                    <h2 class="title is-3">Technical Analysis and Performance Validation</h2>
+                    <h2 class="title is-3">Version 2: Cable-Actuated Continuum Robot</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Key Innovation: Biomimetic Continuum Spine</h4>
+                        <p>
+                            Version 2 takes a fundamentally different approach — continuous bending instead of discrete rigid joints, with inherent compliance. The spine consists of 6 triangular vertebrae spaced 40mm apart, connected by ball-and-socket joints (ball radius 5mm, socket radius 5.4mm, socket opening 4.6mm → maximum geometric deflection 67°). Custom TPU compression springs (k = 0.005 N/mm, 19mm × 25.8mm, printed to geometry) between vertebrae provide structural support and compliance analogous to intervertebral discs. Actual operation targets 30–40° deflection per joint, enabling a full 180° spine bend. The two-arm configuration spans 950mm.
+                        </p>
+                        <p>
+                            Actuation uses 3 Dynamixel motors driving 0.3mm fishing-line tendons routed through vertebra corners. Torsional strip springs at cable terminations maintain constant pre-tension to compensate for fishing line stretch under load.
+                        </p>
 
-                    <h4 class="title is-5">Torque Analysis and Servo Sizing Verification</h4>
+                        <h4 class="title is-5">Challenges &amp; Solutions</h4>
+                        <p>
+                            V2 is inherently underactuated — 3 motors drive a theoretically infinite-DOF system — making accurate simulation impossible and requiring real-world reinforcement learning. Cable slack is addressed with torsional strip springs; guide rails prevent torsional spring entanglement during continuous rotation. Symmetric 120° cable spacing with TPU compression springs solves spine stability under self-weight. While V2 demonstrated 180° bend physically, the RL framework proved difficult to develop, motivating the pivot to V3 as a more tractable control platform.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V3 Deep Dive -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Version 3: Franka Panda-Inspired Serial Manipulator</h2>
+                    <div class="content">
+                        <h4 class="title is-5">Design Rationale</h4>
+                        <p>
+                            After V1 revealed coupled-joint control difficulty and V2 proved hard to simulate, the team needed proven kinematics with no mechanical unknowns. The solution: adapt the open-source Franka Panda robot arm — an industry-standard manipulator used by the FACTR research group — with shortened link lengths for weight reduction and the final wrist DOF removed as redundant.
+                        </p>
+                        <p>
+                            The 5-DOF configuration uses tiered motor selection driven by joint torque requirements: larger Dynamixel XM430 motors at joints 1 and 3 (longest gravitational moment arms) and smaller XC330 motors at joints 4 and 5. Joints 0 and 2, despite being at the base, do not experience the full gravitational moment because their rotation axes are not perpendicular to gravity. Despite having 5 DOF vs. V1's 4, V3 weighs only 716g vs. V1's 828g — eliminating the heavy universal joint mechanism more than offsets the additional joints. This confirmed that <em>compactness does not always mean lighter weight</em>.
+                        </p>
+                    </div>
+
+                    <!-- Arm mass comparison table -->
+                    <table class="comparison-table">
+                        <thead><tr><th>Version</th><th>Mass</th><th>DOF</th><th>Key Innovation</th><th>Reach</th><th>Material Cost</th></tr></thead>
+                        <tbody>
+                            <tr><td>V1</td><td>828g</td><td>4</td><td>Timing belt + bevel gear universal joint shoulder</td><td>405mm</td><td>~$20</td></tr>
+                            <tr><td>V2</td><td>628g</td><td>∞ (3 actuated)</td><td>Ball-socket vertebrae continuum spine + TPU springs</td><td>450mm</td><td>~$35</td></tr>
+                            <tr><td>V3</td><td>716g</td><td>6</td><td>Franka Panda adaptation, tiered motor selection</td><td>335mm</td><td>~$50</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gripper -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Universal Compliant Gripper</h2>
+                    <div class="content">
+                        <p>
+                            A single gripper design spans all three arm versions, satisfying both locomotion (0° fully open for ground contact) and manipulation (120° closed for enveloping grasp) requirements. At ~150g, it is the lightest element on the arm. One motor at the center drives all 3 fingers simultaneously through a two-stage worm gear reduction (30:1 worm-to-large-wheel × 3:1 large-to-small = 90:1 total), providing high torque amplification and self-locking capability.
+                        </p>
+                        <p>
+                            An extension spring behind each large phalange allows independent finger adaptation to object geometry without individual motor control: when the lower phalange contacts an object, the upper phalange continues rotating to wrap around it. Each finger is independently removable; springs hook rather than using adhesive. Validation covered objects from a marble to an apple — spherical, cylindrical, block, and deformable shapes — with grip security confirmed by yanking the held object.
+                        </p>
+                    </div>
+
+                    <div class="gallery-2">
+                        <div>
+                            <img src="images/Dr_Oct_gripper_exploded_annotated.png"
+                                onclick="showImage('images/Dr_Oct_gripper_exploded_annotated.png')"
+                                alt="Annotated exploded view of compliant gripper" />
+                            <p class="img-caption">Annotated exploded view of the compliant gripper — showing worm gear, big worm wheel, small worm wheel, motor mount, finger subassemblies (palm, big phalange, small phalange), extension spring, and back linkage</p>
+                        </div>
+                        <div>
+                            <video controls autoplay loop muted style="width:100%; border-radius:8px;">
+                                <source src="images/Dr_Oct_gripper_test.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">Gripper validation — grasping objects of varied geometry from marble to apple, with adaptive phalange compliance visibly confirmed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electronics -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Electronics Architecture</h2>
+                    <div class="content">
+                        <p>
+                            All three arm versions share the same electronics housed in a 170mm × 170mm × 160mm central torso with a hinge-lid enclosure for easy access. Core components: NVIDIA Jetson Orin NX for central computation (10–25W, configurable); Adafruit BNO085 IMU for real-time orientation estimation, gravity compensation for arm kinematics, and tilt detection; dual USB fisheye cameras for stereo depth perception, object detection, and environment mapping; four U2D2 Power Hub modules connected via USB to the Jetson's USB-A ports managing serial communication to all servos.
+                        </p>
+                        <p>
+                            A dual-battery architecture isolates servo power (3S LiPo, 14.8V, two 5200 mAh motor packs at the lumbar position for optimal center of mass) from logic power (21700 cells, 2200 mAh, direct to Jetson via barrel jack adapter), preventing motor switching noise from corrupting sensor data. Caster wheels at the base of each arm enable rolling locomotion when the gripper is open.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wearable Variant -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Wearable Variant: "Dr. Oct" Backpack Robot</h2>
+                    <div class="content">
+                        <p>
+                            Beyond the floor-based platform, I designed a wearable backpack variant re-packaging the same V3 arms and electronics into a body-worn configuration. The motivation: assist a human operator in tight search-and-rescue scenarios (pushing aside debris, holding tools, reaching overhead) while the user's own hands perform other tasks. The design also has a daily-life assistive angle — supporting objects while doing other tasks, or providing reach assistance.
+                        </p>
+                        <p>
+                            The torso takes a pyramidal form inspired by the original Dr. Octopus arms from Spider-Man, with four arms mounting symmetrically outward: two upper arms wrap up and over the shoulders, two lower arms wrap around the waist. The pyramidal torso houses all electronics and batteries internally. The system is worn via nylon webbing shoulder straps sized to average male shoulder width (40 cm). Power uses a 4S LiPo for servo current and a separate 2S LiPo for the logic domain.
+                        </p>
+                    </div>
+
+                    <div class="gallery-2">
+                        <div>
+                            <img src="images/Dr_Oct_wearable_render_annotated.png"
+                                onclick="showImage('images/Dr_Oct_wearable_render_annotated.png')"
+                                alt="Annotated wearable robot variant render" />
+                            <p class="img-caption">Annotated render of the Dr. Oct wearable variant — showing backpack housing, extended V3 arms, backpack cover, and shoulder strap system</p>
+                        </div>
+                        <div>
+                            <img src="images/Dr_Oct_wearable_dimensioned.png"
+                                onclick="showImage('images/Dr_Oct_wearable_dimensioned.png')"
+                                alt="Dimensioned wearable robot variant" />
+                            <p class="img-caption">Dimensioned layout — 887.8 × 740.5mm footprint, 478.7mm height, ~6kg total weight, comparable to a loaded hiking backpack</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manufacturing & Future Work -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Manufacturing, Scalability &amp; Future Work</h2>
                     <div class="content">
                         <div class="columns">
                             <div class="column">
-                                <h6 class="title is-6">Manipulation Mode</h6>
-                                <ul>
-                                    <li>Maximum payload: 250g with 5× acceleration and 2× safety factors</li>
-                                    <li>Total force required: 24.5N across 3 gripper fingers</li>
-                                    <li>Required torque: 1.96 N·m with available 2.58 N·m (safety margin)</li>
-                                </ul>
+                                <h4 class="title is-5">Manufacturing Scalability</h4>
+                                <p>FDM 3D printing (PLA/TPU) is ideal for the current research phase — no tooling, 3–5 day iteration cycles. Some features are uniquely enabled by 3D printing (V2's ball-and-socket joints, TPU snap-fit compression springs) and would require redesign for other methods. For low-volume production (1–100 units), CNC machining provides isotropic strength and tighter gear tolerances. For scale (500+ units), injection molding achieves 30–60s cycles with $15K–50K tooling and required design changes (draft angles, undercut elimination, post-machined threaded holes).</p>
                             </div>
                             <div class="column">
-                                <h6 class="title is-6">Locomotion Mode</h6>
+                                <h4 class="title is-5">Future Work</h4>
                                 <ul>
-                                    <li>Rolling resistance: 0.06 coefficient on smooth surfaces</li>
-                                    <li>Acceleration target: 0.5 m/s² with 2.0 safety factor</li>
-                                    <li>All servos provide sufficient torque for rolling locomotion</li>
+                                    <li>Complete V3 simulation (Isaac/Genesis physics engine)</li>
+                                    <li>Implement real-world RL framework for V2 control</li>
+                                    <li>Develop state machine for autonomous locomotion↔manipulation mode switching</li>
+                                    <li>Advance multi-arm coordination strategies</li>
+                                    <li>Physical build and testing of Dr. Oct wearable variant</li>
+                                    <li>Spring-loaded idler pulleys for V1 belt tensioning</li>
+                                    <li>Split gear designs or machined worm gears for gear backlash reduction</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <h4 class="title is-5">Design Evolution Rationale</h4>
-                    <div class="content">
-                        <p>Version 2 addresses key limitations identified in Version 1 analysis:</p>
-                        <ul>
-                            <li><strong>Terrain Adaptation:</strong> Continuum design provides superior surface
-                                conformance vs. discrete joints</li>
-                            <li><strong>Mechanical Simplification:</strong> Cable actuation eliminates complex universal
-                                joint precision requirements</li>
-                            <li><strong>Workspace Enhancement:</strong> Infinite DOF enables unlimited positioning
-                                within operational envelope</li>
-                            <li><strong>Impact Resistance:</strong> Inherent compliance provides safety and damage
-                                tolerance</li>
-                        </ul>
-                    </div>
-
-                    <h4 class="title is-5">Control Development Strategy</h4>
-                    <div class="content">
-                        <p>Hardware-centric approach acknowledging continuum mechanics modeling limitations:</p>
-                        <ul>
-                            <li>Genesis Physics Engine with GPU acceleration for parallel environment training</li>
-                            <li>Proximal Policy Optimization (PPO) for stable continuous control during mode transitions
-                            </li>
-                            <li>Real-world reinforcement learning prioritizing empirical adaptation over theoretical
-                                models</li>
-                            <li>URDF conversion from SolidWorks preserving mass properties and kinematic relationships
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -570,69 +475,40 @@
                     <h2 class="title is-3">My Contributions</h2>
                     <div class="content">
                         <p>
-                            As the lead graduate researcher working under Dr. Nadia Figueroa, I am responsible for all
-                            mechanical design, component selection, analysis, and system integration:
+                            As the sole mechanical and electrical engineer on a three-person team (the other two focused on controls), I was responsible for all hardware across all three versions and the wearable variant.
                         </p>
-
-                        <h4 class="title is-5">Mechanical Design and Innovation</h4>
-                        <ul>
-                            <li><strong>Universal Joint Development:</strong> Designed custom 2-DOF system with
-                                integrated timing belt transmission eliminating traditional 3-servo shoulder
-                                configurations</li>
-                            <li><strong>Continuum Architecture:</strong> Developed vertebral spine system with
-                                triangular vertebrae and TPU springs for infinite DOF through 3-motor coordination</li>
-                            <li><strong>Compliant Gripper System:</strong> Created unified 3-finger design with 60:1
-                                worm gear reduction and spring-loaded compliance spanning both iterations</li>
-                            <li><strong>Complete CAD Development:</strong> Generated comprehensive SolidWorks models
-                                with detailed assemblies and GD&T specifications</li>
-                        </ul>
-
-                        <h4 class="title is-5">Component Selection and Integration</h4>
-                        <ul>
-                            <li><strong>Electronics Architecture:</strong> Selected Jetson Orin NX, dual battery system,
-                                IMU, and fisheye cameras for autonomous operation</li>
-                            <li><strong>Actuation Specification:</strong> Determined servo requirements
-                                (STS3215/Dynamixel) based on comprehensive torque analysis</li>
-                            <li><strong>Power System Design:</strong> Implemented dual-battery architecture with U2D2
-                                hub for optimal power distribution</li>
-                            <li><strong>Material Characterization:</strong> Optimized 3D printing parameters for
-                                structural PLA applications</li>
-                        </ul>
-
-                        <h4 class="title is-5">Engineering Analysis and Validation</h4>
-                        <ul>
-                            <li><strong>Torque Analysis:</strong> Performed systematic load calculations using
-                                SolidWorks mass properties for both operational modes</li>
-                            <li><strong>Mass Properties:</strong> Determined system-level center of mass and weight
-                                distribution across configurations</li>
-                            <li><strong>Material Properties:</strong> Adjusted standard PLA characteristics based on
-                                printing parameters for accurate analysis</li>
-                            <li><strong>Design Iteration:</strong> Identified Version 1 limitations and developed
-                                technical rationale for continuum transition</li>
-                        </ul>
-
-                        <h4 class="title is-5">Control System Development</h4>
-                        <ul>
-                            <li><strong>URDF Model Creation:</strong> Converted SolidWorks assemblies to URDF format
-                                preserving mass properties and kinematic relationships for future simulation work</li>
-                            <li><strong>Control Framework Planning:</strong> Identified Genesis Physics Engine and PPO
-                                as optimal approaches for future dual-mode policy development</li>
-                            <li><strong>Hardware-First Strategy:</strong> Developed plans for empirical learning
-                                approach acknowledging continuum modeling limitations</li>
-                            <li><strong>Future Work:</strong> Next phase involves implementing simulation environment
-                                and real-world reinforcement learning on hardware</li>
-                        </ul>
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Mechanical Design</h4>
+                                <ul>
+                                    <li>Full SolidWorks CAD — V1 (universal joint, bevel gear coupling, timing belt), V2 (vertebrae, TPU springs, ball-and-socket joints, torsional strip spring cable system), V3 (Franka Panda adaptation, shortened links)</li>
+                                    <li>Compliant 3-finger gripper — worm gear design, extension spring compliance, modular fingers</li>
+                                    <li>Pyramidal wearable torso with nylon webbing shoulder strap system</li>
+                                    <li>3× sets of arm mounts and electronics torso housing</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Analysis &amp; Electrical</h4>
+                                <ul>
+                                    <li>Torque analysis for all joints in manipulation and locomotion modes using SolidWorks mass properties</li>
+                                    <li>AGMA bevel gear bending and contact stress analysis</li>
+                                    <li>TPU spring constant calculation and V2 vertebral deflection angle analysis</li>
+                                    <li>Worm gear ratio, module, shaft, and wheel design for gripper two-stage reduction</li>
+                                    <li>Motor sizing and selection using tiered torque analysis across all versions</li>
+                                    <li>Dual-battery power architecture (3S LiPo servo + 21700 logic isolation)</li>
+                                    <li>Full component integration — Jetson Orin NX, IMU, cameras, U2D2 hubs, all servo wiring</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Navigation -->
+            <!-- Back button -->
             <div class="columns" style="margin-top: 3rem;">
                 <div class="column has-text-centered">
                     <a href="project.html" class="button is-primary is-medium">
-                        <span class="icon">
-                            <i class="fa fa-arrow-left"></i>
-                        </span>
+                        <span class="icon"><i class="fa fa-arrow-left"></i></span>
                         <span>Back to All Projects</span>
                     </a>
                 </div>
@@ -641,13 +517,8 @@
     </section>
 
     <!-- Media Modal -->
-    <div id="mediaModal"
-        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;"
-        onclick="closeModal()">
-        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
-        <video id="modalVideo" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 80%;"
-            controls>
-        </video>
+    <div id="mediaModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;" onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 5%; max-width: 90%; max-height: 85%;" />
     </div>
 
     <footer class="footer">
@@ -655,9 +526,7 @@
             <div class="column is-centered">
                 <span class="link-block">
                     <a href="index.html" class="external-link is-normal is-rounded is-dark">
-                        <span class="icon">
-                            <i class="fa fa-home"></i>
-                        </span>
+                        <span class="icon"><i class="fa fa-home"></i></span>
                         <span>Back to Home</span>
                     </a>
                 </span>
@@ -665,26 +534,14 @@
         </div>
     </footer>
 </body>
-
 <script>
     function showImage(src) {
         document.getElementById('modalImage').src = src;
         document.getElementById('modalImage').style.display = 'block';
-        document.getElementById('modalVideo').style.display = 'none';
         document.getElementById('mediaModal').style.display = 'block';
     }
-
-    function showVideo(src) {
-        document.getElementById('modalVideo').src = src;
-        document.getElementById('modalVideo').style.display = 'block';
-        document.getElementById('modalImage').style.display = 'none';
-        document.getElementById('mediaModal').style.display = 'block';
-    }
-
     function closeModal() {
         document.getElementById('mediaModal').style.display = 'none';
-        document.getElementById('modalVideo').pause();
     }
 </script>
-
 </html>

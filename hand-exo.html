@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Hand Exoskeleton - Jason Chen" />
+    <meta name="keywords" content="Hand Exoskeleton Rehabilitation Grip Assistance Four-Bar Linkage GRASP" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hand Exoskeleton - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>    <style>
+        .fixed-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 1rem 0; transition: all 0.3s ease; }
+        body { padding-top: 80px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-name { font-size: 1.5rem; font-weight: bold; color: #363636; text-decoration: none; transition: color 0.3s ease; }
+        .nav-name:hover { color: #667eea; }
+        .nav-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-buttons .button { background: #363636; color: white; border: none; transition: all 0.3s ease; }
+        .nav-buttons .button:hover { background: #4a4a4a; transform: translateY(-1px); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1001; top: 100%; left: 0; margin-top: 0; border: 1px solid rgba(0,0,0,0.1); }
+        .dropdown-content a { color: #363636; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; border-radius: 8px; margin: 4px; }
+        .dropdown-content a:hover { background-color: #f1f1f1; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .button { background: #4a4a4a; transform: translateY(-1px); }
+        .project-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem 0; margin-bottom: 2rem; }
+        .project-details { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tech-tag { background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .gallery img { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease; }
+        .gallery img:hover { transform: scale(1.05); }
+        .results-highlight { background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%); border-left: 4px solid #10b981; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+        .github-banner { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 1.2rem 1.5rem; border-radius: 10px; margin: 1.5rem 0; display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+        .github-banner .icon-wrap { font-size: 2rem; flex-shrink: 0; }
+        .github-banner h4 { color: white; margin: 0 0 0.2rem 0; font-size: 1.05rem; }
+        .github-banner p { color: rgba(255,255,255,0.8); margin: 0; font-size: 0.88rem; line-height: 1.5; }
+        .github-banner a.gh-btn { margin-left: auto; background: white; color: #1a1a2e; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; text-decoration: none; white-space: nowrap; font-size: 0.9rem; transition: background 0.2s; flex-shrink: 0; }
+        .github-banner a.gh-btn:hover { background: #e0e0e0; }
+        .img-caption { font-style: italic; color: #555; font-size: 0.85rem; margin-top: 0.4rem; text-align: center; }
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 0.5rem; }
+            .nav-name { font-size: 1.2rem; }
+            .nav-buttons { gap: 0.3rem; }
+            .nav-buttons .button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
+            .dropdown-content { position: static; display: none; box-shadow: none; background-color: #f8f9fa; margin-top: 0; border-radius: 0; border: none; border-top: 1px solid #e9ecef; }
+            .github-banner { flex-direction: column; align-items: flex-start; }
+            .github-banner a.gh-btn { margin-left: 0; }
+        }
+    </style>
+    <script src="./static/js/nav.js"></script>
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-cogs"></i></span>
+                            <span>Projects</span>
+                            <span class="icon"><i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i></span>
+                        </a>
+                                                <div class="dropdown-content">
+                                                        <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="elbow-exo.html">Elbow Exoskeleton</a>
+                            <a href="hand-exo.html">Hand Exoskeleton</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
+                            <a href="edison-phonograph.html">Edison Phonograph</a>
+                            <a href="robox-chess.html">Robox Chess Set</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-scroll"></i></span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-envelope"></i></span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Hand Exoskeleton</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.9);">
+                        Single-Motor 4-Finger Grip Assistance for Rehabilitation — GRASP Lab, UPenn
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!-- GitHub Banner -->
+            <div class="github-banner">
+                <div class="icon-wrap"><i class="fab fa-github"></i></div>
+                <div>
+                    <h4>Open-Source Repository — penn-figueroa-lab/hand_exoskeleton</h4>
+                    <p>Full SolidWorks CAD (left hand), STL files for all 17 printed parts, Bambu Studio .3mf print file pre-configured for a single Bambu Lab P1S bed, print orientation guide, electronics datasheets, wiring diagram, step-by-step assembly procedure (10 steps), and Bill of Materials. All parts in PLA, fit on one ~11.5hr print.</p>
+                </div>
+                <a class="gh-btn" href="https://github.com/penn-figueroa-lab/hand_exoskeleton" target="_blank">
+                    <i class="fab fa-github"></i>&nbsp; View on GitHub
+                </a>
+            </div>
+
+            <!-- Key Achievement -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Designed and built a compact, single-motor, bidirectional hand exoskeleton for 4-finger grip assistance targeting patients with partial voluntary hand control (post-stroke or spinal cord injury).</strong>
+                    Drives all four fingers simultaneously via a Waveshare ST3215 servo, a 2.5:1 spur gear transmission with a +0.5mm tooth depth modification for reliable 3D-printed gear mesh, and a parallel four-bar linkage per finger adapted from Esposito et al. (2022). All 17 custom parts fit on a single print bed (~11.5 hours, ~233g PLA). A physical prototype has been built and is under active hardware testing.
+                </p>
+                <p style="margin-top: 0.5rem; color: #064e3b;">
+                    🖐️ Ongoing research at the University of Pennsylvania GRASP Laboratory under Dr. Nadia Figueroa.
+                </p>
+            </div>
+
+            <!-- Overview + Sidebar -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Project Overview</h2>
+                        <p>
+                            The device targets patients who retain partial voluntary hand control — common in stroke recovery or incomplete spinal cord injury. Rather than fully replacing voluntary effort, it augments it by driving all four fingers simultaneously through a shared transmission shaft, keeping the device compact and lightweight enough for daily wear. The design philosophy was aggressive simplicity: one motor, one transmission, one print bed.
+                        </p>
+                        <p>
+                            Grip strength analysis from published data (male average 45 kg, female average 32 kg; Leyk et al. 2007) set the target at 20 kg (200 N) of assistive grip force. With a 50mm effective lever arm at the PIP joint, this requires approximately 10 Nm at the output — met by the ST3215's 2.94 Nm stall torque amplified through the 2.5:1 gear train and the mechanical advantage of the four-bar linkage system.
+                        </p>
+                        <p>
+                            The design draws from and extends Esposito et al. (2022, <em>Machines</em> 10(1):57), replacing a Bowden cable transmission with a direct wrist-mounted spur gear drive for a more compact form factor and fewer failure modes.
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Project Details</h3>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Laboratory:</strong> GRASP Lab · Figueroa Robotics Lab</p>
+                        <p><strong>Duration:</strong> January 2025 – Present</p>
+                        <p><strong>Advisor:</strong> Dr. Nadia Figueroa</p>
+                        <p><strong>Role:</strong> Lead Mechanical Design &amp; System Integration</p>
+                        <p><strong>Actuator:</strong> Waveshare ST3215 servo</p>
+                        <p><strong>Stall Torque:</strong> 30 kg·cm (2.94 Nm) @ 12V</p>
+                        <p><strong>Gear Ratio:</strong> 2.5:1 (Module 1.25, 20T/50T)</p>
+                        <p><strong>Fingers:</strong> 4 (index, middle, ring, pinky)</p>
+                        <p><strong>Print Time:</strong> ~11.5 hrs (single bed, ~233g)</p>
+                        <p><strong>Reference:</strong> Esposito et al. (2022)</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">SolidWorks CAD</span>
+                            <span class="tech-tag">3D Printing (PLA)</span>
+                            <span class="tech-tag">Spur Gear Design</span>
+                            <span class="tech-tag">Four-Bar Linkage</span>
+                            <span class="tech-tag">Serial Bus Servo</span>
+                            <span class="tech-tag">ESP32-S3</span>
+                            <span class="tech-tag">Mechanism Design</span>
+                            <span class="tech-tag">Rehabilitation Devices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Design &amp; Prototype</h2>
+                    <div class="gallery">
+                        <img src="images/Hand_Exo_Iso_View.jpg"
+                            onclick="showImage('images/Hand_Exo_Iso_View.jpg')"
+                            alt="CAD render isometric" />
+                        <img src="images/Hand_Exo_Prototype_Closeup.jpeg"
+                            onclick="showImage('images/Hand_Exo_Prototype_Closeup.jpeg')"
+                            alt="Physical prototype worn" />
+                        <img src="images/Hand_Exo_Gear_Closeup.png"
+                            onclick="showImage('images/Hand_Exo_Gear_Closeup.png')"
+                            alt="Gear transmission closeup" />
+                        <img src="images/Hand_Exo_Wiring_Diagram.png"
+                            onclick="showImage('images/Hand_Exo_Wiring_Diagram.png')"
+                            alt="Wiring diagram" />
+                    </div>
+                    <p class="img-caption">From left: SolidWorks render of wrist mount, gear transmission, and 4-finger linkage system; physical prototype worn on user's hand; 2.5:1 spur gear transmission with +0.5mm tooth depth modification; electronics wiring diagram.</p>
+                </div>
+            </div>
+
+            <!-- Prototype Test Video -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Prototype Actuation Test</h2>
+                    <div class="content">
+                        <p>First hardware actuation test of the physical prototype — the ST3215 servo drives the 2.5:1 spur gear transmission, rotating the transmission shaft and actuating all four fingers simultaneously through the four-bar linkage system. Current work focuses on refining the linkage kinematics to eliminate binding and achieve smooth, full-range flexion and extension.</p>
+                    </div>
+                    <video class="clickable-media" style="width: 100%; max-width: 480px; display: block; margin: 0 auto; object-fit: contain;" controls autoplay loop muted
+                        onclick="showVideo('images/Hand_Exo_Prototype_Test.MOV')">
+                        <source src="images/Hand_Exo_Prototype_Test.MOV" type="video/mp4">
+                    </video>
+                    <p class="img-caption" style="margin-top: 0.5rem;">Prototype actuation test — single motor driving all 4 fingers simultaneously via the spur gear transmission and four-bar linkage chains</p>
+                </div>
+            </div>
+
+            <!-- Mechanical Design -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Mechanical Design</h2>
+                    <div class="content">
+
+                        <h4 class="title is-5">Wrist Mount &amp; Housing</h4>
+                        <p>
+                            The wrist mount is the central structural element, housing all electronics in a 175mm × 100mm × 20mm bay. It integrates the left transmission mount directly into its body, provides a dedicated motor mount interface, and secures to the wrist via Velcro straps through strap channels. A curved underside matches natural wrist curvature for comfort. A separate right transmission mount slides over the shaft after installation — this split-mount design allows the shaft to be inserted laterally, avoiding threading through confined spaces.
+                        </p>
+
+                        <h4 class="title is-5">Spur Gear Transmission</h4>
+                        <p>
+                            The Waveshare ST3215 serial bus servo was chosen for its 30 kg·cm (2.94 Nm) stall torque at 12V, compact 69g form factor, 360° magnetic encoder with 4096-count resolution, two-way feedback (position, load, speed, voltage), and serial daisy-chain bus supporting up to 253 servos at up to 1 Mbps.
+                        </p>
+                        <p>
+                            The gear train uses a 20-tooth drive gear (M2.5-screwed directly to the motor horn) meshing with a 50-tooth driven gear (keywayed to the transmission shaft) for a 2.5:1 ratio. Both gears are Module 1.25 with tooth depth modified +0.5mm beyond the standard SolidWorks Toolbox profile. This deliberate adjustment compensates for dimensional variation in 3D-printed gears and motor mount positional offsets, ensuring proper mesh engagement without requiring precision-machined center distances. Both gears and the transmission shaft are printed at 75% infill for torsional rigidity.
+                        </p>
+
+                        <h4 class="title is-5">Transmission Shaft &amp; Bearings</h4>
+                        <p>
+                            The transmission shaft distributes torque from the large spur gear to all four finger base linkages, supported at both ends by sealed stainless steel ball bearings (5mm ID × 10mm OD × 4mm). Four base linkages mount to the shaft at 22.5mm spacing (approximating natural inter-finger spacing), connected via 18-8 stainless steel quick-release pins (McMaster-Carr). Quick-release pins allow any individual finger assembly to be removed instantly without tools — important for fitting sessions and patient-specific customization in a rehabilitation context.
+                        </p>
+
+                        <h4 class="title is-5">Parallel Four-Bar Finger Linkage System</h4>
+                        <p>
+                            Each finger uses a parallel four-bar linkage topology from Esposito et al. (2022), converting rotational shaft motion into guided flexion/extension that follows natural human finger kinematics. The linkage chain per finger: base linkage (65.4mm, quick-release pin to shaft) → intermediate linkage (130mm for index/middle/ring, 100mm for pinky — shorter to match the fifth finger's length) → vertical linkage (50mm, multiple hole positions for adjustability) → base finger connector (MCP joint, curved underside, slot connection) → L-shape linkage (60mm W × 28mm L) → small finger connector (PIP/DIP joints, curved, slot connection).
+                        </p>
+                        <p>
+                            <strong>Key fit features:</strong> Multiple mounting hole positions on both the intermediate and vertical linkages allow adjustment to the user's finger length. Slot connections at both finger connector interfaces provide continuous fine adjustment beyond discrete hole positions. All connections use M3 screws and nuts except where quick-release pins are specified.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electronics -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Electronics &amp; Assembly</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Power &amp; Communication</h4>
+                                <p>All electronics fit within the wrist mount bay. An Adafruit ESP32-S3 Feather (5V, Wi-Fi + BLE) communicates with the ST3215 via half-duplex UART through a Waveshare Bus Servo Adapter A, which also provides 12V servo power directly from a 3S LiPo battery (400–600 mAh, ~38g, XT30). A Mini360 buck converter steps 12V down to 5V for the ESP32. A decoupling capacitor should be added across the servo power rail in the final circuit to suppress voltage spikes during motor commutation.</p>
+                                <h4 class="title is-5">Bill of Materials Highlights</h4>
+                                <ul>
+                                    <li>Waveshare ST3215 servo (~$25)</li>
+                                    <li>Stainless steel ball bearings 5×10×4mm × 2 (~$5 ea)</li>
+                                    <li>18-8 SS quick-release pins × 4 (~$2 ea)</li>
+                                    <li>Waveshare Bus Servo Adapter A (~$15)</li>
+                                    <li>Adafruit ESP32-S3 Feather (~$25)</li>
+                                    <li>3S LiPo 400–600 mAh, XT30 (~$15)</li>
+                                    <li>Mini360 buck converter (~$2)</li>
+                                    <li>~233g PLA filament (all 17 printed parts)</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Assembly Summary (10 Steps)</h4>
+                                <ol>
+                                    <li>Assemble all four finger linkage chains (base → intermediate → vertical → connectors)</li>
+                                    <li>Screw small spur gear (20T) onto motor horn with M2.5 screws</li>
+                                    <li>Mount motor in motor mount; mount assembly into wrist mount</li>
+                                    <li>Press-fit large spur gear (50T) onto transmission shaft gap, aligning keyway</li>
+                                    <li>Attach finger base linkages to transmission shaft at 22.5mm spacing</li>
+                                    <li>Press bearings into mounts; slide shaft through left bearing, gear, and right bearing</li>
+                                    <li>Screw right transmission mount to wrist mount from bottom and side</li>
+                                    <li>Verify smooth gear mesh; adjust motor mount center distance if needed</li>
+                                    <li>Seat electronics on standoffs in wrist mount bay; wire per diagram</li>
+                                    <li>Secure to wrist with Velcro straps; attach finger connectors; power on and test</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Current Status &amp; Future Work</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Completed</h4>
+                                <ul>
+                                    <li>4-finger mechanical design (left hand) — complete</li>
+                                    <li>Gear transmission and shaft — complete</li>
+                                    <li>Electronics architecture — defined</li>
+                                    <li>Physical prototype — assembled</li>
+                                    <li>Repository published (CAD, STL, print files, assembly guide, BOM)</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">In Progress &amp; Future</h4>
+                                <ul>
+                                    <li>Linkage kinematics refinement for smooth actuation (currently binding)</li>
+                                    <li>Wrist mount housing optimization (cable routing, cover design)</li>
+                                    <li>Right-hand variant (mirrored CAD)</li>
+                                    <li>Thumb integration (separate actuation)</li>
+                                    <li>EMG-based control (building on elbow exoskeleton framework)</li>
+                                    <li>Custom PCB (step-down + ESP32 + bus servo adapter integrated)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <p>I designed and built the complete system from scratch — full SolidWorks CAD for all 17 printed parts, gear train parameter selection (module, tooth count, +0.5mm tooth depth modification), bearing specification, quick-release pin selection, and all electronics. The tooth depth modification strategy, split-mount assembly approach, and quick-release pin fastening were design decisions developed to make the device manufacturable and maintainable in a rehabilitation setting. I assembled the physical prototype and am conducting ongoing linkage kinematics testing and geometry iteration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon"><i class="fa fa-arrow-left"></i></span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="mediaModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;" onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon"><i class="fa fa-home"></i></span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+    }
+</script>
+</html>

@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Quadrotor Autonomy - MEAM 6200 - Jason Chen" />
+    <meta name="keywords" content="Quadrotor MEAM 6200 Crazyflie A* Trajectory VIO ESKF GRASP Penn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quadrotor SLAM - Jason Chen</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./images/icon.jpeg" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>    <style>
+        .fixed-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 1rem 0; transition: all 0.3s ease; }
+        body { padding-top: 80px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-name { font-size: 1.5rem; font-weight: bold; color: #363636; text-decoration: none; transition: color 0.3s ease; }
+        .nav-name:hover { color: #667eea; }
+        .nav-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-buttons .button { background: #363636; color: white; border: none; transition: all 0.3s ease; }
+        .nav-buttons .button:hover { background: #4a4a4a; transform: translateY(-1px); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1001; top: 100%; left: 0; margin-top: 0; border: 1px solid rgba(0,0,0,0.1); }
+        .dropdown-content a { color: #363636; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; border-radius: 8px; margin: 4px; }
+        .dropdown-content a:hover { background-color: #f1f1f1; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .button { background: #4a4a4a; transform: translateY(-1px); }
+        .project-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 2rem 0; margin-bottom: 2rem; }
+        .project-details { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tech-tag { background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .gallery-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .gallery img, .gallery-3 img { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease; }
+        .gallery img:hover, .gallery-3 img:hover { transform: scale(1.05); }
+        .results-highlight { background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%); border-left: 4px solid #10b981; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+        .module-card { background: #f8f9fa; border-left: 4px solid #667eea; padding: 1rem 1.2rem; border-radius: 8px; margin-bottom: 1.2rem; }
+        .module-card h4 { color: #667eea; margin-bottom: 0.4rem; }
+        .img-caption { font-style: italic; color: #555; font-size: 0.85rem; margin-top: 0.4rem; text-align: center; }
+        .metrics-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+        .metrics-table th { background: #1a1a2e; color: white; padding: 0.6rem 1rem; text-align: left; }
+        .metrics-table td { padding: 0.5rem 1rem; border-bottom: 1px solid #e9ecef; }
+        .metrics-table tr:nth-child(even) { background: #f8f9fa; }
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 0.5rem; }
+            .nav-name { font-size: 1.2rem; }
+            .nav-buttons { gap: 0.3rem; }
+            .nav-buttons .button { font-size: 0.8rem; padding: 0.5rem 0.8rem; }
+            .dropdown-content { position: static; display: none; box-shadow: none; background-color: #f8f9fa; margin-top: 0; border-radius: 0; border: none; border-top: 1px solid #e9ecef; }
+            .gallery-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script src="./static/js/nav.js"></script>
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jason Chen</a>
+                <div class="nav-buttons">
+                    <span class="link-block dropdown">
+                        <a href="project.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-cogs"></i></span>
+                            <span>Projects</span>
+                            <span class="icon"><i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i></span>
+                        </a>
+                                                <div class="dropdown-content">
+                                                        <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="elbow-exo.html">Elbow Exoskeleton</a>
+                            <a href="hand-exo.html">Hand Exoskeleton</a>
+                            <a href="tubular-composites.html">Tubular Braided Composites</a>
+                            <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
+                            <a href="edison-phonograph.html">Edison Phonograph</a>
+                            <a href="robox-chess.html">Robox Chess Set</a>
+                            <a href="boids-analysis.html">Boids Algorithm Analysis</a>
+                            <a href="autonomous-robot.html">Autonomous Competition Robot</a>
+                            <a href="pick-place-robot.html">Pick-and-Place Robot</a>
+                            <a href="amr-platform.html">AMR Platform Design</a>
+                            <a href="transmission-design.html">Transmission Design</a>
+                        </div>
+                    </span>
+                    <span class="link-block">
+                        <a href="misc.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-scroll"></i></span>
+                            <span>Miscellaneous</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="contact.html" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fa fa-envelope"></i></span>
+                            <span>Contact</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="project-header">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-8 has-text-centered">
+                    <h1 class="title is-1" style="color: white;">Quadrotor Autonomy</h1>
+                    <h2 class="subtitle is-4" style="color: rgba(255,255,255,0.85);">
+                        SE3 Control · A* Planning · Minimum-Jerk Trajectories · VIO · Sim-to-Real Maze Flight
+                    </h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">MEAM 6200 — University of Pennsylvania · Spring 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!-- Key Achievement -->
+            <div class="results-highlight">
+                <h3 class="title is-4" style="color: #065f46; margin-bottom: 1rem;">Key Achievement</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    <strong>Built a complete autonomous quadrotor stack from scratch — from geometric SE3 attitude control through 3D A* planning and minimum-jerk trajectory optimization, up through IMU-based attitude estimation, stereo visual odometry, and a full Error State Kalman Filter for Visual-Inertial Odometry.</strong>
+                    The integrated system was deployed on a physical Bitcraze Crazyflie 2.0 with Vicon motion capture, successfully completing all three maze flights without collision (RMSE₃D 0.67–0.71m at 0.3 m/s cruise speed).
+                </p>
+                <p style="margin-top: 0.5rem; color: #064e3b;">
+                    🚁 Graduate course in Advanced Robotics (MEAM 6200), University of Pennsylvania. Team: Jason Chen, Smrithi Seramalanna, Zhihan Wang, Sumukh Shrote.
+                </p>
+            </div>
+
+            <!-- System overview image -->
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <img src="images/MEAM_6200_crazyflie.png"
+                        onclick="showImage('images/MEAM_6200_crazyflie.png')"
+                        alt="Bitcraze Crazyflie 2.0 quadrotor"
+                        style="max-height: 320px; width: auto; border-radius: 8px; cursor: pointer;" />
+                    <p class="img-caption">Bitcraze Crazyflie 2.0 quadrotor — 27g, STM32F405 MCU, MPU-9250 IMU. Tracked by Vicon motion capture (6-DoF pose at ~100 Hz) with all planning and control running offboard on a ROS desktop.</p>
+                </div>
+            </div>
+
+            <!-- Report Download -->
+            <div class="columns">
+                <div class="column">
+                    <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <div>
+                            <p style="margin: 0; font-weight: 600; font-size: 1rem;">📄 Lab Report — MEAM 6200 Project 1.4</p>
+                            <p style="margin: 0; color: #555; font-size: 0.88rem;">Sim-to-real maze flight: SE3 control, A* path planning, minimum-jerk trajectory optimization, and hardware results on the Bitcraze Crazyflie with Vicon motion capture.</p>
+                        </div>
+                        <a href="files/MEAM_6200_report.pdf" target="_blank"
+                            class="button is-dark is-normal"
+                            style="white-space: nowrap; flex-shrink: 0;">
+                            <span class="icon"><i class="fa fa-file-pdf"></i></span>
+                            <span>View Report (PDF)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Overview + Sidebar -->
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Course Overview &amp; System Architecture</h2>
+                        <p>
+                            MEAM 6200 builds the complete autonomy stack for an aerial robot hierarchically — from low-level actuator commands up through full state estimation. The course is structured in two arcs. The first arc establishes the control and planning stack: geometric SE3 attitude control, 3D graph-search-based path planning, polynomial trajectory optimization, and final integration on physical hardware in a motion-capture environment. The second arc focuses on sensor-based state estimation, beginning with IMU-based attitude estimation, extending to feature-based stereo visual odometry, and culminating in a full Visual-Inertial Odometry system using an Error State Kalman Filter.
+                        </p>
+                        <p>
+                            The hardware platform is the Bitcraze Crazyflie 2.0 (27g, STM32F405, MPU-9250 IMU, 2.4 GHz radio). For the control/planning arc, a Vicon motion capture system provides 6-DoF state at ~100 Hz. All high-level computation runs offboard on an Ubuntu/ROS desktop; only desired attitude quaternions (cmd_q) and total thrust (cmd_thrust) are sent over Crazyradio to the onboard firmware, which handles motor mixing at ~500 Hz using its internal attitude controller.
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="project-details">
+                        <h3 class="title is-5">Course Details</h3>
+                        <p><strong>Course:</strong> MEAM 6200 — Advanced Robotics</p>
+                        <p><strong>Institution:</strong> University of Pennsylvania</p>
+                        <p><strong>Team:</strong> Jason Chen, Smrithi Seramalanna, Zhihan Wang, Sumukh Shrote</p>
+                        <p><strong>Platform:</strong> Bitcraze Crazyflie 2.0 (27g)</p>
+                        <p><strong>Localization:</strong> Vicon MoCap (planning arc); stereo cameras (estimation arc)</p>
+                        <p><strong>Maze flights:</strong> 3 runs, 0 collisions</p>
+                        <p><strong>RMSE₃D:</strong> 0.67–0.71m @ 0.3 m/s</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">SE3 Geometric Control</span>
+                            <span class="tech-tag">A* Search</span>
+                            <span class="tech-tag">Polynomial Trajectories</span>
+                            <span class="tech-tag">Sim-to-Real</span>
+                            <span class="tech-tag">Complementary Filter</span>
+                            <span class="tech-tag">Stereo VO / RANSAC</span>
+                            <span class="tech-tag">ESKF / VIO</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Python / NumPy</span>
+                            <span class="tech-tag">Vicon MoCap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 1: SE3 Control -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 1: Geometric SE3 Position Controller</h2>
+                    <div class="content">
+                        <p>
+                            The first component of the stack is a Proportional-Derivative (PD) position controller based on geometric control on SE(3). The controller computes a position error and velocity error from the desired trajectory, calculates a commanded acceleration using proportional and derivative gains (Kp and Kd), and derives the desired force vector by compensating for gravity. The total commanded thrust is extracted by projecting this desired force onto the quadrotor's current body z-axis.
+                        </p>
+                        <p>
+                            The controller does not compute desired motor torques directly. Instead, the desired rotation matrix is derived from the commanded force direction and converted to a quaternion (cmd_q) that is sent over the radio to the Crazyflie. The onboard firmware runs its own high-frequency (~500 Hz) attitude rate controller using its internal IMU, handling the nonlinear attitude dynamics locally. This offloads the fast attitude loop to the onboard microcontroller where it belongs, while the slower position loop (bounded by Vicon and radio latency of ~10–20 ms) runs offboard.
+                        </p>
+                        <p>
+                            A constant-velocity straight-line trajectory generator provided the initial desired position and velocity setpoints between waypoints. The controller was tuned to pass a comprehensive simulation test suite covering hover, step responses, and box patterns before hardware deployment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2: A* Planning -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 2: 3D A* Path Planning</h2>
+                    <div class="content">
+                        <p>
+                            The path planning module builds an occupancy grid from a JSON map at 0.12m voxel resolution with a 0.25m obstacle inflation margin (approximately robot radius plus safety buffer), then runs A* graph search on a 26-connected voxel graph using Euclidean distance as the heuristic. The heuristic is admissible and consistent, guaranteeing optimal paths. A priority queue (min-heap) expands nodes in order of f = g + h, where g is the cost-to-come and h is the straight-line estimate to goal.
+                        </p>
+                        <p>
+                            The raw A* output contains hundreds of densely spaced nodes — many collinear, many clustered near start/goal. Two post-processing filters reduce this to a sparse set of meaningful turning points. A collinearity filter uses the cross-product criterion (sin θ &lt; 10⁻⁶ threshold) to identify and remove redundant intermediate nodes while keeping all genuine direction changes. A distance filter removes nodes closer than 0.4m to each other, preventing waypoint clustering near corners. Together these filters reduce the raw A* path to a compact set of waypoints suitable for trajectory generation while avoiding obstacles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3: Trajectory Planning -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 3: Minimum-Jerk Polynomial Trajectory Optimization</h2>
+                    <div class="content">
+                        <p>
+                            The trajectory planner generates smooth, dynamically feasible trajectories through the sparse waypoints using piecewise fifth-order (degree-5) polynomials — the minimum degree that can enforce C⁴ continuity (position, velocity, acceleration, jerk, and snap continuous at every interior waypoint). Minimum-jerk optimization minimizes the integral of squared third derivative across the entire trajectory.
+                        </p>
+                        <p>
+                            For each axis (x, y, z) independently, the polynomial coefficients are solved by assembling a linear system whose constraints enforce: zero velocity and acceleration at the start and goal; position continuity at all interior waypoints; and C⁴ derivative continuity (velocity, acceleration, jerk, snap continuous) at each segment boundary. The resulting 6N × 6N system (N segments) is solved once offline in the constructor; during flight, the controller calls a simple polynomial evaluation function that computes desired position, velocity, and acceleration at any time t.
+                        </p>
+                        <p>
+                            Segment durations are allocated proportionally to Euclidean distance at a fixed cruise speed (0.3 m/s for hardware), ensuring bounded velocity profiles throughout the trajectory and consistent deceleration into tight corners.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4: Sim to Real -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 4: Sim-to-Real Integration &amp; Maze Flight</h2>
+                    <div class="content">
+                        <p>
+                            Transitioning the full stack from simulation to the physical Crazyflie required significant gain retuning. In simulation, the quadrotor is a perfect rigid body with instantaneous motor responses and zero latency. On hardware, Vicon noise and 10–20 ms radio latency excite high-frequency oscillations at aggressive gains, causing violent shaking or instability. The position proportional gains (Kp) were approximately halved and the attitude gains (KR and Kω) were reduced by an order of magnitude from simulation values. These reductions sacrifice some bandwidth but yield stable, smooth flight — the fundamental hardware constraint is that high gains request aggressive moments that physically saturate the motors before the control command can be acted on.
+                        </p>
+
+                        <h4 class="title is-5">Controller Performance (Hardware Step Response)</h4>
+                        <p>
+                            A lateral (y-axis) step response was used to characterize the hardware controller. The system exhibited slightly underdamped behavior: rise time ~0.584s, overshoot 14.4% (estimated ζ ≈ 0.525), settling time ~1.498s into the 5% error band. A small steady-state offset (~0.024m) persists due to the absence of an integral term — the PD controller cannot eliminate accumulated constant disturbances such as battery weight imbalance or aerodynamic ground effect.
+                        </p>
+
+                        <h4 class="title is-5">Maze Flight Results</h4>
+                        <p>
+                            Three maze flights were completed with chained start/goal positions, all without collision. A* planned through three distinct 3D obstacle environments, with the processed sparse waypoints and minimum-jerk trajectories executed at 0.3 m/s.
+                        </p>
+                    </div>
+
+                    <!-- Maze flight plots -->
+                    <div class="gallery-3">
+                        <div>
+                            <img src="images/MEAM_6200_maze_1.png"
+                                onclick="showImage('images/MEAM_6200_maze_1.png')"
+                                alt="Maze 1 flight path" />
+                            <p class="img-caption">Maze 1 — dense A* path (red), sparse waypoints (purple), planned trajectory (black), actual flight path (blue)</p>
+                        </div>
+                        <div>
+                            <img src="images/MEAM_6200_maze_2.png"
+                                onclick="showImage('images/MEAM_6200_maze_2.png')"
+                                alt="Maze 2 flight path" />
+                            <p class="img-caption">Maze 2 — same visualization showing all three navigation layers from search to actual flight</p>
+                        </div>
+                        <div>
+                            <img src="images/MEAM_6200_maze_3.png"
+                                onclick="showImage('images/MEAM_6200_maze_3.png')"
+                                alt="Maze 3 flight path" />
+                            <p class="img-caption">Maze 3 — full reverse traversal of the maze environment</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery">
+                        <div>
+                            <img src="images/MEAM_6200_tracking_error.png"
+                                onclick="showImage('images/MEAM_6200_tracking_error.png')"
+                                alt="3D tracking error all mazes" />
+                            <p class="img-caption">3D Euclidean tracking error vs. time, all three mazes — error peaks during initial acceleration phase (0.9–1.1m), plateaus for remainder of flight</p>
+                        </div>
+                    </div>
+
+                    <h4 class="title is-5" style="margin-top: 1.5rem;">Real Hardware Flight Videos</h4>
+                    <div class="gallery">
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/MEAM_6200_Start_to_Intermediate_Goal.MOV')">
+                                <source src="images/MEAM_6200_Start_to_Intermediate_Goal.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">Start → Intermediate Goal — Crazyflie executing A* planned path and minimum-jerk trajectory in Vicon motion capture environment</p>
+                        </div>
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/MEAM_6200_Intermediate_Goal_to_Goal.MOV')">
+                                <source src="images/MEAM_6200_Intermediate_Goal_to_Goal.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">Intermediate Goal → Goal — completing the chained maze flight sequence with collision-free navigation through 3D obstacles</p>
+                        </div>
+                    </div>
+
+                    <h4 class="title is-5" style="margin-top: 1.5rem;">Controller Gain Tuning — Step Responses</h4>
+                    <div class="content">
+                        <p>Hardware gain tuning was performed axis-by-axis using step response experiments. Position gains (Kp, Kd) were roughly halved from simulation values and attitude gains (KR, Kω) reduced by an order of magnitude to overcome Vicon latency and prevent motor saturation-driven oscillations.</p>
+                    </div>
+                    <div class="gallery-3">
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/MEAM_6200_x_traj_tuning.MOV')">
+                                <source src="images/MEAM_6200_x_traj_tuning.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">X-axis step response — tuning lateral position tracking</p>
+                        </div>
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/MEAM_6200_y_traj_tuning.MOV')">
+                                <source src="images/MEAM_6200_y_traj_tuning.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">Y-axis step response — tuning lateral position tracking</p>
+                        </div>
+                        <div>
+                            <video class="clickable-media" style="width: 100%; object-fit: contain;" controls autoplay loop muted
+                                onclick="showVideo('images/MEAM_6200_z_traj_tuning.MOV')">
+                                <source src="images/MEAM_6200_z_traj_tuning.MOV" type="video/mp4">
+                            </video>
+                            <p class="img-caption">Z-axis step response — tuning altitude hold performance</p>
+                        </div>
+                    </div>
+
+                    <!-- RMSE Table -->
+                    <table class="metrics-table">
+                        <thead><tr><th>Maze</th><th>RMSE x (m)</th><th>RMSE y (m)</th><th>RMSE z (m)</th><th>RMSE 3D (m)</th><th>Flight Time (s)</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>0.339</td><td>0.575</td><td>0.082</td><td>0.672</td><td>11.0</td></tr>
+                            <tr><td>2</td><td>0.510</td><td>0.463</td><td>0.156</td><td>0.706</td><td>13.6</td></tr>
+                            <tr><td>3</td><td>0.548</td><td>0.354</td><td>0.231</td><td>0.692</td><td>17.5</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.88rem; color: #555; margin-top: 0.5rem;">
+                        z-axis RMSE is consistently lowest because altitude is controlled directly by thrust magnitude (no tilt required), and all maze start/goal heights were fixed at 0.75m. Lateral (x/y) errors are dominated by the tilt-to-translate mechanism, reduced position gains, and Vicon-to-radio latency. The observed RMSE₃D of 0.67–0.71m indicates the obstacle inflation margin should be increased to ~0.5–0.6m for safe flight.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Module 5: IMU Attitude Estimation -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 5: IMU-Based Attitude Estimation</h2>
+                    <div class="content">
+                        <p>
+                            The second arc of the course shifts from Vicon-based state to sensor-derived state. The first estimation module implements a complementary filter that fuses gyroscope and accelerometer measurements from the IMU to estimate the quadrotor's orientation over time.
+                        </p>
+                        <p>
+                            Gyroscopes measure angular velocity but drift over time due to integration of noise and sensor bias. Accelerometers measure the direction of gravity (when not accelerating) but are corrupted by linear acceleration and high-frequency vibration. The complementary filter combines both: the gyroscope provides high-frequency attitude updates through direct integration, while the accelerometer provides a long-term gravity reference to correct drift. A tunable parameter α controls the crossover between the two — higher α trusts the gyroscope more over short timescales; the accelerometer corrects accumulated drift on longer timescales.
+                        </p>
+                        <p>
+                            The filter was validated against IMU data logs, with yaw drift quantified and the filter frequency response characterized. This forms the attitude estimation backbone that feeds into the more sophisticated estimation systems in subsequent modules.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 6: Stereo Visual Odometry -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 6: Stereo Visual Odometry with RANSAC</h2>
+                    <div class="content">
+                        <p>
+                            The visual odometry module estimates the quadrotor's 6-DoF pose change between consecutive stereo image frames by tracking visual features. The pipeline: detect keypoints in both the left and right camera images; match features across the stereo pair using epipolar geometry to triangulate 3D landmark positions; match those same features across consecutive frames; solve for the relative camera motion (rotation and translation) that best explains the observed 2D-to-3D correspondences.
+                        </p>
+                        <p>
+                            RANSAC (Random Sample Consensus) is used to robustly estimate the motion in the presence of outlier matches — bad feature correspondences that would otherwise corrupt the pose estimate. In each RANSAC iteration, a minimal sample of 3 point correspondences is drawn, the relative pose is computed from that sample, and the number of inliers (correspondences consistent with that pose) is counted. The hypothesis with the most inliers is returned as the final pose estimate, with inliers refined by a least-squares optimization.
+                        </p>
+                        <p>
+                            The module was benchmarked on the EuRoC MAV dataset, with translation and rotation error evaluated against ground truth. On its own, visual odometry accumulates unbounded drift — a limitation addressed in the next module.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 7: VIO / ESKF -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">Part 7: Visual-Inertial Odometry (Error State Kalman Filter)</h2>
+                    <div class="content">
+                        <p>
+                            The final module combines IMU propagation and stereo visual odometry in an Error State Kalman Filter (ESKF) — the state-of-the-art approach for onboard robot state estimation. Rather than estimating the full pose directly (which has non-Euclidean structure due to rotation), the ESKF maintains a nominal state estimated by integrating the IMU kinematics, and tracks a small error state around that nominal trajectory using standard linear Kalman filter updates.
+                        </p>
+
+                        <div class="columns" style="margin-top: 0.5rem;">
+                            <div class="column">
+                                <div class="module-card">
+                                    <h4 class="title is-6">Nominal State Propagation</h4>
+                                    <p style="font-size: 0.9rem;">IMU measurements (accelerometer + gyroscope) are integrated at 200 Hz to propagate position, velocity, and orientation. Accelerometer and gyroscope biases are estimated and subtracted in real time. This gives smooth, high-rate pose estimates between camera frames but accumulates drift from bias and noise.</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="module-card">
+                                    <h4 class="title is-6">Error Covariance Propagation</h4>
+                                    <p style="font-size: 0.9rem;">An 18×18 error state covariance matrix tracks uncertainty in position, velocity, orientation, accelerometer bias, and gyroscope bias. The discrete-time state transition Jacobian propagates this covariance forward, growing it with process noise as the IMU integrates between visual updates.</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="module-card">
+                                    <h4 class="title is-6">Visual Measurement Update</h4>
+                                    <p style="font-size: 0.9rem;">When a stereo camera frame arrives (~20 Hz), the 3D landmark positions predicted by the current nominal state are compared against observed feature locations. The measurement Jacobian H maps error states to predicted pixel residuals. A standard Kalman gain update corrects the nominal state and reduces covariance. Bias estimates converge as the filter learns the consistent disagreement between IMU propagation and visual observations.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 1rem;">
+                            The ESKF was validated on the EuRoC MAV dataset. Key convergence results: accelerometer bias plateaued at physically plausible values (az ≈ +0.35, ay ≈ −0.20, ax ≈ 0 m/s²); gyroscope bias converged to ωz ≈ 0.080 rad/s; gravity norm was confirmed at exactly 9.80 m/s²; the covariance trace dropped from its initial value to near zero as the filter gained confidence. Without visual updates, yaw drifted to −23° over the trajectory — demonstrating the necessity of the visual correction step and the observability limitation of yaw from IMU alone.
+                        </p>
+                        <p>
+                            All 15 unit tests passed on the first submission. This module represents the convergence of all previous skills: IMU integration from the attitude estimation module, RANSAC-based feature matching from the visual odometry module, and Kalman filter theory from lecture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Contributions -->
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title is-3">My Contributions</h2>
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Control &amp; Planning Arc</h4>
+                                <ul>
+                                    <li>Implemented SE3 geometric position controller in Python — thrust calculation, rotation matrix derivation, cmd_q quaternion output</li>
+                                    <li>Tuned PD gains in simulation then re-tuned for hardware (halved Kp/Kd, order-of-magnitude reduction in attitude gains to overcome Vicon latency and motor saturation)</li>
+                                    <li>Implemented 3D A* on 26-connected voxel graph with Euclidean heuristic, min-heap priority queue, and obstacle inflation</li>
+                                    <li>Implemented two-stage path pruning (collinearity filter + distance filter) and distance-proportional time allocation</li>
+                                    <li>Implemented minimum-jerk 5th-order polynomial trajectory optimizer — assembled 6N × 6N constraint matrix, solved offline, polynomial evaluation at runtime</li>
+                                    <li>Integrated full stack on physical Crazyflie; completed 3 collision-free maze runs</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">State Estimation Arc</h4>
+                                <ul>
+                                    <li>Implemented complementary filter fusing gyroscope integration with accelerometer gravity reference for attitude estimation</li>
+                                    <li>Implemented stereo visual odometry pipeline — feature detection, stereo triangulation, frame-to-frame RANSAC pose estimation with least-squares inlier refinement</li>
+                                    <li>Implemented full ESKF for VIO — 3 core functions: nominal state propagation (IMU kinematics at 200 Hz), 18×18 error covariance propagation (state transition Jacobian), visual measurement update (perspective projection Jacobian, Joseph-form covariance update)</li>
+                                    <li>Validated VIO on EuRoC dataset; all 15 unit tests passed</li>
+                                    <li>Characterized bias convergence, covariance trace evolution, and yaw observability from stereo vs. IMU alone</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns" style="margin-top: 3rem;">
+                <div class="column has-text-centered">
+                    <a href="project.html" class="button is-primary is-medium">
+                        <span class="icon"><i class="fa fa-arrow-left"></i></span>
+                        <span>Back to All Projects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="mediaModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); cursor: pointer;" onclick="closeModal()">
+        <img id="modalImage" style="display: block; margin: auto; margin-top: 10%; max-width: 90%; max-height: 80%;" />
+    </div>
+
+    <footer class="footer">
+        <div class="container is-max-desktop">
+            <div class="column is-centered">
+                <span class="link-block">
+                    <a href="index.html" class="external-link is-normal is-rounded is-dark">
+                        <span class="icon"><i class="fa fa-home"></i></span>
+                        <span>Back to Home</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    function showImage(src) {
+        document.getElementById('modalImage').src = src;
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('mediaModal').style.display = 'block';
+    }
+    function closeModal() {
+        document.getElementById('mediaModal').style.display = 'none';
+    }
+</script>
+</html>

@@ -243,7 +243,7 @@
                 justify-content: center;
             }
         }
-    </style>
+    </style>    <script src="./static/js/nav.js"></script>
 </head>
 
 <body>
@@ -262,11 +262,13 @@
                                 <i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i>
                             </span>
                         </a>
-                        <div class="dropdown-content">
-                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
-                            <a href="upper-body-exo.html">EMG-Controlled Elbow Exoskeleton</a>
+                                                <div class="dropdown-content">
+                                                        <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="elbow-exo.html">Elbow Exoskeleton</a>
+                            <a href="hand-exo.html">Hand Exoskeleton</a>
                             <a href="tubular-composites.html">Tubular Braided Composites</a>
                             <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
+                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
                             <a href="edison-phonograph.html">Edison Phonograph</a>
                             <a href="robox-chess.html">Robox Chess Set</a>
                             <a href="boids-analysis.html">Boids Algorithm Analysis</a>
@@ -312,11 +314,11 @@
             <!-- Dual-Mode Robotic Systems -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <div style="position: relative;">
                             <video class="clickable-media" style="height: 15em; width: 100%;" controls autoplay loop
-                                muted onclick="showVideo('images/Cute_Octopus_gripper_test.MOV')">
-                                <source src="images/Cute_Octopus_gripper_test.MOV" type="video/mp4">
+                                muted onclick="showVideo('images/Dr_Oct_gripper_test.MOV')">
+                                <source src="images/Dr_Oct_gripper_test.MOV" type="video/mp4">
                             </video>
                         </div>
                     </div>
@@ -354,37 +356,74 @@
                 </div>
             </div>
 
-            <!-- EMG-Controlled Elbow Exoskeleton -->
+            <!-- Elbow Exoskeleton -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
-                        <img src="images/Upper_body_exo_elbow_isometric_CAD.png" class="clickable-media"
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
+                        <img src="images/Elbow_Exo_Left_Hand_Iso_View.jpg" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
-                            onclick="showImage('images/Upper_body_exo_elbow_isometric_CAD.png')" />
+                            onclick="showImage('images/Elbow_Exo_Left_Hand_Iso_View.jpg')" />
                     </div>
                 </div>
                 <div class="column">
                     <div class="content is-small" style="margin-top: 0em;">
                         <h3 class="title is-5" style="margin-bottom: 0.3em;">
-                            <a href="upper-body-exo.html" class="project-title-link">
-                                EMG-Controlled Elbow Exoskeleton for Adaptive Rehabilitation
+                            <a href="elbow-exo.html" class="project-title-link">
+                                Elbow Exoskeleton with Multi-Modal Sensor Fusion
                             </a>
                         </h3>
                         <p>
-                            <strong>University of Pennsylvania, GRASP Laboratory (January 2025 - Present)</strong><br>
-                            Developing adaptive exoskeleton that automatically determines assistance levels through EMG signal analysis, eliminating time-consuming manual fitting. Features direct-drive BLDC motor (8 Nm rated, 24 Nm peak), dual-core Arduino Portenta H7 for real-time processing, and 2-DOF design combining motorized flexion/extension with passive lateral movement for natural user comfort.
-                            <a href="upper-body-exo.html" style="color: #3273dc; text-decoration: underline;">Learn
+                            <strong>University of Pennsylvania, GRASP Laboratory (September 2024 - Present)</strong><br>
+                            Developing a 1-DOF elbow exoskeleton for adaptive rehabilitation during repetitive industrial lifting tasks. Integrates EMG, IMU, and motion capture in a comparative ablation study (EMG-only vs. IMU-only vs. fused) to quantify sensor fusion benefits. Features a CubeMars AK45-36 BLDC motor (15 Nm continuous), snap-fit forearm linkage compensating for the elbow COR shift, multi-size TPU orthotics with PLA structural inserts, and dual hardware and software safety stops.
+                            <a href="elbow-exo.html" style="color: #3273dc; text-decoration: underline;">Learn
                                 more...</a>
                         </p>
                         <div class="key-skills">
                             <h6>Key Skills:</h6>
                             <div class="skills-tags">
                                 <span class="skill-tag">SolidWorks CAD</span>
-                                <span class="skill-tag">Arduino Portenta H7</span>
-                                <span class="skill-tag">EMG Processing</span>
                                 <span class="skill-tag">BLDC Motor Control</span>
+                                <span class="skill-tag">Sensor Fusion (EMG/IMU/MoCap)</span>
+                                <span class="skill-tag">CAN Bus</span>
                                 <span class="skill-tag">3D Printing (PLA/TPU)</span>
                                 <span class="skill-tag">Assistive Robotics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hand Exoskeleton -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
+                        <img src="images/Hand_Exo_Iso_View.jpg" class="clickable-media"
+                            style="height: 15em; width: 100%; object-fit: contain;"
+                            onclick="showImage('images/Hand_Exo_Iso_View.jpg')" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="hand-exo.html" class="project-title-link">
+                                Hand Exoskeleton for 4-Finger Grip Assistance
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Pennsylvania, GRASP Laboratory (January 2025 - Present)</strong><br>
+                            Designed and built a compact, single-motor, bidirectional hand exoskeleton for patients with partial voluntary hand control (post-stroke or spinal cord injury). Drives all four fingers simultaneously via a Waveshare ST3215 servo, 2.5:1 spur gear transmission with custom tooth depth modification, and a parallel four-bar linkage per finger adapted from Esposito et al. (2022). All parts fit on a single 3D-print bed; a physical prototype has been built and is under active testing.
+                            <a href="hand-exo.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                        <div class="key-skills">
+                            <h6>Key Skills:</h6>
+                            <div class="skills-tags">
+                                <span class="skill-tag">SolidWorks CAD</span>
+                                <span class="skill-tag">Mechanism Design</span>
+                                <span class="skill-tag">Spur Gear Design</span>
+                                <span class="skill-tag">Four-Bar Linkage</span>
+                                <span class="skill-tag">3D Printing (PLA)</span>
+                                <span class="skill-tag">Rehabilitation Devices</span>
                             </div>
                         </div>
                     </div>
@@ -394,9 +433,9 @@
             <!-- Tubular Braided Composites -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/DRA_compression_manufacturing_process.jpg" class="clickable-media"
-                            style="height: 15em; width: 80%; object-fit: contain;"
+                            style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/DRA_compression_manufacturing_process.jpg')" />
                     </div>
                 </div>
@@ -433,7 +472,7 @@
             <!-- COVID-19 Vaccine Cold Box -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/Cold_box_1st_iteration.jpg" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/Cold_box_1st_iteration.jpg')" />
@@ -485,10 +524,51 @@
                 <h2 class="title is-2" style="color: #667eea;">Academic Projects</h2>
             </div>
 
+
+
+
+            <!-- MEAM 6200 Quadrotor Autonomy -->
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
+                        <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
+                            autoplay loop muted onclick="showVideo('images/MEAM_6200_Intermediate_Goal_to_Goal.MOV')">
+                            <source src="images/MEAM_6200_Intermediate_Goal_to_Goal.MOV" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content is-small" style="margin-top: 0em;">
+                        <h3 class="title is-5" style="margin-bottom: 0.3em;">
+                            <a href="meam6200-quadrotor.html" class="project-title-link">
+                                Quadrotor SLAM — SE3 Control, A* Planning, Trajectory Optimization &amp; VIO
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>University of Pennsylvania, MEAM 6200 — Advanced Robotics (Spring 2026)</strong><br>
+                            Built a complete quadrotor autonomy stack from scratch: geometric SE3 attitude control, 3D A* path planning on voxel occupancy grids, minimum-jerk polynomial trajectory optimization with C⁴ continuity, and sim-to-real deployment on a physical Bitcraze Crazyflie in Vicon motion capture (3 collision-free maze runs). Extended into sensor-based state estimation: complementary filter for IMU attitude, RANSAC-based stereo visual odometry, and a full Error State Kalman Filter for Visual-Inertial Odometry validated on the EuRoC dataset.
+                            <a href="meam6200-quadrotor.html" style="color: #3273dc; text-decoration: underline;">Learn
+                                more...</a>
+                        </p>
+                        <div class="key-skills">
+                            <h6>Key Skills:</h6>
+                            <div class="skills-tags">
+                                <span class="skill-tag">SE3 Geometric Control</span>
+                                <span class="skill-tag">A* Path Planning</span>
+                                <span class="skill-tag">Polynomial Trajectory Optimization</span>
+                                <span class="skill-tag">Sim-to-Real</span>
+                                <span class="skill-tag">Stereo Visual Odometry</span>
+                                <span class="skill-tag">Error State Kalman Filter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- IPD 5010 - Edison Phonograph -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/IPD_5010_Phonograph_Showcase.jpg" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/IPD_5010_Phonograph_Showcase.jpg')" />
@@ -525,7 +605,7 @@
             <!-- IPD 5010 - Robox Chess Set -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/IPD_5010_Complete_View_LED.jpg" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/IPD_5010_Complete_View_LED.jpg')" />
@@ -565,7 +645,7 @@
             <!-- MEAM 6240 - Distributed Robotics Boids Project -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/boids_cafeteria.png" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/boids_cafeteria.png')" />
@@ -604,7 +684,7 @@
             <!-- MEAM 5100 - Autonomous Competition Robot -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
                             autoplay loop muted onclick="showVideo('images/MEAM 5100 wall following.mp4')">
                             <source src="images/MEAM 5100 wall following.mp4" type="video/mp4">
@@ -645,7 +725,7 @@
             <!-- MEAM 5200 - Pick and Place Robot -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
                             autoplay loop muted onclick="showVideo('images/MEAM_5200_pick_place_competition.mp4')">
                             <source src="images/MEAM_5200_pick_place_competition.mp4" type="video/mp4">
@@ -684,7 +764,7 @@
             <!-- Senior Capstone - AMR Platform -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <img src="images/AMR.png" class="clickable-media"
                             style="height: 15em; width: 100%; object-fit: contain;"
                             onclick="showImage('images/AMR.png')" />
@@ -723,7 +803,7 @@
             <!-- Junior Capstone - Transmission Design -->
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="content" style="justify-content: center; align-items: center; display: flex;">
+                    <div class="content" style="justify-content: center; align-items: center; display: flex; min-height: 15em;">
                         <video class="clickable-media" style="height: 15em; width: 100%; object-fit: contain;" controls
                             autoplay loop muted onclick="showVideo('images/Junior_capstone_transmission.mp4')">
                             <source src="images/Junior_capstone_transmission.mp4" type="video/mp4">
