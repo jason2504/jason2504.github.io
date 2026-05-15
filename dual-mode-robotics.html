@@ -56,6 +56,12 @@
             .dropdown-content { position: static; display: none; box-shadow: none; background-color: #f8f9fa; margin-top: 0; border-radius: 0; border: none; border-top: 1px solid #e9ecef; }
             .gallery-2, .gallery-3, .gallery-4 { grid-template-columns: 1fr; }
         }
+        .github-banner { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 1.2rem 1.5rem; border-radius: 10px; margin: 1.5rem 0; display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+        .github-banner .icon-wrap { font-size: 2rem; flex-shrink: 0; }
+        .github-banner h4 { color: white; margin: 0 0 0.2rem 0; font-size: 1.05rem; }
+        .github-banner p { color: rgba(255,255,255,0.8); margin: 0; font-size: 0.88rem; line-height: 1.5; }
+        .github-banner a.gh-btn { margin-left: auto; background: white; color: #1a1a2e; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; text-decoration: none; white-space: nowrap; font-size: 0.9rem; transition: background 0.2s; flex-shrink: 0; }
+        .github-banner a.gh-btn:hover { background: #e0e0e0; }
     </style>    <script src="./static/js/nav.js"></script>
 </head>
 
@@ -72,12 +78,12 @@
                             <span class="icon"><i class="fa fa-chevron-down" style="font-size: 0.8em; margin-left: 0.5em;"></i></span>
                         </a>
                                                 <div class="dropdown-content">
-                                                        <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
+                            <a href="dual-mode-robotics.html">Dual-Mode Robotic Systems</a>
                             <a href="elbow-exo.html">Elbow Exoskeleton</a>
                             <a href="hand-exo.html">Hand Exoskeleton</a>
+                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
                             <a href="tubular-composites.html">Tubular Braided Composites</a>
                             <a href="covid-vaccine-box.html">COVID-19 Vaccine Cold Box</a>
-                            <a href="meam6200-quadrotor.html">Quadrotor SLAM</a>
                             <a href="edison-phonograph.html">Edison Phonograph</a>
                             <a href="robox-chess.html">Robox Chess Set</a>
                             <a href="boids-analysis.html">Boids Algorithm Analysis</a>
@@ -130,6 +136,18 @@
                 <p style="margin-top: 0.5rem; color: #064e3b;">
                     🤖 Research ongoing at the University of Pennsylvania GRASP Laboratory under Dr. Nadia Figueroa, targeting search &amp; rescue, hazardous inspection, and assistive robotics.
                 </p>
+            </div>
+
+            <!-- GitHub Banner -->
+            <div class="github-banner">
+                <div class="icon-wrap"><i class="fab fa-github"></i></div>
+                <div>
+                    <h4>Lab Repository — tonylitianyu/dr_octopus (octo branch)</h4>
+                    <p>Full project repository for the Dr. Oct dual-mode robotic system including CAD files, control code, simulation environments, and documentation. My mechanical and electrical design work is on the <strong>octo</strong> branch alongside the controls work from the broader team.</p>
+                </div>
+                <a class="gh-btn" href="https://github.com/tonylitianyu/dr_octopus/tree/octo" target="_blank">
+                    <i class="fab fa-github"></i>&nbsp; View on GitHub
+                </a>
             </div>
 
             <!-- Project Overview + Details Sidebar -->
@@ -194,14 +212,14 @@
                             <p class="img-caption">Version 1 — 4-DOF rigid arm with integrated universal joint shoulder (828g, 405mm reach)</p>
                         </div>
                         <div>
-                            <img src="images/Dr_Oct_V2_arm.jpg"
-                                onclick="showImage('images/Dr_Oct_V2_arm.jpg')"
+                            <img src="images/Dr_Oct_V2_arm.png"
+                                onclick="showImage('images/Dr_Oct_V2_arm.png')"
                                 alt="Version 2 — Cable-Actuated Continuum Robot" />
                             <p class="img-caption">Version 2 — 6-vertebra continuum spine with ball-and-socket joints and TPU compression springs (628g)</p>
                         </div>
                         <div>
-                            <img src="images/Dr_Oct_V3_arm.jpg"
-                                onclick="showImage('images/Dr_Oct_V3_arm.jpg')"
+                            <img src="images/Dr_Oct_V3_arm.png"
+                                onclick="showImage('images/Dr_Oct_V3_arm.png')"
                                 alt="Version 3 — Franka Panda-Inspired Serial Manipulator" />
                             <p class="img-caption">Version 3 — Franka Panda adaptation, 5-DOF, tiered motor selection (716g)</p>
                         </div>
@@ -276,20 +294,20 @@
 
                     <div class="gallery-3">
                         <div>
-                            <img src="images/Dr_Oct_V1_4arm_robot.jpg"
-                                onclick="showImage('images/Dr_Oct_V1_4arm_robot.jpg')"
+                            <img src="images/Dr_Oct_V1_4arm_robot.png"
+                                onclick="showImage('images/Dr_Oct_V1_4arm_robot.png')"
                                 alt="4-arm robot with V1 arms" />
                             <p class="img-caption">4-arm floor robot with V1 universal joint arms — caster wheels at each gripper enable rolling locomotion while the arms maintain manipulation capability</p>
                         </div>
                         <div>
-                            <img src="images/Dr_Oct_V2_2arm_robot.jpg"
-                                onclick="showImage('images/Dr_Oct_V2_2arm_robot.jpg')"
+                            <img src="images/Dr_Oct_V2_2arm_robot.png"
+                                onclick="showImage('images/Dr_Oct_V2_2arm_robot.png')"
                                 alt="2-arm robot with V2 continuum arms" />
                             <p class="img-caption">2-arm configuration with V2 continuum arms — 950mm span, demonstrating bilateral continuum manipulation and the full 180° spine bend capability</p>
                         </div>
                         <div>
-                            <img src="images/Dr_Oct_V3_4arm_robot.jpg"
-                                onclick="showImage('images/Dr_Oct_V3_4arm_robot.jpg')"
+                            <img src="images/Dr_Oct_V3_4arm_robot.png"
+                                onclick="showImage('images/Dr_Oct_V3_4arm_robot.png')"
                                 alt="4-arm robot with V3 arms" />
                             <p class="img-caption">4-arm floor robot with V3 arms — current active simulation platform, with proven Franka Panda-derived kinematics and tiered Dynamixel motor selection</p>
                         </div>
@@ -361,7 +379,7 @@
                         <tbody>
                             <tr><td>V1</td><td>828g</td><td>4</td><td>Timing belt + bevel gear universal joint shoulder</td><td>405mm</td><td>~$20</td></tr>
                             <tr><td>V2</td><td>628g</td><td>∞ (3 actuated)</td><td>Ball-socket vertebrae continuum spine + TPU springs</td><td>450mm</td><td>~$35</td></tr>
-                            <tr><td>V3</td><td>716g</td><td>6</td><td>Franka Panda adaptation, tiered motor selection</td><td>335mm</td><td>~$50</td></tr>
+                            <tr><td>V3</td><td>716g</td><td>5</td><td>Franka Panda adaptation, tiered motor selection</td><td>335mm</td><td>~$50</td></tr>
                         </tbody>
                     </table>
                 </div>
